@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026–2027 京阪跨年行程</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:      #18140A;
+    --ink2:     #4A4030;
+    --ink3:     #8A8070;
+    --paper:    #F5F2EB;
+    --card:     #FFFFFF;
+    --rule:     #DDD8CC;
+
+    --blue:     #1A5FA8;
+    --blue-lt:  #E8F2FC;
+    --green:    #1A7A44;
+    --green-lt: #E6F5EC;
+    --amber:    #A86800;
+    --amber-lt: #FFF3DC;
+    --purple:   #5830A8;
+    --purple-lt:#F0EBFF;
+    --slate:    #4A5568;
+    --slate-lt: #EEF0F4;
+    --teal:     #0F7070;
+    --teal-lt:  #E0F5F5;
+    --red:      #A82020;
+    --red-lt:   #FFEAEA;
+    --orange:   #B05010;
+    --orange-lt:#FFF0E5;
+
+    --warn-bg:  #FFF5F5;
+    --warn-fg:  #8B0000;
+    --warn-bd:  #EAACAC;
+
+    --tl-line:  #CCC8C0;
+  }
+
+  body {
+    background: var(--paper);
+    font-family: 'Noto Sans TC', system-ui, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ── NAV TABS ───────────────────────────────────────────────── */
+  .tab-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: #1E3A5F;
+    display: flex;
+    justify-content: safe center;
+    overflow-x: auto;
+    scrollbar-width: none;
+    border-bottom: 3px solid #0A2040;
+  }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    flex-shrink: 0;
+    padding: 14px 20px;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(255,255,255,.55);
+    background: none;
+    border: none;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
+    transition: color .15s, border-color .15s;
+    white-space: nowrap;
+  }
+  .tab-btn:hover { color: rgba(255,255,255,.85); }
+  .tab-btn.active { color: #FFD060; border-bottom-color: #FFD060; }
+  .tab-btn .sub { font-size: 11px; font-weight: 400; opacity: .7; display: block; margin-top: 1px; }
+  .tab-btn {
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .tab-nav { -webkit-overflow-scrolling: touch; }
+
+  /* ── PAGES ──────────────────────────────────────────────────── */
+  .day-page { display: none; }
+  .day-page.active { display: block; }
+
+  .page-inner {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 0 56px;
+  }
+
+  /* ── HEADER ─────────────────────────────────────────────────── */
+  .header {
+    color: #FFFFFF;
+    padding: 36px 40px 30px;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,.08) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .header-meta { display: flex; align-items: center; gap: 18px; margin-bottom: 14px; }
+  .day-badge {
+    width: 54px; height: 54px; border-radius: 50%;
+    background: rgba(255,255,255,.18);
+    border: 2px solid rgba(255,255,255,.35);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 19px; font-weight: 700; flex-shrink: 0;
+  }
+  .header-date { font-size: 13px; opacity: .7; }
+  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.4; margin-bottom: 10px; }
+  .header-route { font-size: 12.5px; opacity: .6; line-height: 1.7; }
+  .header-route span { opacity: .5; margin: 0 3px; }
+
+  /* ── DEADLINE BANNER ────────────────────────────────────────── */
+  .deadline-banner {
+    margin: 20px 28px 0;
+    background: #FFFAEE;
+    border: 1px solid #F0D070;
+    border-radius: 10px;
+    padding: 14px 18px;
+  }
+  .deadline-banner h3 {
+    font-size: 11px; font-weight: 700; color: #7A5800;
+    letter-spacing: .6px; margin-bottom: 9px;
+  }
+  .dl-row {
+    display: flex; gap: 8px; align-items: flex-start;
+    font-size: 12.5px; color: var(--ink2); margin-bottom: 5px; line-height: 1.55;
+  }
+  .dl-row:last-child { margin-bottom: 0; }
+  .dl-dot { color: #C87800; flex-shrink: 0; }
+
+  /* ── TIMELINE ───────────────────────────────────────────────── */
+  .timeline {
+    padding: 0 28px;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: calc(28px + 80px + 7px);
+    top: 0; bottom: 0;
+    width: 2px;
+    background: var(--tl-line);
+  }
+
+  /* ── ENTRY ──────────────────────────────────────────────────── */
+  .entry {
+    display: grid;
+    grid-template-columns: 80px 18px 1fr;
+    gap: 0 14px;
+    padding-top: 16px;
+  }
+  .time-col { text-align: right; padding-top: 14px; }
+  .time-start { font-size: 14px; font-weight: 700; color: var(--ink); line-height: 1; }
+  .time-arrow { font-size: 10px; color: var(--ink3); margin: 3px 0; display: block; }
+  .time-end   { font-size: 12px; color: var(--ink2); line-height: 1; }
+  .dot-col    { display: flex; flex-direction: column; align-items: center; padding-top: 18px; }
+  .dot {
+    width: 12px; height: 12px; border-radius: 50%;
+    border: 2.5px solid var(--card);
+    flex-shrink: 0;
+    box-shadow: 0 0 0 1.5px currentColor;
+    position: relative; z-index: 1;
+  }
+
+  /* ── CARD ───────────────────────────────────────────────────── */
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    border: 1px solid var(--rule);
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+  .card-inner { padding: 14px 18px 16px; }
+  .tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 700;
+    padding: 2px 9px; border-radius: 20px;
+    margin-bottom: 7px; letter-spacing: .3px;
+  }
+  .card-title { font-size: 16px; font-weight: 700; line-height: 1.4; color: var(--ink); margin-bottom: 5px; }
+  .card-desc  { font-size: 13px; color: var(--ink2); line-height: 1.75; }
+  .card-desc p { margin-top: 5px; }
+  .card-desc p:first-child { margin-top: 0; }
+  .card-note {
+    margin-top: 10px;
+    background: var(--warn-bg);
+    border: 1px solid var(--warn-bd);
+    border-radius: 8px;
+    padding: 9px 13px;
+    font-size: 12px; color: var(--warn-fg); line-height: 1.65;
+  }
+  .card-note::before { content: '⚠  '; }
+
+  /* type colours */
+  .t-plane  { color:var(--blue);   background:var(--blue-lt);   }
+  .t-train  { color:var(--blue);   background:var(--blue-lt);   }
+  .t-hoka   { color:var(--amber);  background:var(--amber-lt);  }
+  .t-shop   { color:var(--purple); background:var(--purple-lt); }
+  .t-food   { color:var(--green);  background:var(--green-lt);  }
+  .t-rest   { color:var(--slate);  background:var(--slate-lt);  }
+  .t-return { color:var(--teal);   background:var(--teal-lt);   }
+  .t-book   { color:var(--red);    background:var(--red-lt);    }
+  .t-usj    { color:var(--orange); background:var(--orange-lt); }
+  .t-sight  { color:#1A6A3A;       background:#E6F7EC;          }
+
+  .dot-plane  { color:var(--blue);   }
+  .dot-train  { color:var(--blue);   }
+  .dot-hoka   { color:var(--amber);  }
+  .dot-shop   { color:var(--purple); }
+  .dot-food   { color:var(--green);  }
+  .dot-rest   { color:var(--slate);  }
+  .dot-return { color:var(--teal);   }
+  .dot-book   { color:var(--red);    }
+  .dot-usj    { color:var(--orange); }
+  .dot-sight  { color:#1A6A3A;       }
+
+  .s-plane  { border-left:4px solid var(--blue);   }
+  .s-train  { border-left:4px solid var(--blue);   }
+  .s-hoka   { border-left:4px solid var(--amber);  }
+  .s-shop   { border-left:4px solid var(--purple); }
+  .s-food   { border-left:4px solid var(--green);  }
+  .s-rest   { border-left:4px solid var(--slate);  }
+  .s-return { border-left:4px solid var(--teal);   }
+  .s-book   { border-left:4px solid var(--red);    }
+  .s-usj    { border-left:4px solid var(--orange); }
+  .s-sight  { border-left:4px solid #1A6A3A;       }
+
+  /* header colours per day */
+  .hd1 { background: #1E3A5F; }
+  .hd2 { background: #7A1A1A; }
+  .hd3 { background: #1A4A28; }
+  .hd4 { background: #3A2A70; }
+  .hd5 { background: #7A3A00; }
+  .hd6 { background: #003A5F; }
+  .hd7 { background: #2A3A1A; }
+
+  /* ── FOOTER ─────────────────────────────────────────────────── */
+  .footer {
+    margin-top: 28px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--ink3);
+  }
+  .footer strong { color: var(--ink2); }
+
+  /* ── DEADLINE CHIPS ─────────────────────────────────────────── */
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+  .chip {
+    font-size: 11.5px; font-weight: 700;
+    padding: 4px 11px; border-radius: 20px;
+    line-height: 1.4;
+  }
+  .chip-red    { background:#FFEAEA; color:#8B0000; border:1px solid #F0ACAC; }
+  .chip-amber  { background:#FFF3DC; color:#7A4800; border:1px solid #F0C870; }
+  .chip-white  { background:#F0EDE8; color:#4A4030; border:1px solid #DDD8CC; }
+
+  /* ── RWD：手機版（≤640px）───────────────────────────────────── */
+  @media (max-width: 640px) {
+    .tab-btn { padding: 12px 14px; font-size: 12px; }
+    .tab-btn .sub { font-size: 10px; }
+
+    .header { padding: 24px 20px 20px; }
+    .header-meta { gap: 12px; margin-bottom: 10px; }
+    .day-badge { width: 44px; height: 44px; font-size: 16px; }
+    .header-date { font-size: 12px; }
+    .header h1 { font-size: 18px; margin-bottom: 8px; }
+    .header-route { font-size: 11.5px; line-height: 1.6; }
+
+    .deadline-banner { margin: 16px 16px 0; padding: 12px 14px; }
+    .deadline-banner h3 { font-size: 10.5px; }
+    .dl-row { font-size: 12px; }
+
+    .timeline { padding: 0 16px; }
+    .timeline::before { left: calc(16px + 58px + 7px); }
+
+    .entry { grid-template-columns: 58px 16px 1fr; gap: 0 8px; padding-top: 14px; }
+    .time-start { font-size: 13px; }
+    .time-end { font-size: 11px; }
+
+    .card-inner { padding: 12px 14px 14px; }
+    .card-title { font-size: 15px; }
+    .card-desc { font-size: 12.5px; }
+    .card-note { font-size: 11.5px; padding: 8px 11px; }
+
+    .page-inner { padding-bottom: 40px; }
+    .footer { font-size: 11px; margin-top: 22px; }
+  }
+
+  @media (max-width: 380px) {
+    .entry { grid-template-columns: 48px 14px 1fr; gap: 0 6px; }
+    .timeline::before { left: calc(16px + 48px + 6px); }
+    .timeline { padding: 0 12px; }
+    .header { padding: 20px 16px 18px; }
+    .deadline-banner { margin: 14px 12px 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- TAB NAV -->
+<nav class="tab-nav">
+  <button type="button" class="tab-btn active" data-day="1">D1<span class="sub">12/27 週日</span></button>
+  <button type="button" class="tab-btn" data-day="2">D2<span class="sub">12/28 週一</span></button>
+  <button type="button" class="tab-btn" data-day="3">D3<span class="sub">12/29 週二</span></button>
+  <button type="button" class="tab-btn" data-day="4">D4<span class="sub">12/30 週三</span></button>
+  <button type="button" class="tab-btn" data-day="5">D5<span class="sub">12/31 週四</span></button>
+  <button type="button" class="tab-btn" data-day="6">D6<span class="sub">1/1 週五</span></button>
+  <button type="button" class="tab-btn" data-day="7">D7<span class="sub">1/2 週六</span></button>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════ DAY 1 -->
+<div class="day-page active" id="day1">
+<div class="page-inner">
+  <div class="header hd1">
+    <div class="header-meta">
+      <div class="day-badge">D1</div>
+      <div><div class="header-date">2026 年 12 月 27 日（週日）</div></div>
+    </div>
+    <h1>抵達日・Alpen Osaka・四條河原町・Sushi Roman</h1>
+    <div class="header-route">
+      台北 <span>→</span> 關西機場 <span>→</span> 大阪梅田（買鞋）<span>→</span> 京都 <span>→</span> 四條河原町商圈
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="entry">
+      <div class="time-col"><div class="time-start">08:05</div><span class="time-arrow">↓</span><div class="time-end">11:35</div></div>
+      <div class="dot-col"><div class="dot dot-plane"></div></div>
+      <div class="card s-plane"><div class="card-inner">
+        <span class="tag t-plane">飛機</span>
+        <div class="card-title">台北 → 關西機場</div>
+        <div class="card-desc">直飛班機，飛行約 3h 30m。11:35 落地後辦理入境 + 提領行李（約 45 min）</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">12:26</div><span class="time-arrow">↓</span><div class="time-end">13:31</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">關西機場 → 大阪駅（JR 關空快速）</div>
+        <div class="card-desc">¥1,170・約 65 分鐘・實際班次 12:26 発 → 13:31 着</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">13:40</div><span class="time-arrow">↓</span><div class="time-end">14:45</div></div>
+      <div class="dot-col"><div class="dot dot-hoka"></div></div>
+      <div class="card s-hoka"><div class="card-inner">
+        <span class="tag t-hoka">HOKA</span>
+        <div class="card-title">Alpen Osaka 買鞋（HOKA 全程在此解決）</div>
+        <div class="card-desc">大阪駅步行約 7 min 抵達。茶屋町 YANMAR FLYING-Y BUILDING B2F～4F<br>購鞋約 65 min，帶護照可退稅</div>
+        <div class="card-note">14:45 離店步行回大阪駅（約 7 min），搭 15:00 JR 新快速前往京都</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">15:00</div><span class="time-arrow">↓</span><div class="time-end">15:29</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">大阪 → 京都駅（JR 新快速）</div>
+        <div class="card-desc">¥580・29 分鐘・實際班次 15:00 発 → 15:29 着</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">15:29</div><span class="time-arrow">↓</span><div class="time-end">15:55</div></div>
+      <div class="dot-col"><div class="dot dot-rest"></div></div>
+      <div class="card s-rest"><div class="card-inner">
+        <span class="tag t-rest">準備</span>
+        <div class="card-title">京都駅置物櫃寄放行李 → 地鐵烏丸線至四條站</div>
+        <div class="card-desc">置物櫃可使用至 23:00。地鐵烏丸線約 10 min（含等車），四條站步行 3 min 至錦市場入口</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">15:55</div><span class="time-arrow">↓</span><div class="time-end">20:00</div></div>
+      <div class="dot-col"><div class="dot dot-shop"></div></div>
+      <div class="card s-shop"><div class="card-inner">
+        <span class="tag t-shop">商圈</span>
+        <div class="card-title">四條河原町商圈（約 4 小時整塊）</div>
+        <div class="card-desc">
+          <p>① 錦市場小吃　約 40 min<br>三木雞卵（玉子燒）・魚力（海鰻天婦羅）・こんなもんじゃ（豆乳甜甜圈）</p>
+          <p>② 河原町 / 高島屋 / OPA 百貨　約 90 min<br>服飾潮流購物，憑護照領 Hello Kitty 5% Coupon</p>
+          <p>③ 新京極通　約 30 min　伴手禮・紀念品</p>
+        </div>
+        <div class="card-note">錦市場禁止邊走邊吃，備現金（部分店家不收刷卡）。店家約 17:00 開始關門，15:55 進場把握時間</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">20:00</div><span class="time-arrow">↓</span><div class="time-end">21:30</div></div>
+      <div class="dot-col"><div class="dot dot-food"></div></div>
+      <div class="card s-food"><div class="card-inner">
+        <span class="tag t-food">晚餐</span>
+        <div class="card-title">Sushi Roman（爐端燒居酒屋 + 壽司）</div>
+        <div class="card-desc">中京区貝屋町 562-2・評分 4.4・週日 16:00 起營業</div>
+        <div class="card-note">座位費 ¥300・每人須點一杯飲料。年末旺季建議提前確認預約</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">21:30</div><span class="time-arrow">↓</span><div class="time-end">22:10</div></div>
+      <div class="dot-col"><div class="dot dot-return"></div></div>
+      <div class="card s-return"><div class="card-inner">
+        <span class="tag t-return">返程</span>
+        <div class="card-title">地鐵四條 → 京都駅取行李 → 步行回飯店</div>
+        <div class="card-desc">地鐵烏丸線至京都駅（約 3 min + 等車），取行李後步行 12～15 min 至飯店（南区東九条西御霊町 22-6）</div>
+      </div></div>
+    </div>
+  </div>
+  <div class="footer"><strong>2026–2027 京阪跨年行程</strong>　D1 / 7</div>
+</div></div>
+
+<!-- ═══════════════════════════════════════════════════════ DAY 2 -->
+<div class="day-page" id="day2">
+<div class="page-inner">
+  <div class="header hd2">
+    <div class="header-meta">
+      <div class="day-badge">D2</div>
+      <div><div class="header-date">2026 年 12 月 28 日（週一）</div></div>
+    </div>
+    <h1>平等院・任天堂博物館・Porta 購物・京都車站晚餐</h1>
+    <div class="header-route">
+      飯店 <span>→</span> JR 宇治（平等院）<span>→</span> 近鐵小倉（任天堂博物館）<span>→</span> 京都駅
+    </div>
+  </div>
+
+  <div class="deadline-banner">
+    <h3>本天預約提醒</h3>
+    <div class="dl-row"><span class="dl-dot">●</span><span>任天堂博物館完全預約制，<strong>9/30 截止抽票</strong>。5 人各自申請，每人填入全部護照英文姓名，各選 3 個不同時段，共 15 次機會</span></div>
+  </div>
+
+  <div class="timeline">
+    <div class="entry">
+      <div class="time-col"><div class="time-start">07:45</div><span class="time-arrow">↓</span><div class="time-end">08:00</div></div>
+      <div class="dot-col"><div class="dot dot-rest"></div></div>
+      <div class="card s-rest"><div class="card-inner">
+        <span class="tag t-rest">出發</span>
+        <div class="card-title">飯店步行至京都駅</div>
+        <div class="card-desc">約 12～15 分鐘，今日須早出發</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">08:00</div><span class="time-arrow">↓</span><div class="time-end">08:22</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">京都 → JR 宇治（JR 奈良線）</div>
+        <div class="card-desc">22 min・¥240・班次每 15 min 一班</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">08:32</div><span class="time-arrow">↓</span><div class="time-end">09:30</div></div>
+      <div class="dot-col"><div class="dot dot-sight"></div></div>
+      <div class="card s-sight"><div class="card-inner">
+        <span class="tag t-sight">景點</span>
+        <div class="card-title">平等院庭園（世界遺產）</div>
+        <div class="card-desc">JR 宇治駅步行 10 min 抵達。只逛庭園約 60 min・¥700。開門即入，早上人潮最少</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">09:40</div><span class="time-arrow">↓</span><div class="time-end">10:00</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">JR 宇治 → JR 小倉 → 近鐵小倉</div>
+        <div class="card-desc">JR 奈良線奈良方向 2 min（¥150）→ 步行換乘近鐵小倉約 8 min。博物館門口等候 10 min</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">10:00</div><span class="time-arrow">↓</span><div class="time-end">15:00</div></div>
+      <div class="dot-col"><div class="dot dot-book"></div></div>
+      <div class="card s-book"><div class="card-inner">
+        <span class="tag t-book">完全預約制</span>
+        <div class="card-title">任天堂博物館（5 小時）</div>
+        <div class="card-desc">¥3,300・含 10 枚遊戲金幣。10:00 最早梯次入場<br>館內咖啡廳解決午餐</div>
+        <div class="card-note">9/30 截止抽票。5 人各自申請，每人選 3 個不同時段，共 15 次機會。多人中籤選一筆付款即可</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">15:05</div><span class="time-arrow">↓</span><div class="time-end">15:25</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">近鐵小倉 → 京都駅（近鐵京都線）</div>
+        <div class="card-desc">20 min・比原本估算快 20 min</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">15:25</div><span class="time-arrow">↓</span><div class="time-end">17:30</div></div>
+      <div class="dot-col"><div class="dot dot-shop"></div></div>
+      <div class="card s-shop"><div class="card-inner">
+        <span class="tag t-shop">購物（彈性）</span>
+        <div class="card-title">Porta 地下街 & Avanti</div>
+        <div class="card-desc">有體力再逛。日系男女裝 Pre-Sale，冬裝 5 折起</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">18:00</div><span class="time-arrow">↓</span><div class="time-end">19:30</div></div>
+      <div class="dot-col"><div class="dot dot-food"></div></div>
+      <div class="card s-food"><div class="card-inner">
+        <span class="tag t-food">晚餐</span>
+        <div class="card-title">京都駅伊勢丹 11F</div>
+        <div class="card-desc">名代炸豬排 かつくら，或 10F 拉麵小路 新福菜館。不需預約</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">19:30</div><span class="time-arrow">↓</span></div>
+      <div class="dot-col"><div class="dot dot-return"></div></div>
+      <div class="card s-return"><div class="card-inner">
+        <span class="tag t-return">返程</span>
+        <div class="card-title">步行回飯店</div>
+        <div class="card-desc">京都駅步行 12～15 min</div>
+      </div></div>
+    </div>
+  </div>
+  <div class="footer"><strong>2026–2027 京阪跨年行程</strong>　D2 / 7</div>
+</div></div>
+
+<!-- ═══════════════════════════════════════════════════════ DAY 3 -->
+<div class="day-page" id="day3">
+<div class="page-inner">
+  <div class="header hd3">
+    <div class="header-meta">
+      <div class="day-badge">D3</div>
+      <div><div class="header-date">2026 年 12 月 29 日（週二）</div></div>
+    </div>
+    <h1>嵐山・廣川鰻魚飯・四條河原町商圈・寶可夢・高島屋・壽喜燒</h1>
+    <div class="header-route">
+      飯店 <span>→</span> 嵯峨嵐山 <span>→</span> 京都駅 <span>→</span> 四條河原町商圈
+    </div>
+  </div>
+
+  <div class="deadline-banner">
+    <h3>本天預約提醒</h3>
+    <div class="dl-row"><span class="dl-dot">●</span><span>廣川鰻魚飯完全預約制，<strong>11/28 深夜 23:00 搶位</strong>。5 人拆 3+2 兩筆，各付保證金 ¥3,000/人（不可退），2 人需同時上線搶同一時段</span></div>
+    <div class="dl-row"><span class="dl-dot">●</span><span>壽喜燒（三嶋亭等）年末旺季<strong>需提前確認預約</strong></span></div>
+    <div class="dl-row"><span class="dl-dot">●</span><span>D3 起帰省ラッシュ開始，人潮明顯增加，建議越早出發越好</span></div>
+  </div>
+
+  <div class="timeline">
+    <div class="entry">
+      <div class="time-col"><div class="time-start">08:15</div><span class="time-arrow">↓</span><div class="time-end">08:46</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">飯店 → 京都駅 → 嵯峨嵐山（JR 山陰本線）</div>
+        <div class="card-desc">步行 12～15 min 至京都駅，JR 山陰本線 16 min・¥240</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">09:00</div><span class="time-arrow">↓</span><div class="time-end">11:45</div></div>
+      <div class="dot-col"><div class="dot dot-sight"></div></div>
+      <div class="card s-sight"><div class="card-inner">
+        <span class="tag t-sight">景點</span>
+        <div class="card-title">嵐山散策（約 165 min）</div>
+        <div class="card-desc">竹林小徑 → 天龍寺（世界遺產）→ 渡月橋</div>
+        <div class="card-note">D3 帰省ラッシュ開始，人潮多，越早出發越好</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">11:45</div><span class="time-arrow">↓</span><div class="time-end">13:15</div></div>
+      <div class="dot-col"><div class="dot dot-book"></div></div>
+      <div class="card s-book"><div class="card-inner">
+        <span class="tag t-book">完全預約制</span>
+        <div class="card-title">午餐 — 廣川鰻魚飯（米其林一星）</div>
+        <div class="card-desc">炭火鰻魚飯套餐約 ¥5,300 起</div>
+        <div class="card-note">11/28 深夜 23:00 搶位。5 人拆 3+2 兩筆，各付保證金 ¥3,000/人（不可退），2 人需同時上線搶同一時段</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">13:15</div><span class="time-arrow">↓</span><div class="time-end">13:45</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">嵯峨嵐山 → 四條河原町</div>
+        <div class="card-desc">JR 山陰本線 16 min 至京都駅 → 地鐵烏丸線至四條，約 30 min</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">13:45</div><span class="time-arrow">↓</span><div class="time-end">17:30</div></div>
+      <div class="dot-col"><div class="dot dot-shop"></div></div>
+      <div class="card s-shop"><div class="card-inner">
+        <span class="tag t-shop">商圈</span>
+        <div class="card-title">四條河原町商圈（約 3.5 小時）</div>
+        <div class="card-desc">
+          <p>① 錦市場小吃　約 60 min（14:00 進場店家全開，比 D1 更從容）</p>
+          <p>② 河原町 / 寺町通　約 60 min　伴手禮・京都在地雜貨</p>
+          <p>③ 京都寶可夢中心　約 60 min　高島屋 T8 4F，生肖限定款・跨年限定商品</p>
+          <p>④ 高島屋 & OPA 百貨　約 30 min　服飾，憑護照領 Hello Kitty 5% Coupon</p>
+        </div>
+        <div class="card-note">錦市場禁止邊走邊吃，備現金</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">17:30</div><span class="time-arrow">↓</span><div class="time-end">19:00</div></div>
+      <div class="dot-col"><div class="dot dot-food"></div></div>
+      <div class="card s-food"><div class="card-inner">
+        <span class="tag t-food">晚餐</span>
+        <div class="card-title">壽喜燒（四條河原町）</div>
+        <div class="card-desc">三嶋亭等百年老舖</div>
+        <div class="card-note">年末旺季需提前確認預約</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">19:00</div><span class="time-arrow">↓</span></div>
+      <div class="dot-col"><div class="dot dot-return"></div></div>
+      <div class="card s-return"><div class="card-inner">
+        <span class="tag t-return">返程</span>
+        <div class="card-title">步行回飯店</div>
+        <div class="card-desc">約 15 min</div>
+      </div></div>
+    </div>
+  </div>
+  <div class="footer"><strong>2026–2027 京阪跨年行程</strong>　D3 / 7</div>
+</div></div>
+
+<!-- ═══════════════════════════════════════════════════════ DAY 4 -->
+<div class="day-page" id="day4">
+<div class="page-inner">
+  <div class="header hd4">
+    <div class="header-meta">
+      <div class="day-badge">D4</div>
+      <div><div class="header-date">2026 年 12 月 30 日（週三）— 退房日</div></div>
+    </div>
+    <h1>下鴨神社・御金神社・梅田購物・燒肉 — 退房日</h1>
+    <div class="header-route">
+      退房 <span>→</span> 下鴨神社 <span>→</span> 御金神社 <span>→</span> 大阪梅田 <span>→</span> 西九條 Check-in
+    </div>
+  </div>
+
+  <div class="deadline-banner">
+    <h3>本天注意</h3>
+    <div class="dl-row"><span class="dl-dot">●</span><span>D4 帰省ラッシュピーク，京都市內巴士嚴重誤點，<strong>全程改搭電車</strong>，不依賴巴士</span></div>
+    <div class="dl-row"><span class="dl-dot">●</span><span>今日退房，出發前大件行李寄京都駅置物櫃，傍晚取行李前往大阪</span></div>
+  </div>
+
+  <div class="timeline">
+    <div class="entry">
+      <div class="time-col"><div class="time-start">08:25</div><span class="time-arrow">↓</span><div class="time-end">09:00</div></div>
+      <div class="dot-col"><div class="dot dot-rest"></div></div>
+      <div class="card s-rest"><div class="card-inner">
+        <span class="tag t-rest">退房</span>
+        <div class="card-title">退房 → 步行至京都駅寄放行李</div>
+        <div class="card-desc">步行 12～15 min，大件行李寄置物櫃，輕裝出發</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">09:00</div><span class="time-arrow">↓</span><div class="time-end">09:45</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">京都駅 → 下鴨神社</div>
+        <div class="card-desc">JR 奈良線 → 京阪 → 出町柳，約 30 min，步行 12 min 至神社</div>
+        <div class="card-note">帰省ラッシュピーク，避開巴士改搭電車</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">09:45</div><span class="time-arrow">↓</span><div class="time-end">11:15</div></div>
+      <div class="dot-col"><div class="dot dot-sight"></div></div>
+      <div class="card s-sight"><div class="card-inner">
+        <span class="tag t-sight">景點</span>
+        <div class="card-title">下鴨神社 & 糺之森（世界遺產）</div>
+        <div class="card-desc">約 90 min</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">11:15</div><span class="time-arrow">↓</span><div class="time-end">11:45</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">下鴨神社 → 烏丸御池</div>
+        <div class="card-desc">京阪 → 地鐵東西線，約 25～30 min</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">11:45</div><span class="time-arrow">↓</span><div class="time-end">12:30</div></div>
+      <div class="dot-col"><div class="dot dot-sight"></div></div>
+      <div class="card s-sight"><div class="card-inner">
+        <span class="tag t-sight">景點</span>
+        <div class="card-title">御金神社「洗錢參拜」</div>
+        <div class="card-desc">烏丸御池駅步行 5 min，約 45 min</div>
+        <div class="card-note">年末人潮多，排隊時間多抓</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">12:30</div><span class="time-arrow">↓</span><div class="time-end">13:30</div></div>
+      <div class="dot-col"><div class="dot dot-food"></div></div>
+      <div class="card s-food"><div class="card-inner">
+        <span class="tag t-food">午餐</span>
+        <div class="card-title">烏丸御池周邊隨機解決</div>
+        <div class="card-desc">步行範圍內自由選擇</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">13:30</div><span class="time-arrow">↓</span><div class="time-end">14:30</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">烏丸御池 → 京都駅（取行李）→ 大阪梅田</div>
+        <div class="card-desc">地鐵 5 min → 取行李 10 min → JR 新快速 28 min，含取行李約 60 min</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">14:30</div><span class="time-arrow">↓</span><div class="time-end">17:30</div></div>
+      <div class="dot-col"><div class="dot dot-shop"></div></div>
+      <div class="card s-shop"><div class="card-inner">
+        <span class="tag t-shop">購物</span>
+        <div class="card-title">梅田商圈購物（約 3 小時）</div>
+        <div class="card-desc">LUCUA / Grand Front 等。12/30 Winter Sale 正式開跑</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">17:30</div><span class="time-arrow">↓</span><div class="time-end">19:00</div></div>
+      <div class="dot-col"><div class="dot dot-food"></div></div>
+      <div class="card s-food"><div class="card-inner">
+        <span class="tag t-food">晚餐</span>
+        <div class="card-title">梅田燒肉</div>
+        <div class="card-desc">梅田周邊自選</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">19:00</div><span class="time-arrow">↓</span><div class="time-end">19:15</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">梅田 → 西九條 Check-in</div>
+        <div class="card-desc">JR 環狀線約 10 min。早點休息，為明日通宵儲備體力</div>
+      </div></div>
+    </div>
+  </div>
+  <div class="footer"><strong>2026–2027 京阪跨年行程</strong>　D4 / 7</div>
+</div></div>
+
+<!-- ═══════════════════════════════════════════════════════ DAY 5 -->
+<div class="day-page" id="day5">
+<div class="page-inner">
+  <div class="header hd5">
+    <div class="header-meta">
+      <div class="day-badge">D5</div>
+      <div><div class="header-date">2026 年 12 月 31 日（週四）大晦日</div></div>
+    </div>
+    <h1>客美多 Morning・難波 + 心齋橋血拼・USJ 跨年通宵</h1>
+    <div class="header-route">
+      西九條 <span>→</span> 難波 / 心齋橋 <span>→</span> 西九條 <span>→</span> USJ（通宵）
+    </div>
+  </div>
+
+  <div class="deadline-banner">
+    <h3>本天注意</h3>
+    <div class="dl-row"><span class="dl-dot">●</span><span>大晦日百貨約 <strong>17:00 提早關門</strong>。新免稅制度（2026/11 起）：購物直接結帳，<strong>退稅統一在關西機場辦理</strong></span></div>
+    <div class="dl-row"><span class="dl-dot">●</span><span>USJ 快速通關 <strong>9/28 深夜 23:00 開搶</strong>，一般門票 <strong>10/1 起開賣</strong>。非實名制，1 人可代購 5 張</span></div>
+  </div>
+
+  <div class="timeline">
+    <div class="entry">
+      <div class="time-col"><div class="time-start">09:30</div><span class="time-arrow">↓</span><div class="time-end">09:41</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">西九條 → 難波（阪神なんば線）</div>
+        <div class="card-desc">約 11 min・¥230</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">09:41</div><span class="time-arrow">↓</span><div class="time-end">11:00</div></div>
+      <div class="dot-col"><div class="dot dot-food"></div></div>
+      <div class="card s-food"><div class="card-inner">
+        <span class="tag t-food">早午餐</span>
+        <div class="card-title">客美多咖啡 Morning Set</div>
+        <div class="card-desc">難波，約 80 min。飲料 + 免費吐司組合</div>
+        <div class="card-note">Morning Set 11:00 截止，請在 11:00 前完成點餐</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">11:00</div><span class="time-arrow">↓</span><div class="time-end">16:30</div></div>
+      <div class="dot-col"><div class="dot dot-shop"></div></div>
+      <div class="card s-shop"><div class="card-inner">
+        <span class="tag t-shop">購物</span>
+        <div class="card-title">難波 + 心齋橋商圈血拼（約 5.5 小時）</div>
+        <div class="card-desc">日系服飾、潮流鞋靴全力衝刺</div>
+        <div class="card-note">新免稅制度（2026/11 起）：購物直接結帳，退稅統一在關西機場辦理。大晦日百貨約 17:00 提早關門</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">16:30</div><span class="time-arrow">↓</span><div class="time-end">16:50</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">心齋橋 → 西九條飯店卸貨</div>
+        <div class="card-desc">地鐵御堂筋線 → 阪神なんば線，約 15～19 min・¥360</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">16:50</div><span class="time-arrow">↓</span><div class="time-end">19:30</div></div>
+      <div class="dot-col"><div class="dot dot-rest"></div></div>
+      <div class="card s-rest"><div class="card-inner">
+        <span class="tag t-rest">休息</span>
+        <div class="card-title">飯店補眠 & 換防寒衣物</div>
+        <div class="card-desc">約 2 小時 40 min，準備通宵 USJ</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">19:30</div><span class="time-arrow">↓</span><div class="time-end">19:35</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">西九條 → ユニバーサルシティ（JR ゆめ咲線）</div>
+        <div class="card-desc">5 min・¥180</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">19:35</div><span class="time-arrow">↓</span><div class="time-end">21:00</div></div>
+      <div class="dot-col"><div class="dot dot-food"></div></div>
+      <div class="card s-food"><div class="card-inner">
+        <span class="tag t-food">晚餐</span>
+        <div class="card-title">Universal Citywalk 晚餐</div>
+        <div class="card-desc">章魚燒博物館 / Hard Rock Cafe，高熱量補充抗寒</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">21:00</div><span class="time-arrow">↓</span><div class="time-end">翌日</div></div>
+      <div class="dot-col"><div class="dot dot-usj"></div></div>
+      <div class="card s-usj"><div class="card-inner">
+        <span class="tag t-usj">USJ 通宵</span>
+        <div class="card-title">環球影城跨年通宵</div>
+        <div class="card-desc">超級任天堂世界・哈利波特魔法世界・咚奇剛國度</div>
+        <div class="card-note">9/28 深夜 23:00 搶快速通關。10/1 起一般門票開賣。非實名制，1 人可代購 5 張</div>
+      </div></div>
+    </div>
+  </div>
+  <div class="footer"><strong>2026–2027 京阪跨年行程</strong>　D5 / 7</div>
+</div></div>
+
+<!-- ═══════════════════════════════════════════════════════ DAY 6 -->
+<div class="day-page" id="day6">
+<div class="page-inner">
+  <div class="header hd6">
+    <div class="header-meta">
+      <div class="day-badge">D6</div>
+      <div><div class="header-date">2027 年 1 月 1 日（週五）元日・國定假日</div></div>
+    </div>
+    <h1>USJ 元旦全日暢玩・深夜補體力</h1>
+    <div class="header-route">
+      通宵接白天，19:00 離園返回西九條
+    </div>
+  </div>
+
+  <div class="deadline-banner">
+    <h3>本天注意</h3>
+    <div class="dl-row"><span class="dl-dot">●</span><span>元日為國定假日，多數個體店不開，晚餐請選連鎖餐廳（吉野家 / すき家 / 連鎖拉麵）</span></div>
+  </div>
+
+  <div class="timeline">
+    <div class="entry">
+      <div class="time-col"><div class="time-start">00:00</div><span class="time-arrow">↓</span><div class="time-end">19:00</div></div>
+      <div class="dot-col"><div class="dot dot-usj"></div></div>
+      <div class="card s-usj"><div class="card-inner">
+        <span class="tag t-usj">USJ 全日</span>
+        <div class="card-title">環球影城元旦全日暢玩</div>
+        <div class="card-desc">超級任天堂世界・哈利波特魔法世界・咚奇剛國度。19:00 離園</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">19:00</div><span class="time-arrow">↓</span><div class="time-end">19:05</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">ユニバーサルシティ → 西九條（JR ゆめ咲線）</div>
+        <div class="card-desc">5 min・¥180</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">19:05</div><span class="time-arrow">↓</span><div class="time-end">20:00</div></div>
+      <div class="dot-col"><div class="dot dot-rest"></div></div>
+      <div class="card s-rest"><div class="card-inner">
+        <span class="tag t-rest">休息</span>
+        <div class="card-title">飯店洗澡 & 稍作休息</div>
+        <div class="card-desc">約 55 min</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">20:00</div><span class="time-arrow">↓</span><div class="time-end">21:30</div></div>
+      <div class="dot-col"><div class="dot dot-food"></div></div>
+      <div class="card s-food"><div class="card-inner">
+        <span class="tag t-food">晚餐</span>
+        <div class="card-title">西九條連鎖補體力</div>
+        <div class="card-desc">吉野家 / すき家 / 連鎖拉麵</div>
+        <div class="card-note">元日多數個體店不開，建議連鎖餐廳</div>
+      </div></div>
+    </div>
+  </div>
+  <div class="footer"><strong>2026–2027 京阪跨年行程</strong>　D6 / 7</div>
+</div></div>
+
+<!-- ═══════════════════════════════════════════════════════ DAY 7 -->
+<div class="day-page" id="day7">
+<div class="page-inner">
+  <div class="header hd7">
+    <div class="header-meta">
+      <div class="day-badge">D7</div>
+      <div><div class="header-date">2027 年 1 月 2 日（週六）</div></div>
+    </div>
+    <h1>りんくう Outlet・關西機場退稅・搭機返台</h1>
+    <div class="header-route">
+      西九條退房 <span>→</span> 大阪駅 <span>→</span> りんくうタウン <span>→</span> 關西機場 <span>→</span> 台北
+    </div>
+  </div>
+
+  <div class="deadline-banner">
+    <h3>本天注意</h3>
+    <div class="dl-row"><span class="dl-dot">●</span><span>1/2 為 Outlet <strong>初売りピーク日</strong>，人潮極多，越早到越好。1/2 期間約 09:00 開門</span></div>
+    <div class="dl-row"><span class="dl-dot">●</span><span><strong>新免稅制度</strong>：退稅在關西機場稅關辦理，請預留 30～45 min</span></div>
+    <div class="dl-row"><span class="dl-dot">●</span><span>行李建議<strong>前一晚宅配送至關西機場</strong>，全天輕裝移動</span></div>
+  </div>
+
+  <div class="timeline">
+    <div class="entry">
+      <div class="time-col"><div class="time-start">08:15</div><span class="time-arrow">↓</span><div class="time-end">08:21</div></div>
+      <div class="dot-col"><div class="dot dot-rest"></div></div>
+      <div class="card s-rest"><div class="card-inner">
+        <span class="tag t-rest">退房</span>
+        <div class="card-title">西九條退房 → 大阪駅（JR 環狀線）</div>
+        <div class="card-desc">約 6 min</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">08:30</div><span class="time-arrow">↓</span><div class="time-end">09:25</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">大阪駅 → りんくうタウン（JR 關空快速）</div>
+        <div class="card-desc">約 55 min・¥1,000。りんくうタウン駅步行 6 min 至 Outlet</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">09:30</div><span class="time-arrow">↓</span><div class="time-end">12:00</div></div>
+      <div class="dot-col"><div class="dot dot-shop"></div></div>
+      <div class="card s-shop"><div class="card-inner">
+        <span class="tag t-shop">購物</span>
+        <div class="card-title">りんくう Outlet 先行掃貨（約 2.5 小時）</div>
+        <div class="card-desc">關西最大 Outlet，約 210 間品牌，新春初売り折扣</div>
+        <div class="card-note">1/2 初売りピーク日，人潮極多，越早到越好。1/2 期間約 09:00 開門</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">12:00</div><span class="time-arrow">↓</span><div class="time-end">13:30</div></div>
+      <div class="dot-col"><div class="dot dot-food"></div></div>
+      <div class="card s-food"><div class="card-inner">
+        <span class="tag t-food">午餐</span>
+        <div class="card-title">Outlet 內用餐</div>
+        <div class="card-desc">大起水產迴轉壽司 / KURA SUSHI Global 旗艦店</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">13:30</div><span class="time-arrow">↓</span><div class="time-end">14:30</div></div>
+      <div class="dot-col"><div class="dot dot-shop"></div></div>
+      <div class="card s-shop"><div class="card-inner">
+        <span class="tag t-shop">購物</span>
+        <div class="card-title">Outlet 最後衝刺</div>
+        <div class="card-desc">清空購物清單，14:30 準時出發</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">14:30</div><span class="time-arrow">↓</span><div class="time-end">14:36</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">りんくうタウン → 關西機場（南海電鐵）</div>
+        <div class="card-desc">6 min・¥360</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">14:36</div><span class="time-arrow">↓</span><div class="time-end">19:00</div></div>
+      <div class="dot-col"><div class="dot dot-rest"></div></div>
+      <div class="card s-rest"><div class="card-inner">
+        <span class="tag t-rest">候機</span>
+        <div class="card-title">關西機場候機（約 4 小時）</div>
+        <div class="card-desc">辦登機 + 行李託運 + 機場稅關辦退稅 + 免稅店逛街</div>
+        <div class="card-note">新免稅制度：退稅在機場稅關辦理，請預留 30～45 min</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">19:00</div><span class="time-arrow">↓</span></div>
+      <div class="dot-col"><div class="dot dot-plane"></div></div>
+      <div class="card s-plane"><div class="card-inner">
+        <span class="tag t-plane">返台</span>
+        <div class="card-title">搭機返台 — 圓滿結束京阪跨年之旅</div>
+        <div class="card-desc">2026 年 12 月 27 日 出發 → 2027 年 1 月 2 日 返台，共 7 天</div>
+      </div></div>
+    </div>
+  </div>
+  <div class="footer"><strong>2026–2027 京阪跨年行程</strong>　D7 / 7</div>
+</div></div>
+
+<script>
+function showDay(n, btn) {
+  document.querySelectorAll('.day-page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('day' + n).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function initTabs() {
+  document.querySelectorAll('.tab-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      showDay(btn.getAttribute('data-day'), btn);
+    });
+  });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initTabs);
+} else {
+  initTabs();
+}
+</script>
+</body>
+</html>
