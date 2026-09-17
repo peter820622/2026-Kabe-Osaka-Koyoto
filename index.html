@@ -55,11 +55,17 @@
     z-index: 100;
     background: #1E3A5F;
     display: flex;
+    justify-content: center;
     overflow-x: auto;
+    overflow-y: hidden;
     scrollbar-width: none;
     border-bottom: 3px solid #0A2040;
   }
-  .tab-nav::-webkit-scrollbar { display: none; }
+  @media screen and (max-width: 767px) {
+    .tab-nav {
+      justify-content: flex-start;
+    }
+  }
   .tab-btn {
     flex-shrink: 0;
     padding: 14px 20px;
@@ -71,7 +77,6 @@
     border: none;
     cursor: pointer;
     border-bottom: 3px solid transparent;
-    margin-bottom: -3px;
     transition: color .15s, border-color .15s;
     white-space: nowrap;
   }
