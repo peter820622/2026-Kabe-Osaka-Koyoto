@@ -55,17 +55,11 @@
     z-index: 100;
     background: #1E3A5F;
     display: flex;
-    justify-content: center;
     overflow-x: auto;
-    overflow-y: hidden;
     scrollbar-width: none;
     border-bottom: 3px solid #0A2040;
   }
-  @media screen and (max-width: 767px) {
-    .tab-nav {
-      justify-content: flex-start;
-    }
-  }
+  .tab-nav::-webkit-scrollbar { display: none; }
   .tab-btn {
     flex-shrink: 0;
     padding: 14px 20px;
@@ -77,6 +71,7 @@
     border: none;
     cursor: pointer;
     border-bottom: 3px solid transparent;
+    margin-bottom: -3px;
     transition: color .15s, border-color .15s;
     white-space: nowrap;
   }
@@ -396,11 +391,11 @@
     </div>
 
     <div class="entry">
-      <div class="time-col"><div class="time-start">15:55</div><span class="time-arrow">↓</span><div class="time-end">20:00</div></div>
+      <div class="time-col"><div class="time-start">15:55</div><span class="time-arrow">↓</span><div class="time-end">19:00</div></div>
       <div class="dot-col"><div class="dot dot-shop"></div></div>
       <div class="card s-shop"><div class="card-inner">
         <span class="tag t-shop">商圈</span>
-        <div class="card-title">四條河原町商圈（約 4 小時整塊）</div>
+        <div class="card-title">四條河原町商圈（約 3 小時）</div>
         <div class="card-desc">
           <p>① 錦市場小吃　約 40 min<br>三木雞卵（玉子燒）・魚力（海鰻天婦羅）・こんなもんじゃ（豆乳甜甜圈）</p>
           <p>② 河原町 / 高島屋 / OPA 百貨　約 90 min<br>服飾潮流購物，憑護照領 Hello Kitty 5% Coupon</p>
@@ -411,23 +406,23 @@
     </div>
 
     <div class="entry">
-      <div class="time-col"><div class="time-start">20:00</div><span class="time-arrow">↓</span><div class="time-end">21:30</div></div>
+      <div class="time-col"><div class="time-start">19:00</div><span class="time-arrow">↓</span><div class="time-end">20:30</div></div>
       <div class="dot-col"><div class="dot dot-food"></div></div>
       <div class="card s-food"><div class="card-inner">
         <span class="tag t-food">晚餐</span>
         <div class="card-title">Sushi Roman（爐端燒居酒屋 + 壽司）</div>
-        <div class="card-desc">中京区貝屋町 562-2・評分 4.4・週日 16:00 起營業</div>
+        <div class="card-desc">中京区貝屋町 562-2・評分 4.4・週日 16:00 起營業・19:00 入座</div>
         <div class="card-note">座位費 ¥300・每人須點一杯飲料。年末旺季建議提前確認預約</div>
       </div></div>
     </div>
 
     <div class="entry">
-      <div class="time-col"><div class="time-start">21:30</div><span class="time-arrow">↓</span><div class="time-end">22:10</div></div>
+      <div class="time-col"><div class="time-start">20:30</div><span class="time-arrow">↓</span><div class="time-end">21:10</div></div>
       <div class="dot-col"><div class="dot dot-return"></div></div>
       <div class="card s-return"><div class="card-inner">
         <span class="tag t-return">返程</span>
         <div class="card-title">地鐵四條 → 京都駅取行李 → 步行回飯店</div>
-        <div class="card-desc">地鐵烏丸線至京都駅（約 3 min + 等車），取行李後步行 12～15 min 至飯店（南区東九条西御霊町 22-6）</div>
+        <div class="card-desc">地鐵烏丸線至京都駅（約 3 min + 等車），取行李後步行 12～15 min 至飯店（南区東九条西御霊町 22-6）・21:10 前抵達</div>
       </div></div>
     </div>
   </div>
@@ -442,9 +437,9 @@
       <div class="day-badge">D2</div>
       <div><div class="header-date">2026 年 12 月 28 日（週一）</div></div>
     </div>
-    <h1>任天堂博物館・平等院・Porta 購物・市場小路晚餐</h1>
+    <h1>客美多早餐・任天堂博物館・宇治商圈散策・市場小路晚餐</h1>
     <div class="header-route">
-      飯店 <span>→</span> 近鐵小倉（任天堂博物館）<span>→</span> JR 宇治（平等院）<span>→</span> 京都駅
+      飯店 <span>→</span> 京都駅（客美多早餐）<span>→</span> 近鐵小倉（任天堂博物館）<span>→</span> JR 宇治（宇治商圈・平等院・宇治上神社）<span>→</span> 京都駅
     </div>
   </div>
 
@@ -456,12 +451,23 @@
 
   <div class="timeline">
     <div class="entry">
+      <div class="time-col"><div class="time-start">07:45</div><span class="time-arrow">↓</span><div class="time-end">08:15</div></div>
+      <div class="dot-col"><div class="dot dot-food"></div></div>
+      <div class="card s-food"><div class="card-inner">
+        <span class="tag t-food">早餐</span>
+        <div class="card-title">客美多咖啡 Morning Set（京都駅店）</div>
+        <div class="card-desc">京都駅構內，約 30 min。飲料 + 免費吐司組合</div>
+        <div class="card-note">Morning Set 11:00 截止，07:45 入座完全充裕</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
       <div class="time-col"><div class="time-start">08:15</div><span class="time-arrow">↓</span><div class="time-end">08:30</div></div>
       <div class="dot-col"><div class="dot dot-rest"></div></div>
       <div class="card s-rest"><div class="card-inner">
         <span class="tag t-rest">出發</span>
-        <div class="card-title">飯店步行至京都駅</div>
-        <div class="card-desc">約 12～15 分鐘</div>
+        <div class="card-title">京都駅月台搭車</div>
+        <div class="card-desc">客美多用完餐直接前往月台，不需步行回飯店</div>
       </div></div>
     </div>
 
@@ -507,32 +513,38 @@
     </div>
 
     <div class="entry">
-      <div class="time-col"><div class="time-start">14:27</div><span class="time-arrow">↓</span><div class="time-end">16:30</div></div>
+      <div class="time-col"><div class="time-start">14:17</div><span class="time-arrow">↓</span><div class="time-end">17:30</div></div>
       <div class="dot-col"><div class="dot dot-sight"></div></div>
       <div class="card s-sight"><div class="card-inner">
         <span class="tag t-sight">景點</span>
-        <div class="card-title">平等院庭園（世界遺產）</div>
-        <div class="card-desc">JR 宇治駅步行 10 min 抵達。只逛庭園約 2 小時・¥700</div>
-        <div class="card-note">最終受付 17:15，16:30 離開完全來得及，緩衝 45 min</div>
+        <div class="card-title">宇治商圈完整散策（約 3 小時）</div>
+        <div class="card-desc">
+          <p>① 宇治橋通り商店街　約 40 min<br>抹茶伴手禮・中村藤吉本店・昇苑くみひも・老舖茶屋</p>
+          <p>② 宇治橋 & 宇治川沿い散策　約 20 min<br>朝霧橋・塔の島・宇治川景觀</p>
+          <p>③ 平等院表參道茶屋街　約 30 min<br>抹茶芭菲・生茶ゼリー・和菓子</p>
+          <p>④ 平等院庭園（世界遺產）　約 45 min・¥700<br>最終受付 17:15，建議 16:30 前入場</p>
+          <p>⑤ 宇治上神社（世界遺產）　約 20 min<br>平等院から步行 10 min，日本最古の神社建築</p>
+        </div>
+        <div class="card-note">平等院最終受付 17:15。建議動線：商店街 → 宇治川 → 表參道 → 平等院 → 宇治上神社，17:15 前從宇治上神社出發步行回 JR 宇治駅</div>
       </div></div>
     </div>
 
     <div class="entry">
-      <div class="time-col"><div class="time-start">16:40</div><span class="time-arrow">↓</span><div class="time-end">17:02</div></div>
+      <div class="time-col"><div class="time-start">17:40</div><span class="time-arrow">↓</span><div class="time-end">18:02</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">JR 宇治 → 京都駅（JR 奈良線）</div>
-        <div class="card-desc">平等院步行 10 min 至 JR 宇治駅・22 min・¥240。17:02 抵達京都駅</div>
+        <div class="card-desc">實際班次 17:40 発（平日時刻表確認）・22 min・¥240・18:02 着京都駅</div>
       </div></div>
     </div>
 
     <div class="entry">
-      <div class="time-col"><div class="time-start">17:02</div><span class="time-arrow">↓</span><div class="time-end">19:30</div></div>
+      <div class="time-col"><div class="time-start">18:02</div><span class="time-arrow">↓</span><div class="time-end">19:30</div></div>
       <div class="dot-col"><div class="dot dot-shop"></div></div>
       <div class="card s-shop"><div class="card-inner">
         <span class="tag t-shop">購物（彈性）</span>
-        <div class="card-title">Porta 地下街 & Avanti（約 2.5 小時）</div>
+        <div class="card-title">Porta 地下街 & Avanti（約 90 min）</div>
         <div class="card-desc">有體力再逛。日系男女裝 Pre-Sale，冬裝 5 折起</div>
       </div></div>
     </div>
