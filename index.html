@@ -55,12 +55,17 @@
     z-index: 100;
     background: #1E3A5F;
     display: flex;
-    justify-content: safe center;
+    justify-content: center;
     overflow-x: auto;
+    overflow-y: hidden;
     scrollbar-width: none;
     border-bottom: 3px solid #0A2040;
   }
-  .tab-nav::-webkit-scrollbar { display: none; }
+  @media screen and (max-width: 767px) {
+    .tab-nav {
+      justify-content: flex-start;
+    }
+  }
   .tab-btn {
     flex-shrink: 0;
     padding: 14px 20px;
@@ -72,18 +77,12 @@
     border: none;
     cursor: pointer;
     border-bottom: 3px solid transparent;
-    margin-bottom: -3px;
     transition: color .15s, border-color .15s;
     white-space: nowrap;
   }
   .tab-btn:hover { color: rgba(255,255,255,.85); }
   .tab-btn.active { color: #FFD060; border-bottom-color: #FFD060; }
   .tab-btn .sub { font-size: 11px; font-weight: 400; opacity: .7; display: block; margin-top: 1px; }
-  .tab-btn {
-    touch-action: manipulation;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .tab-nav { -webkit-overflow-scrolling: touch; }
 
   /* ── PAGES ──────────────────────────────────────────────────── */
   .day-page { display: none; }
@@ -267,44 +266,53 @@
   .chip-amber  { background:#FFF3DC; color:#7A4800; border:1px solid #F0C870; }
   .chip-white  { background:#F0EDE8; color:#4A4030; border:1px solid #DDD8CC; }
 
-  /* ── RWD：手機版（≤640px）───────────────────────────────────── */
-  @media (max-width: 640px) {
-    .tab-btn { padding: 12px 14px; font-size: 12px; }
+  /* ── RWD ────────────────────────────────────────────────────── */
+  @media (max-width: 600px) {
+    .tab-btn { padding: 11px 13px; font-size: 12px; }
     .tab-btn .sub { font-size: 10px; }
 
-    .header { padding: 24px 20px 20px; }
+    .header { padding: 24px 20px 22px; }
     .header-meta { gap: 12px; margin-bottom: 10px; }
     .day-badge { width: 44px; height: 44px; font-size: 16px; }
     .header-date { font-size: 12px; }
-    .header h1 { font-size: 18px; margin-bottom: 8px; }
-    .header-route { font-size: 11.5px; line-height: 1.6; }
+    .header h1 { font-size: 17px; }
+    .header-route { font-size: 11.5px; }
 
-    .deadline-banner { margin: 16px 16px 0; padding: 12px 14px; }
+    .deadline-banner { margin: 16px 14px 0; padding: 12px 14px; }
     .deadline-banner h3 { font-size: 10.5px; }
     .dl-row { font-size: 12px; }
 
-    .timeline { padding: 0 16px; }
-    .timeline::before { left: calc(16px + 58px + 7px); }
+    .timeline { padding: 0 14px; }
+    .timeline::before { left: calc(14px + 62px + 6px); }
 
-    .entry { grid-template-columns: 58px 16px 1fr; gap: 0 8px; padding-top: 14px; }
-    .time-start { font-size: 13px; }
-    .time-end { font-size: 11px; }
+    .entry { grid-template-columns: 62px 14px 1fr; gap: 0 10px; padding-top: 12px; }
 
-    .card-inner { padding: 12px 14px 14px; }
-    .card-title { font-size: 15px; }
-    .card-desc { font-size: 12.5px; }
-    .card-note { font-size: 11.5px; padding: 8px 11px; }
+    .time-col { padding-top: 12px; }
+    .time-start { font-size: 12px; }
+    .time-end   { font-size: 11px; }
+    .time-arrow { font-size: 9px; }
+
+    .dot { width: 10px; height: 10px; }
+    .dot-col { padding-top: 15px; }
+
+    .card { border-radius: 10px; margin-bottom: 8px; }
+    .card-inner { padding: 11px 13px 13px; }
+    .tag { font-size: 10px; padding: 2px 8px; margin-bottom: 5px; }
+    .card-title { font-size: 14px; margin-bottom: 4px; }
+    .card-desc  { font-size: 12px; line-height: 1.7; }
+    .card-note  { font-size: 11.5px; padding: 8px 11px; margin-top: 8px; }
 
     .page-inner { padding-bottom: 40px; }
-    .footer { font-size: 11px; margin-top: 22px; }
+    .footer { font-size: 11px; margin-top: 20px; }
   }
 
   @media (max-width: 380px) {
-    .entry { grid-template-columns: 48px 14px 1fr; gap: 0 6px; }
-    .timeline::before { left: calc(16px + 48px + 6px); }
-    .timeline { padding: 0 12px; }
-    .header { padding: 20px 16px 18px; }
-    .deadline-banner { margin: 14px 12px 0; }
+    .tab-btn { padding: 10px 10px; font-size: 11px; }
+    .header h1 { font-size: 15px; }
+    .entry { grid-template-columns: 54px 12px 1fr; gap: 0 8px; }
+    .timeline::before { left: calc(14px + 54px + 6px); }
+    .time-start { font-size: 11px; }
+    .card-title { font-size: 13px; }
   }
 </style>
 </head>
@@ -312,13 +320,13 @@
 
 <!-- TAB NAV -->
 <nav class="tab-nav">
-  <button type="button" class="tab-btn active" data-day="1">D1<span class="sub">12/27 週日</span></button>
-  <button type="button" class="tab-btn" data-day="2">D2<span class="sub">12/28 週一</span></button>
-  <button type="button" class="tab-btn" data-day="3">D3<span class="sub">12/29 週二</span></button>
-  <button type="button" class="tab-btn" data-day="4">D4<span class="sub">12/30 週三</span></button>
-  <button type="button" class="tab-btn" data-day="5">D5<span class="sub">12/31 週四</span></button>
-  <button type="button" class="tab-btn" data-day="6">D6<span class="sub">1/1 週五</span></button>
-  <button type="button" class="tab-btn" data-day="7">D7<span class="sub">1/2 週六</span></button>
+  <button class="tab-btn active" onclick="showDay(1,this)">D1<span class="sub">12/27 週日</span></button>
+  <button class="tab-btn" onclick="showDay(2,this)">D2<span class="sub">12/28 週一</span></button>
+  <button class="tab-btn" onclick="showDay(3,this)">D3<span class="sub">12/29 週二</span></button>
+  <button class="tab-btn" onclick="showDay(4,this)">D4<span class="sub">12/30 週三</span></button>
+  <button class="tab-btn" onclick="showDay(5,this)">D5<span class="sub">12/31 週四</span></button>
+  <button class="tab-btn" onclick="showDay(6,this)">D6<span class="sub">1/1 週五</span></button>
+  <button class="tab-btn" onclick="showDay(7,this)">D7<span class="sub">1/2 週六</span></button>
 </nav>
 
 <!-- ═══════════════════════════════════════════════════════ DAY 1 -->
@@ -434,106 +442,119 @@
       <div class="day-badge">D2</div>
       <div><div class="header-date">2026 年 12 月 28 日（週一）</div></div>
     </div>
-    <h1>平等院・任天堂博物館・Porta 購物・京都車站晚餐</h1>
+    <h1>任天堂博物館・平等院・Porta 購物・市場小路晚餐</h1>
     <div class="header-route">
-      飯店 <span>→</span> JR 宇治（平等院）<span>→</span> 近鐵小倉（任天堂博物館）<span>→</span> 京都駅
+      飯店 <span>→</span> 近鐵小倉（任天堂博物館）<span>→</span> JR 宇治（平等院）<span>→</span> 京都駅
     </div>
   </div>
 
   <div class="deadline-banner">
     <h3>本天預約提醒</h3>
     <div class="dl-row"><span class="dl-dot">●</span><span>任天堂博物館完全預約制，<strong>9/30 截止抽票</strong>。5 人各自申請，每人填入全部護照英文姓名，各選 3 個不同時段，共 15 次機會</span></div>
+    <div class="dl-row"><span class="dl-dot">●</span><span>市場小路 JR 京都伊勢丹店年末旺季人氣高，<strong>建議提前確認預約</strong></span></div>
   </div>
 
   <div class="timeline">
     <div class="entry">
-      <div class="time-col"><div class="time-start">07:45</div><span class="time-arrow">↓</span><div class="time-end">08:00</div></div>
+      <div class="time-col"><div class="time-start">08:15</div><span class="time-arrow">↓</span><div class="time-end">08:30</div></div>
       <div class="dot-col"><div class="dot dot-rest"></div></div>
       <div class="card s-rest"><div class="card-inner">
         <span class="tag t-rest">出發</span>
         <div class="card-title">飯店步行至京都駅</div>
-        <div class="card-desc">約 12～15 分鐘，今日須早出發</div>
+        <div class="card-desc">約 12～15 分鐘</div>
       </div></div>
     </div>
 
     <div class="entry">
-      <div class="time-col"><div class="time-start">08:00</div><span class="time-arrow">↓</span><div class="time-end">08:22</div></div>
+      <div class="time-col"><div class="time-start">08:30</div><span class="time-arrow">↓</span><div class="time-end">08:50</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
-        <div class="card-title">京都 → JR 宇治（JR 奈良線）</div>
-        <div class="card-desc">22 min・¥240・班次每 15 min 一班</div>
+        <div class="card-title">京都 → 近鐵小倉（近鐵京都線）</div>
+        <div class="card-desc">約 20 min・¥360・班次密集。近鐵小倉駅步行 5 min 至任天堂博物館</div>
       </div></div>
     </div>
 
     <div class="entry">
-      <div class="time-col"><div class="time-start">08:32</div><span class="time-arrow">↓</span><div class="time-end">09:30</div></div>
+      <div class="time-col"><div class="time-start">08:55</div><span class="time-arrow">↓</span><div class="time-end">10:00</div></div>
+      <div class="dot-col"><div class="dot dot-rest"></div></div>
+      <div class="card s-rest"><div class="card-inner">
+        <span class="tag t-rest">等候</span>
+        <div class="card-title">博物館附近等候開館（約 65 min）</div>
+        <div class="card-desc">可在附近咖啡廳吃早餐，10:00 準時開館</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">10:00</div><span class="time-arrow">↓</span><div class="time-end">14:00</div></div>
+      <div class="dot-col"><div class="dot dot-book"></div></div>
+      <div class="card s-book"><div class="card-inner">
+        <span class="tag t-book">完全預約制</span>
+        <div class="card-title">任天堂博物館（4 小時）</div>
+        <div class="card-desc">¥3,300・含 10 枚遊戲金幣。10:00 最早梯次入場<br>館內咖啡廳解決午餐</div>
+        <div class="card-note">9/30 截止抽票。5 人各自申請，每人填入全部護照英文姓名，各選 3 個不同時段，共 15 次機會。多人中籤選一筆付款即可</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">14:00</div><span class="time-arrow">↓</span><div class="time-end">14:17</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">近鐵小倉 → JR 小倉 → JR 宇治</div>
+        <div class="card-desc">步行 5 min 至近鐵小倉駅 → 步行換乘 JR 小倉駅（8 min）→ JR 奈良線 2 min（¥150）抵達 JR 宇治駅</div>
+      </div></div>
+    </div>
+
+    <div class="entry">
+      <div class="time-col"><div class="time-start">14:27</div><span class="time-arrow">↓</span><div class="time-end">16:30</div></div>
       <div class="dot-col"><div class="dot dot-sight"></div></div>
       <div class="card s-sight"><div class="card-inner">
         <span class="tag t-sight">景點</span>
         <div class="card-title">平等院庭園（世界遺產）</div>
-        <div class="card-desc">JR 宇治駅步行 10 min 抵達。只逛庭園約 60 min・¥700。開門即入，早上人潮最少</div>
+        <div class="card-desc">JR 宇治駅步行 10 min 抵達。只逛庭園約 2 小時・¥700</div>
+        <div class="card-note">最終受付 17:15，16:30 離開完全來得及，緩衝 45 min</div>
       </div></div>
     </div>
 
     <div class="entry">
-      <div class="time-col"><div class="time-start">09:40</div><span class="time-arrow">↓</span><div class="time-end">10:00</div></div>
+      <div class="time-col"><div class="time-start">16:40</div><span class="time-arrow">↓</span><div class="time-end">17:02</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
-        <div class="card-title">JR 宇治 → JR 小倉 → 近鐵小倉</div>
-        <div class="card-desc">JR 奈良線奈良方向 2 min（¥150）→ 步行換乘近鐵小倉約 8 min。博物館門口等候 10 min</div>
+        <div class="card-title">JR 宇治 → 京都駅（JR 奈良線）</div>
+        <div class="card-desc">平等院步行 10 min 至 JR 宇治駅・22 min・¥240。17:02 抵達京都駅</div>
       </div></div>
     </div>
 
     <div class="entry">
-      <div class="time-col"><div class="time-start">10:00</div><span class="time-arrow">↓</span><div class="time-end">15:00</div></div>
-      <div class="dot-col"><div class="dot dot-book"></div></div>
-      <div class="card s-book"><div class="card-inner">
-        <span class="tag t-book">完全預約制</span>
-        <div class="card-title">任天堂博物館（5 小時）</div>
-        <div class="card-desc">¥3,300・含 10 枚遊戲金幣。10:00 最早梯次入場<br>館內咖啡廳解決午餐</div>
-        <div class="card-note">9/30 截止抽票。5 人各自申請，每人選 3 個不同時段，共 15 次機會。多人中籤選一筆付款即可</div>
-      </div></div>
-    </div>
-
-    <div class="entry">
-      <div class="time-col"><div class="time-start">15:05</div><span class="time-arrow">↓</span><div class="time-end">15:25</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">近鐵小倉 → 京都駅（近鐵京都線）</div>
-        <div class="card-desc">20 min・比原本估算快 20 min</div>
-      </div></div>
-    </div>
-
-    <div class="entry">
-      <div class="time-col"><div class="time-start">15:25</div><span class="time-arrow">↓</span><div class="time-end">17:30</div></div>
+      <div class="time-col"><div class="time-start">17:02</div><span class="time-arrow">↓</span><div class="time-end">19:30</div></div>
       <div class="dot-col"><div class="dot dot-shop"></div></div>
       <div class="card s-shop"><div class="card-inner">
         <span class="tag t-shop">購物（彈性）</span>
-        <div class="card-title">Porta 地下街 & Avanti</div>
+        <div class="card-title">Porta 地下街 & Avanti（約 2.5 小時）</div>
         <div class="card-desc">有體力再逛。日系男女裝 Pre-Sale，冬裝 5 折起</div>
       </div></div>
     </div>
 
     <div class="entry">
-      <div class="time-col"><div class="time-start">18:00</div><span class="time-arrow">↓</span><div class="time-end">19:30</div></div>
+      <div class="time-col"><div class="time-start">19:30</div><span class="time-arrow">↓</span><div class="time-end">21:30</div></div>
       <div class="dot-col"><div class="dot dot-food"></div></div>
       <div class="card s-food"><div class="card-inner">
         <span class="tag t-food">晚餐</span>
-        <div class="card-title">京都駅伊勢丹 11F</div>
-        <div class="card-desc">名代炸豬排 かつくら，或 10F 拉麵小路 新福菜館。不需預約</div>
+        <div class="card-title">市場小路 JR 京都伊勢丹店（京都おばんざい）</div>
+        <div class="card-desc">京都駅直結・伊勢丹 9F・食べログ 2026 受賞店<br>道地京都家庭料理おばんざい定食，可眺望京都市區夜景・約 ¥2,000/人</div>
+        <div class="card-note">年末旺季建議提前確認預約</div>
       </div></div>
     </div>
 
     <div class="entry">
-      <div class="time-col"><div class="time-start">19:30</div><span class="time-arrow">↓</span></div>
+      <div class="time-col"><div class="time-start">21:30</div><span class="time-arrow">↓</span></div>
       <div class="dot-col"><div class="dot dot-return"></div></div>
       <div class="card s-return"><div class="card-inner">
         <span class="tag t-return">返程</span>
         <div class="card-title">步行回飯店</div>
-        <div class="card-desc">京都駅步行 12～15 min</div>
+        <div class="card-desc">京都駅直結出發，步行 12～15 min 至飯店（南区東九条西御霊町 22-6）</div>
       </div></div>
     </div>
   </div>
@@ -1055,20 +1076,6 @@ function showDay(n, btn) {
   document.getElementById('day' + n).classList.add('active');
   btn.classList.add('active');
   window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-function initTabs() {
-  document.querySelectorAll('.tab-btn').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      showDay(btn.getAttribute('data-day'), btn);
-    });
-  });
-}
-
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initTabs);
-} else {
-  initTabs();
 }
 </script>
 </body>
