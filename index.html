@@ -161,6 +161,20 @@
   }
   .card-note::before { content: '⚠  '; }
 
+  .card-sched {
+    margin-top: 10px;
+    background: var(--blue-lt); border: 1px solid #C4DBF2;
+    border-radius: 8px; padding: 9px 13px;
+    font-size: 12px; color: #17457A; line-height: 1.7;
+  }
+  .card-sched b { font-weight: 700; }
+  .card-sched b::before { content: '📝 '; }
+  .source-note {
+    margin: 16px 28px 0; padding: 10px 14px;
+    background: var(--slate-lt); border-radius: 8px;
+    font-size: 12px; color: var(--ink2); line-height: 1.65;
+  }
+
   /* TYPE COLOURS */
   .t-plane  { color:var(--blue);   background:var(--blue-lt);   }
   .t-train  { color:var(--blue);   background:var(--blue-lt);   }
@@ -237,6 +251,8 @@
     .card-title { font-size: 14px; margin-bottom: 4px; }
     .card-desc  { font-size: 12px; line-height: 1.7; }
     .card-note  { font-size: 11.5px; padding: 8px 11px; margin-top: 8px; }
+    .card-sched { font-size: 11.5px; padding: 8px 11px; margin-top: 8px; }
+    .source-note { margin: 14px 14px 0; font-size: 11.5px; }
     .page-inner { padding-bottom: 40px; }
     .footer { font-size: 11px; margin-top: 20px; }
   }
@@ -262,12 +278,18 @@
   <button class="tab-btn" onclick="showDay(7,this)">D7<span class="sub">1/2 週六</span></button>
 </nav>
 
+
 <!-- ═══════════ DAY 1 ═══════════ -->
 <div class="day-page active" id="day1"><div class="page-inner">
   <div class="header hd1">
     <div class="header-meta"><div class="day-badge">D1</div><div><div class="header-date">2026 年 12 月 27 日（週日）</div></div></div>
     <h1>抵達日・Alpen Osaka・四條河原町・Sushi Roman</h1>
     <div class="header-route">台北 <span>→</span> 關西機場 <span>→</span> 大阪梅田（買鞋）<span>→</span> 京都 <span>→</span> 四條河原町商圈</div>
+  </div>
+  <div class="deadline-banner">
+    <h3>住宿資訊</h3>
+    <div class="dl-row"><span class="dl-dot">●</span><span><strong>京都（D1 入住 – D4 退房）</strong>：〒601-8004 京都府京都市南区東九条東山王町5 美山荘<br>京都駅（八條東口）步行約 6 min；烏丸線九条駅步行約 5 min（Yahoo 路線查詢確認）</span></div>
+    <div class="dl-row"><span class="dl-dot">●</span><span><strong>大阪（D4 入住 – D7 退房）</strong>：〒554-0012 大阪府大阪市此花区西九条1-6-13（1-6-13 Nishikujō, Konohana-ku）<br>JR 西九條駅步行約 3 min（Yahoo 路線查詢確認）</span></div>
   </div>
   <div class="timeline">
     <div class="entry">
@@ -277,24 +299,26 @@
         <span class="tag t-plane">飛機</span>
         <div class="card-title">台北 → 關西機場</div>
         <div class="card-desc">直飛班機，飛行約 3h 30m。11:35 落地後辦理入境 + 提領行李（約 45 min）</div>
+        <div class="card-sched"><b>班次備註</b><br>航班時間已與使用者確認：08:05 起飛 → 11:35 抵達</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">12:26</div><span class="time-arrow">↓</span><div class="time-end">13:31</div></div>
+      <div class="time-col"><div class="time-start">12:32</div><span class="time-arrow">↓</span><div class="time-end">13:43</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">關西機場 → 大阪駅（JR 關空快速）</div>
-        <div class="card-desc">¥1,170・實際班次 12:26 発 → 13:31 着・約 65 分鐘</div>
+        <div class="card-desc">¥1,170～1,180・實際班次 12:32 発 → 13:43 着・71 分鐘（Yahoo 路線查詢 2026/12/27 確認）<br>11:35 落地 + 入境約 45 min ≈ 12:20 出關 → 步行約 7 min 至關西機場駅 → 12:32 上車（須 12:25 前出關）</div>
+        <div class="card-sched"><b>班次備註</b>（土休日，關空快速 :02 / :17 / :32 / :47 發車）<br>前 2 班：12:02 発、12:17 発｜後 2 班：12:47 発（13:58 抵大阪駅）、13:02 発<br>趕不上 12:32 → 搭 12:47，HOKA 購物時間需縮短</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">13:40</div><span class="time-arrow">↓</span><div class="time-end">14:45</div></div>
+      <div class="time-col"><div class="time-start">13:50</div><span class="time-arrow">↓</span><div class="time-end">14:45</div></div>
       <div class="dot-col"><div class="dot dot-hoka"></div></div>
       <div class="card s-hoka"><div class="card-inner">
         <span class="tag t-hoka">HOKA</span>
         <div class="card-title">Alpen Osaka 買鞋（HOKA 全程在此解決）</div>
-        <div class="card-desc">大阪駅步行約 7 min 抵達。茶屋町 YANMAR FLYING-Y BUILDING B2F～4F・購鞋約 65 min</div>
+        <div class="card-desc">大阪駅步行約 7 min 抵達（13:43 + 7 min = 13:50）。茶屋町 YANMAR FLYING-Y BUILDING B2F～4F・購鞋約 55 min</div>
         <div class="card-note">14:45 離店步行回大阪駅（約 7 min），搭 15:00 JR 新快速前往京都</div>
       </div></div>
     </div>
@@ -304,30 +328,41 @@
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">大阪 → 京都駅（JR 新快速）</div>
-        <div class="card-desc">¥580・實際班次 15:00 発 → 15:29 着・29 分鐘</div>
+        <div class="card-desc">¥580・實際班次 15:00 発 → 15:29 着・29 分鐘（Yahoo 路線查詢確認）</div>
+        <div class="card-sched"><b>班次備註</b>（新快速每 15 分一班：:00 / :15 / :30 / :45）<br>前 2 班：14:30 発（14:59 着）、14:45 発｜後 2 班：15:15 発、15:30 発</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">15:29</div><span class="time-arrow">↓</span><div class="time-end">15:55</div></div>
+      <div class="time-col"><div class="time-start">15:29</div><span class="time-arrow">↓</span><div class="time-end">15:46</div></div>
       <div class="dot-col"><div class="dot dot-rest"></div></div>
       <div class="card s-rest"><div class="card-inner">
-        <span class="tag t-rest">準備</span>
-        <div class="card-title">京都駅置物櫃寄放行李 → 地鐵烏丸線至四條站</div>
-        <div class="card-desc">置物櫃可使用至 23:00。地鐵烏丸線約 10 min（含等車），四條站步行 3 min 至錦市場入口</div>
+        <span class="tag t-rest">寄放行李</span>
+        <div class="card-title">京都駅 → 步行至住宿寄放行李</div>
+        <div class="card-desc">京都駅八條東口步行約 6 min（Yahoo 確認）→ 約 15:38 抵達飯店（京都市南区東九条東山王町5 美山荘），寄放行李後 15:46 出發</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">15:55</div><span class="time-arrow">↓</span><div class="time-end">19:00</div></div>
+      <div class="time-col"><div class="time-start">15:46</div><span class="time-arrow">↓</span><div class="time-end">16:03</div></div>
+      <div class="dot-col"><div class="dot dot-train"></div></div>
+      <div class="card s-train"><div class="card-inner">
+        <span class="tag t-train">電車</span>
+        <div class="card-title">飯店 → 九条駅 → 四條 → 錦市場</div>
+        <div class="card-desc">飯店步行 5 min 至烏丸線九条駅 → 15:55 発 → 16:00 抵達四條站（¥220）→ 步行 3 min 至錦市場入口（16:03）（Yahoo 路線查詢確認）</div>
+        <div class="card-sched"><b>班次備註</b>（烏丸線 九条駅→四條，往國際會館，土休日）<br>前 2 班：15:40 発、15:47 発（15:47 來不及）<br>基準 15:55 発（16:00 着）<br>後 2 班：16:02 発（16:07 着）、16:08 発（16:13 着）</div>
+      </div></div>
+    </div>
+    <div class="entry">
+      <div class="time-col"><div class="time-start">16:03</div><span class="time-arrow">↓</span><div class="time-end">19:00</div></div>
       <div class="dot-col"><div class="dot dot-shop"></div></div>
       <div class="card s-shop"><div class="card-inner">
         <span class="tag t-shop">商圈</span>
-        <div class="card-title">四條河原町商圈（約 3 小時）</div>
+        <div class="card-title">四條河原町商圈（約 2 小時 57 min）</div>
         <div class="card-desc">
           <p>① 錦市場小吃　約 40 min<br>三木雞卵（玉子燒）・魚力（海鰻天婦羅）・こんなもんじゃ（豆乳甜甜圈）</p>
           <p>② 河原町 / 高島屋 / OPA 百貨　約 90 min　服飾潮流，憑護照領 Hello Kitty 5% Coupon</p>
           <p>③ 新京極通　約 30 min　伴手禮・紀念品</p>
         </div>
-        <div class="card-note">錦市場禁止邊走邊吃，備現金（部分店家不收刷卡）。店家約 17:00 開始關門，15:55 進場把握時間</div>
+        <div class="card-note">錦市場禁止邊走邊吃，備現金（部分店家不收刷卡）。店家約 17:00 開始關門，16:03 進場把握時間</div>
       </div></div>
     </div>
     <div class="entry">
@@ -341,12 +376,13 @@
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">20:30</div><span class="time-arrow">↓</span><div class="time-end">21:10</div></div>
+      <div class="time-col"><div class="time-start">20:30</div><span class="time-arrow">↓</span><div class="time-end">20:55</div></div>
       <div class="dot-col"><div class="dot dot-return"></div></div>
       <div class="card s-return"><div class="card-inner">
         <span class="tag t-return">返程</span>
-        <div class="card-title">地鐵四條 → 京都駅取行李 → 步行回飯店</div>
-        <div class="card-desc">地鐵烏丸線至京都駅（約 3 min + 等車），取行李後步行 12～15 min 至飯店（南区東九条西御霊町 22-6）</div>
+        <div class="card-title">地鐵四條 → 九条駅 → 步行回飯店</div>
+        <div class="card-desc">烏丸線 20:40 発 → 九条駅，出站步行 5 min → 20:55 抵達飯店（京都市南区東九条東山王町5 美山荘）（Yahoo 路線查詢確認，¥220）</div>
+        <div class="card-sched"><b>班次備註</b>（烏丸線 四條→九条駅，往竹田 / 新田邊 / 近鐵奈良，土休日）<br>前 2 班：20:25 発、20:33 発｜基準 20:40 発（20:55 抵達飯店）<br>後 2 班：20:48 発（21:02 抵達飯店）、20:55 発（21:10 抵達飯店）<br>皆停九条駅，往竹田 / 新田邊 / 近鐵奈良直通車均可搭</div>
       </div></div>
     </div>
   </div>
@@ -367,12 +403,12 @@
   </div>
   <div class="timeline">
     <div class="entry">
-      <div class="time-col"><div class="time-start">07:45</div><span class="time-arrow">↓</span><div class="time-end">08:00</div></div>
+      <div class="time-col"><div class="time-start">07:50</div><span class="time-arrow">↓</span><div class="time-end">08:00</div></div>
       <div class="dot-col"><div class="dot dot-rest"></div></div>
       <div class="card s-rest"><div class="card-inner">
         <span class="tag t-rest">出發</span>
         <div class="card-title">飯店步行至京都駅</div>
-        <div class="card-desc">約 12～15 分鐘</div>
+        <div class="card-desc">步行約 6 min（八條東口，約 07:56 抵達，Yahoo 確認）</div>
       </div></div>
     </div>
     <div class="entry">
@@ -386,12 +422,13 @@
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">09:29</div><span class="time-arrow">↓</span><div class="time-end">09:49</div></div>
+      <div class="time-col"><div class="time-start">09:29</div><span class="time-arrow">↓</span><div class="time-end">09:50</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">京都 → 近鐵小倉（近鐵京都線 普通）</div>
-        <div class="card-desc">¥360・實際班次 09:29 発 → 09:49 着・約 20 min。近鐵小倉駅步行 5 min → 09:54 抵達博物館，10:00 開館</div>
+        <div class="card-desc">¥360・實際班次 09:29 発 → 09:50 着・21 min（Yahoo 路線查詢確認）。近鐵小倉駅步行 5 min → 09:55 抵達博物館，10:00 開館</div>
+        <div class="card-sched"><b>班次備註</b>（平日時刻表，近鐵京都駅發；往新田辺 / 大和西大寺 / 近鉄宮津的「普通」皆停小倉）<br>前 4 班：08:38 発、08:47 発、09:02 発、09:15 発<br>後續 09:43 発（10:04 着）會趕不上 10:00 入場</div>
       </div></div>
     </div>
     <div class="entry">
@@ -405,16 +442,17 @@
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">14:05</div><span class="time-arrow">↓</span><div class="time-end">14:17</div></div>
+      <div class="time-col"><div class="time-start">14:05</div><span class="time-arrow">↓</span><div class="time-end">14:32</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">近鐵小倉 → JR 小倉 → JR 宇治</div>
-        <div class="card-desc">步行 5 min 至近鐵小倉駅 → 步行換乘 JR 小倉駅（8 min）→ JR 奈良線 2 min（¥150）→ JR 宇治駅</div>
+        <div class="card-desc">步行 5 min 至近鐵小倉駅 → 步行換乘 JR 小倉駅（8 min，約 14:18 抵達）→ 搭 14:30 発 JR 奈良線 普通 2 min（¥150）→ 14:32 抵達 JR 宇治駅</div>
+        <div class="card-sched"><b>班次備註</b>（JR 小倉 → 京都方向，平日，經宇治；小倉→宇治 2 min，ekitan 確認）<br>前 2 班：14:00 発（普通）、14:05 発（みやこ路快速）<br>後 2 班：14:35 発（みやこ路快速）、14:49 発（普通）<br>14:19 発 與 14:18 抵達僅差 1 min，不採用</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">14:17</div><span class="time-arrow">↓</span><div class="time-end">17:30</div></div>
+      <div class="time-col"><div class="time-start">14:32</div><span class="time-arrow">↓</span><div class="time-end">17:30</div></div>
       <div class="dot-col"><div class="dot dot-sight"></div></div>
       <div class="card s-sight"><div class="card-inner">
         <span class="tag t-sight">景點</span>
@@ -435,7 +473,8 @@
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">JR 宇治 → 京都駅（JR 奈良線）</div>
-        <div class="card-desc">¥240・實際班次 17:40 発 → 18:02 着（平日時刻表確認）・22 min</div>
+        <div class="card-desc">¥240・實際班次 17:40 発 → 18:02 着（Yahoo 路線查詢確認）・22 min</div>
+        <div class="card-sched"><b>班次備註</b>（JR 宇治 → 京都，平日）<br>前 2 班：17:23 発（17:45 着）、17:38 発（みやこ路快速）<br>後 2 班：17:53 発（18:15 着）、18:08 発（みやこ路快速，18:25 着）</div>
       </div></div>
     </div>
     <div class="entry">
@@ -463,7 +502,7 @@
       <div class="card s-return"><div class="card-inner">
         <span class="tag t-return">返程</span>
         <div class="card-title">步行回飯店</div>
-        <div class="card-desc">京都駅直結出發，步行 12～15 min 至飯店（南区東九条西御霊町 22-6）</div>
+        <div class="card-desc">京都駅直結出發，步行約 6 min 至飯店（南区東九条東山王町5 美山荘）</div>
       </div></div>
     </div>
   </div>
@@ -475,7 +514,7 @@
   <div class="header hd3">
     <div class="header-meta"><div class="day-badge">D3</div><div><div class="header-date">2026 年 12 月 29 日（週二）</div></div></div>
     <h1>嵐山・廣川鰻魚飯・四條河原町商圈・寶可夢・高島屋・壽喜燒</h1>
-    <div class="header-route">飯店 <span>→</span> 嵯峨嵐山 <span>→</span> 京都駅（13:33 着）<span>→</span> 四條河原町商圈（6 小時）<span>→</span> 壽喜燒晚餐 20:00</div>
+    <div class="header-route">飯店 <span>→</span> 嵯峨嵐山 <span>→</span> 京都駅（13:34 着）<span>→</span> 四條河原町商圈（6 小時）<span>→</span> 壽喜燒晚餐 20:00</div>
   </div>
   <div class="deadline-banner">
     <h3>本天預約提醒</h3>
@@ -490,7 +529,8 @@
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">飯店 → 京都駅 → 嵯峨嵐山（JR 山陰本線）</div>
-        <div class="card-desc">步行 12～15 min 至京都駅・¥240・實際班次 08:30 発 → 08:46 着・16 min</div>
+        <div class="card-desc">步行約 6 min 至京都駅（約 08:21）・¥240・實際班次 08:27 発 → 08:46 着・19 min（Yahoo 路線查詢確認）</div>
+        <div class="card-sched"><b>班次備註</b>（JR 嵯峨野線 京都 → 嵯峨嵐山，平日）<br>前 2 班：08:03 発（08:22 着）、08:16 発（08:34 着）<br>後 2 班：08:40 発（08:57 着）、08:53 発（09:10 着）<br>趕不上 08:27 就搭 08:40，嵐山散策順延約 11 min</div>
       </div></div>
     </div>
     <div class="entry">
@@ -514,25 +554,27 @@
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">13:17</div><span class="time-arrow">↓</span><div class="time-end">13:33</div></div>
+      <div class="time-col"><div class="time-start">13:17</div><span class="time-arrow">↓</span><div class="time-end">13:34</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">嵯峨嵐山 → 京都駅（JR 山陰本線）</div>
-        <div class="card-desc">¥240・實際班次 13:17 発 → 13:33 着・16 min</div>
+        <div class="card-desc">¥240・實際班次 13:17 発 → 13:34 着・17 min（Yahoo 路線查詢確認）</div>
+        <div class="card-sched"><b>班次備註</b>（JR 嵯峨嵐山 → 京都，平日）<br>前 2 班：12:46 発、13:02 発｜後 2 班：13:32 発（13:49 着）、13:40 発（快速，13:51 着）</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">13:33</div><span class="time-arrow">↓</span><div class="time-end">13:48</div></div>
+      <div class="time-col"><div class="time-start">13:34</div><span class="time-arrow">↓</span><div class="time-end">13:51</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">京都駅 → 四條河原町</div>
-        <div class="card-desc">地鐵烏丸線京都駅 → 四條（約 3 min + 等車）・步行至河原町約 5 min・13:48 抵達商圈</div>
+        <div class="card-desc">走到地鐵月台約 5 min → 烏丸線 13:43 発 → 13:46 抵達四條 → 步行至河原町約 5 min → 13:51 抵達商圈</div>
+        <div class="card-sched"><b>班次備註</b>（烏丸線 京都駅→四條，平日與土休日 13 時台相同：:05 / :13 / :20 / :28 / :35 / :43 / :50 / :58；Yahoo 路線查詢確認）<br>前 2 班：13:28 発、13:35 発（皆早於或緊接 13:34 到站，不可搭）<br>後 2 班：13:50 発（13:53 着）、13:58 発（14:01 着）</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">13:48</div><span class="time-arrow">↓</span><div class="time-end">20:00</div></div>
+      <div class="time-col"><div class="time-start">13:51</div><span class="time-arrow">↓</span><div class="time-end">20:00</div></div>
       <div class="dot-col"><div class="dot dot-shop"></div></div>
       <div class="card s-shop"><div class="card-inner">
         <span class="tag t-shop">商圈</span>
@@ -558,12 +600,12 @@
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">21:30</div><span class="time-arrow">↓</span></div>
+      <div class="time-col"><div class="time-start">21:30</div><span class="time-arrow">↓</span><div class="time-end">22:00</div></div>
       <div class="dot-col"><div class="dot dot-return"></div></div>
       <div class="card s-return"><div class="card-inner">
         <span class="tag t-return">返程</span>
-        <div class="card-title">步行回飯店</div>
-        <div class="card-desc">約 15 min</div>
+        <div class="card-title">四條河原町 → 飯店</div>
+        <div class="card-desc">步行至河原町駅 → 阪急 21:37 発 → 烏丸 → 步行至四條站 → 烏丸線 → 九条駅 → 步行 5 min → 22:00 抵達飯店（南区東九条東山王町5 美山荘）（Yahoo 路線查詢確認，¥390）</div>
       </div></div>
     </div>
   </div>
@@ -589,17 +631,18 @@
       <div class="card s-rest"><div class="card-inner">
         <span class="tag t-rest">退房</span>
         <div class="card-title">退房 → 步行至京都駅寄放行李</div>
-        <div class="card-desc">步行 12～15 min，大件行李寄置物櫃，輕裝出發</div>
+        <div class="card-desc">退房後步行約 6 min 至京都駅，大件行李寄置物櫃，輕裝出發</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">09:00</div><span class="time-arrow">↓</span><div class="time-end">09:27</div></div>
+      <div class="time-col"><div class="time-start">09:07</div><span class="time-arrow">↓</span><div class="time-end">09:32</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">京都駅 → 出町柳（地鐵 + 京阪）</div>
-        <div class="card-desc">烏丸線 京都→烏丸御池（6 min）→ 東西線 烏丸御池→三条京阪（3 min）→ 京阪 三条京阪→出町柳（9 min）・合計約 27 min・¥500</div>
-        <div class="card-note">帰省ラッシュピーク，避開巴士全程搭電車。出町柳駅步行 12 min 至下鴨神社</div>
+        <div class="card-desc">烏丸線 京都駅 09:07 発 → 東西線 烏丸御池→三条京阪 → 京阪特急 三条→出町柳 → 09:32 抵達出町柳・25 min・¥500（Yahoo 路線查詢確認）</div>
+        <div class="card-note">帰省ラッシュピーク，避開巴士全程搭電車。出町柳駅步行 12 min 至下鴨神社（約 09:44）</div>
+        <div class="card-sched"><b>班次備註</b>（地鐵 + 京阪組合，Yahoo 路線查詢確認）<br>前 1 班：08:43 発 → 09:09 着（26 min）<br>後續無地鐵直達組合，最近為 09:15 発（JR 奈良線 → 京阪）→ 09:44 着</div>
       </div></div>
     </div>
     <div class="entry">
@@ -612,16 +655,17 @@
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">11:15</div><span class="time-arrow">↓</span><div class="time-end">11:50</div></div>
+      <div class="time-col"><div class="time-start">11:15</div><span class="time-arrow">↓</span><div class="time-end">12:00</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">出町柳 → 烏丸御池（京阪 + 東西線）</div>
-        <div class="card-desc">京阪 出町柳→三条京阪（9 min）→ 東西線 三条京阪→烏丸御池（3 min）・步行 5 min 至御金神社</div>
+        <div class="card-desc">下鴨神社步行 12 min 回出町柳（約 11:27）→ 京阪特急 11:36 発 → 東西線 → 11:55 抵達烏丸御池（19 min）→ 步行 5 min 至御金神社（12:00）</div>
+        <div class="card-sched"><b>班次備註</b>（京阪 + 東西線組合，Yahoo 路線查詢確認）<br>前 1 班：11:21 発 → 11:36 着（來不及，僅供參考）<br>基準 11:36 発 → 11:55 着<br>後 2 班：11:48 発 → 12:02 着、12:00 発 → 12:15 着</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">11:50</div><span class="time-arrow">↓</span><div class="time-end">12:35</div></div>
+      <div class="time-col"><div class="time-start">12:00</div><span class="time-arrow">↓</span><div class="time-end">12:45</div></div>
       <div class="dot-col"><div class="dot dot-sight"></div></div>
       <div class="card s-sight"><div class="card-inner">
         <span class="tag t-sight">景點</span>
@@ -631,7 +675,7 @@
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">12:35</div><span class="time-arrow">↓</span><div class="time-end">13:30</div></div>
+      <div class="time-col"><div class="time-start">12:45</div><span class="time-arrow">↓</span><div class="time-end">13:30</div></div>
       <div class="dot-col"><div class="dot dot-food"></div></div>
       <div class="card s-food"><div class="card-inner">
         <span class="tag t-food">午餐</span>
@@ -640,16 +684,17 @@
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">13:30</div><span class="time-arrow">↓</span><div class="time-end">14:20</div></div>
+      <div class="time-col"><div class="time-start">13:30</div><span class="time-arrow">↓</span><div class="time-end">14:28</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">烏丸御池 → 京都駅（取行李）→ 大阪駅</div>
-        <div class="card-desc">烏丸線 烏丸御池→京都駅（5 min）→ 取行李 10 min → JR 新快速 京都→大阪駅（28 min）・合計約 50 min</div>
+        <div class="card-desc">烏丸線 13:36 発 烏丸御池→京都駅（5 min，13:41 着）→ 取行李 10 min → 14:00 発 JR 新快速 京都→大阪駅（28 min，14:28 着）（Yahoo 路線查詢確認）</div>
+        <div class="card-sched"><b>班次備註</b><br>① 烏丸線 烏丸御池 → 京都（平日與土休日相同，13 時台 :06 / :13 / :21 / :28 / :36 / :43 / :51 / :58）<br>　前 2 班 13:21、13:28｜基準 13:36 発（13:41 着）｜後 2 班 13:43 発（13:49 着）、13:51 発（13:56 着）<br>② JR 新快速 京都 → 大阪（每 15 分一班：:00 / :15 / :30 / :45，28 min）<br>　前 2 班 13:30 発（13:58 着）、13:45 発（14:13 着）｜基準 14:00 発（14:28 着）｜後 2 班 14:15 発（14:43 着）、14:30 発</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">14:20</div><span class="time-arrow">↓</span><div class="time-end">17:30</div></div>
+      <div class="time-col"><div class="time-start">14:28</div><span class="time-arrow">↓</span><div class="time-end">17:30</div></div>
       <div class="dot-col"><div class="dot dot-shop"></div></div>
       <div class="card s-shop"><div class="card-inner">
         <span class="tag t-shop">購物</span>
@@ -667,12 +712,13 @@
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">19:00</div><span class="time-arrow">↓</span><div class="time-end">19:10</div></div>
+      <div class="time-col"><div class="time-start">19:04</div><span class="time-arrow">↓</span><div class="time-end">19:10</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">梅田 → 西九條 Check-in（JR 環狀線）</div>
-        <div class="card-desc">約 10 min。早點休息，為明日通宵儲備體力</div>
+        <div class="card-desc">大阪駅 19:04 発 環狀線普通（內回り）→ 19:10 抵達西九條・6 min（Yahoo 路線查詢確認）。西九條駅步行約 3 min 至飯店（大阪市此花区西九条1-6-13），約 19:13 Check-in。早點休息，為明日通宵儲備體力</div>
+        <div class="card-sched"><b>班次備註</b>（大阪駅 JR 環狀線 內回り，土休日；發車規律：環狀線普通 :04 / :19 / :34 / :49｜關空快速 :08 / :23 / :38 / :53｜ゆめ咲線普通（往桜島）:14 / :29 / :44 / :59，皆停西九條）<br>前 2 班：18:53、18:59｜基準 19:04 発（19:10 着）｜後 2 班：19:08 発（關空快速，19:14 着）、19:14 発</div>
       </div></div>
     </div>
   </div>
@@ -693,20 +739,21 @@
   </div>
   <div class="timeline">
     <div class="entry">
-      <div class="time-col"><div class="time-start">10:02</div><span class="time-arrow">↓</span><div class="time-end">10:11</div></div>
+      <div class="time-col"><div class="time-start">10:05</div><span class="time-arrow">↓</span><div class="time-end">10:13</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">西九條 → 大阪難波（阪神なんば線 快速急行）</div>
-        <div class="card-desc">¥230・實際班次 10:02 発 → 10:11 着・約 9 min</div>
+        <div class="card-desc">¥220・實際班次 10:05 発（往近鐵奈良）→ 10:13 着・8 min（Yahoo 路線查詢確認）。飯店步行約 3 min 至西九條駅（09:57 前出門）</div>
+        <div class="card-sched"><b>班次備註</b>（阪神なんば線 西九條 → 大阪難波，土休日；區間準急 :01 / :21 / :41｜快速急行 :05 / :25 / :45｜普通 :12 / :32 / :52）<br>前 2 班：09:52 発（普通）、10:01 発（區間準急）<br>後 2 班：10:12 発（普通，10:21 着）、10:21 発（區間準急）</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">10:11</div><span class="time-arrow">↓</span><div class="time-end">11:00</div></div>
+      <div class="time-col"><div class="time-start">10:13</div><span class="time-arrow">↓</span><div class="time-end">11:00</div></div>
       <div class="dot-col"><div class="dot dot-shop"></div></div>
       <div class="card s-shop"><div class="card-inner">
         <span class="tag t-shop">購物</span>
-        <div class="card-title">難波商圈逛街（約 49 min）</div>
+        <div class="card-title">難波商圈逛街（約 47 min）</div>
         <div class="card-desc">高島屋・大丸等 10:00 已開門，先行掃貨暖身</div>
       </div></div>
     </div>
@@ -721,44 +768,55 @@
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">12:30</div><span class="time-arrow">↓</span><div class="time-end">16:30</div></div>
+      <div class="time-col"><div class="time-start">12:30</div><span class="time-arrow">↓</span><div class="time-end">16:15</div></div>
       <div class="dot-col"><div class="dot dot-shop"></div></div>
       <div class="card s-shop"><div class="card-inner">
         <span class="tag t-shop">購物</span>
-        <div class="card-title">難波 + 心齋橋商圈血拼（約 4 小時）</div>
+        <div class="card-title">難波 + 心齋橋商圈血拼（約 3 小時 45 min）</div>
         <div class="card-desc">日系服飾、潮流鞋靴全力衝刺</div>
         <div class="card-note">新免稅制度（2026/11 起）：購物直接結帳，退稅統一在關西機場辦理。大晦日百貨約 17:00 提早關門</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">16:37</div><span class="time-arrow">↓</span><div class="time-end">16:46</div></div>
+      <div class="time-col"><div class="time-start">16:15</div><span class="time-arrow">↓</span><div class="time-end">16:37</div></div>
+      <div class="dot-col"><div class="dot dot-rest"></div></div>
+      <div class="card s-rest"><div class="card-inner">
+        <span class="tag t-rest">移動</span>
+        <div class="card-title">心齋橋 → 御堂筋線 → 大阪難波 → 步行至阪神大阪難波站</div>
+        <div class="card-desc">預留 22 min（御堂筋線心齋橋 → 難波 + 步行換乘），16:37 前抵達月台</div>
+      </div></div>
+    </div>
+    <div class="entry">
+      <div class="time-col"><div class="time-start">16:37</div><span class="time-arrow">↓</span><div class="time-end">16:45</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">大阪難波 → 西九條（阪神なんば線）</div>
-        <div class="card-desc">心齋橋 → 御堂筋線 → 大阪難波換乘・¥230・實際班次 16:37 発 → 16:46 着</div>
+        <div class="card-desc">¥220・實際班次 16:37 発 → 16:45 着・8 min（Yahoo 路線查詢確認）</div>
+        <div class="card-sched"><b>班次備註</b>（阪神なんば線 大阪難波 → 西九條，往尼崎 / 神戶三宮，土休日；區間準急 :01 / :21 / :41｜普通 :10 / :30 / :50｜快速急行 :17 / :37 / :57）<br>前 2 班：16:21 発（區間準急）、16:30 発（普通）<br>後 2 班：16:41 発（區間準急，16:49 着）、16:50 発（普通，16:58 着）</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">16:46</div><span class="time-arrow">↓</span><div class="time-end">19:30</div></div>
+      <div class="time-col"><div class="time-start">16:48</div><span class="time-arrow">↓</span><div class="time-end">19:20</div></div>
       <div class="dot-col"><div class="dot dot-rest"></div></div>
       <div class="card s-rest"><div class="card-inner">
         <span class="tag t-rest">休息</span>
-        <div class="card-title">飯店補眠 & 換防寒衣物（約 2 小時 44 min）</div>
-        <div class="card-desc">準備通宵 USJ</div>
+        <div class="card-title">飯店補眠 & 換防寒衣物（約 2 小時 32 min）</div>
+        <div class="card-desc">16:45 抵達西九條駅，步行約 3 min 回飯店（約 16:48）。19:20 出門，步行約 3 min 至西九條駅。準備通宵 USJ</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">19:30</div><span class="time-arrow">↓</span><div class="time-end">19:35</div></div>
+      <div class="time-col"><div class="time-start">19:27</div><span class="time-arrow">↓</span><div class="time-end">19:32</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">西九條 → ユニバーサルシティ（JR ゆめ咲線）</div>
-        <div class="card-desc">¥180・實際班次 19:30 発 → 19:35 着・5 min</div>
+        <div class="card-desc">¥180・實際班次 19:27 発（往桜島）→ 19:32 着・5 min（Yahoo 路線查詢確認）</div>
+        <div class="card-sched"><b>班次備註</b>（JR ゆめ咲線 西九條 → ユニバーサルシティ，土休日）<br>前 2 班：19:12 発、19:21 発｜後 2 班：19:36 発（19:41 着）、19:42 発（19:47 着）</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">19:35</div><span class="time-arrow">↓</span><div class="time-end">21:00</div></div>
+      <div class="time-col"><div class="time-start">19:32</div><span class="time-arrow">↓</span><div class="time-end">21:00</div></div>
       <div class="dot-col"><div class="dot dot-food"></div></div>
       <div class="card s-food"><div class="card-inner">
         <span class="tag t-food">晚餐</span>
@@ -802,21 +860,22 @@
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">19:00</div><span class="time-arrow">↓</span><div class="time-end">19:05</div></div>
+      <div class="time-col"><div class="time-start">19:18</div><span class="time-arrow">↓</span><div class="time-end">19:24</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">ユニバーサルシティ → 西九條（JR ゆめ咲線）</div>
-        <div class="card-desc">¥180・5 min</div>
+        <div class="card-desc">¥180・實際班次 19:18 発（往西九條）→ 19:24 着・6 min（19:00 離園 → 步行至車站，預留 18 min 緩衝）</div>
+        <div class="card-sched"><b>班次備註</b>（JR ゆめ咲線 ユニバーサルシティ → 西九條，土休日；往西九條 :03 / :18 / :33 / :48｜往天王寺 :08 / :23 / :38 / :53，皆停西九條）<br>前 2 班：19:03 発（19:09 着）、19:08 発（往天王寺，19:14 着）<br>後 2 班：19:33 発、19:38 発（往天王寺）</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">19:05</div><span class="time-arrow">↓</span><div class="time-end">20:00</div></div>
+      <div class="time-col"><div class="time-start">19:27</div><span class="time-arrow">↓</span><div class="time-end">20:00</div></div>
       <div class="dot-col"><div class="dot dot-rest"></div></div>
       <div class="card s-rest"><div class="card-inner">
         <span class="tag t-rest">休息</span>
         <div class="card-title">飯店洗澡 & 稍作休息</div>
-        <div class="card-desc">約 55 min</div>
+        <div class="card-desc">19:24 抵達西九條駅，步行約 3 min 回飯店（19:27）。約 33 min</div>
       </div></div>
     </div>
     <div class="entry">
@@ -849,29 +908,31 @@
   </div>
   <div class="timeline">
     <div class="entry">
-      <div class="time-col"><div class="time-start">08:15</div><span class="time-arrow">↓</span><div class="time-end">08:21</div></div>
+      <div class="time-col"><div class="time-start">08:20</div><span class="time-arrow">↓</span><div class="time-end">08:30</div></div>
       <div class="dot-col"><div class="dot dot-rest"></div></div>
       <div class="card s-rest"><div class="card-inner">
         <span class="tag t-rest">退房</span>
         <div class="card-title">西九條退房 → 大阪駅（JR 環狀線）</div>
-        <div class="card-desc">約 6 min</div>
+        <div class="card-desc">飯店 08:20 退房出發，步行約 3 min 至西九條駅（08:23，Yahoo 確認）→ 西九條 08:24 発 環狀線外回り普通 → 08:30 抵達大阪駅・6 min（Yahoo 路線查詢確認），08:38 搭關空快速前有 8 min 轉乘緩衝</div>
+        <div class="card-sched"><b>班次備註</b>（西九條 → 大阪駅，環狀線外回り，土休日）<br>前 2 班：08:10 発、08:14 発｜後 2 班：08:28 発（08:34 着）、08:35 発</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">08:24</div><span class="time-arrow">↓</span><div class="time-end">約09:11</div></div>
+      <div class="time-col"><div class="time-start">08:38</div><span class="time-arrow">↓</span><div class="time-end">09:42</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
         <div class="card-title">大阪駅 → りんくうタウン（JR 關空快速）</div>
-        <div class="card-desc">¥1,000・實際班次 08:24 発（休日ダイヤ確認）・約 47 min・りんくうタウン駅步行 6 min 至 Outlet</div>
+        <div class="card-desc">¥1,000・實際班次 08:38 発 → 09:42 着・64 min（Yahoo 路線查詢確認）・りんくうタウン駅步行 6 min 至 Outlet（約 09:48）</div>
+        <div class="card-sched"><b>班次備註</b>（大阪駅 環狀線 內回り，土休日；關空快速往關西機場，經天王寺）<br>前 2 班：07:23 発、08:03 発｜後 2 班：08:54 発、09:09 発</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">09:15</div><span class="time-arrow">↓</span><div class="time-end">12:00</div></div>
+      <div class="time-col"><div class="time-start">09:48</div><span class="time-arrow">↓</span><div class="time-end">12:00</div></div>
       <div class="dot-col"><div class="dot dot-shop"></div></div>
       <div class="card s-shop"><div class="card-inner">
         <span class="tag t-shop">購物</span>
-        <div class="card-title">りんくう Outlet 先行掃貨（約 2 小時 45 min）</div>
+        <div class="card-title">りんくう Outlet 先行掃貨（約 2 小時 12 min）</div>
         <div class="card-desc">關西最大 Outlet，約 210 間品牌，新春初売り折扣</div>
         <div class="card-note">1/2 初売りピーク日，人潮極多，越早到越好。1/2 期間約 09:00 開門</div>
       </div></div>
@@ -886,29 +947,30 @@
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">13:30</div><span class="time-arrow">↓</span><div class="time-end">14:30</div></div>
+      <div class="time-col"><div class="time-start">13:30</div><span class="time-arrow">↓</span><div class="time-end">14:22</div></div>
       <div class="dot-col"><div class="dot dot-shop"></div></div>
       <div class="card s-shop"><div class="card-inner">
         <span class="tag t-shop">購物</span>
         <div class="card-title">Outlet 最後衝刺</div>
-        <div class="card-desc">清空購物清單，14:30 準時出發</div>
+        <div class="card-desc">清空購物清單，14:22 準時離開，步行 6 min 至りんくうタウン駅（約 14:28）</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">14:30</div><span class="time-arrow">↓</span><div class="time-end">14:36</div></div>
+      <div class="time-col"><div class="time-start">14:32</div><span class="time-arrow">↓</span><div class="time-end">14:45</div></div>
       <div class="dot-col"><div class="dot dot-train"></div></div>
       <div class="card s-train"><div class="card-inner">
         <span class="tag t-train">電車</span>
-        <div class="card-title">りんくうタウン → 關西機場（南海電鐵）</div>
-        <div class="card-desc">¥360・6 min</div>
+        <div class="card-title">りんくうタウン → 關西機場（南海空港急行）</div>
+        <div class="card-desc">¥370・實際班次 14:32 発 → 14:45 抵達關西機場（含站內步行；Yahoo 路線查詢確認）</div>
+        <div class="card-sched"><b>班次備註</b>（南海空港線 りんくうタウン → 關西機場，日曜・祝日；普通 :02 / :16 / :32 / :46｜特急 :06 / :36）<br>前 2 班：14:06 発（特急，需另購特急券）、14:16 発<br>後 2 班：14:36 発（南海特急ラピート，14:48 着，需另購特急券）、14:41 発（JR 關空快速，14:53 着，¥370）</div>
       </div></div>
     </div>
     <div class="entry">
-      <div class="time-col"><div class="time-start">14:36</div><span class="time-arrow">↓</span><div class="time-end">19:00</div></div>
+      <div class="time-col"><div class="time-start">14:45</div><span class="time-arrow">↓</span><div class="time-end">19:00</div></div>
       <div class="dot-col"><div class="dot dot-rest"></div></div>
       <div class="card s-rest"><div class="card-inner">
         <span class="tag t-rest">候機</span>
-        <div class="card-title">關西機場候機（約 4 小時）</div>
+        <div class="card-title">關西機場候機（約 4 小時 15 min）</div>
         <div class="card-desc">辦登機 + 行李託運 + 機場稅關辦退稅 + 免稅店逛街</div>
         <div class="card-note">新免稅制度：退稅在機場稅關辦理，請預留 30～45 min</div>
       </div></div>
@@ -920,6 +982,7 @@
         <span class="tag t-plane">返台</span>
         <div class="card-title">搭機返台 — 圓滿結束京阪跨年之旅 🎉</div>
         <div class="card-desc">2026 年 12 月 27 日 出發 → 2027 年 1 月 2 日 返台，共 7 天</div>
+        <div class="card-sched"><b>班次備註</b><br>航班時間已與使用者確認：19:00 起飛</div>
       </div></div>
     </div>
   </div>
@@ -937,3 +1000,4 @@ function showDay(n, btn) {
 </script>
 </body>
 </html>
+
