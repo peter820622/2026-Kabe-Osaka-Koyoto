@@ -1,991 +1,769 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant-TW">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#FFFCF6">
 <title>2026–2027 京阪跨年行程</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Huninn&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --ink:      #18140A;
-    --ink2:     #4A4030;
-    --ink3:     #8A8070;
-    --paper:    #F5F2EB;
-    --card:     #FFFFFF;
-    --rule:     #DDD8CC;
-    --blue:     #1A5FA8;
-    --blue-lt:  #E8F2FC;
-    --green:    #1A7A44;
-    --green-lt: #E6F5EC;
-    --amber:    #A86800;
-    --amber-lt: #FFF3DC;
-    --purple:   #5830A8;
-    --purple-lt:#F0EBFF;
-    --slate:    #4A5568;
-    --slate-lt: #EEF0F4;
-    --teal:     #0F7070;
-    --teal-lt:  #E0F5F5;
-    --red:      #A82020;
-    --red-lt:   #FFEAEA;
-    --orange:   #B05010;
-    --orange-lt:#FFF0E5;
-    --warn-bg:  #FFF5F5;
-    --warn-fg:  #8B0000;
-    --warn-bd:  #EAACAC;
+    --paper:  #FFFCF6;
+    --ink:    #3E3A39;
+    --ink2:   #6A6462;
+    --coral:  #F2A497;
+    --yellow: #F6D27A;
+    --water:  #A8D3E6;
+    --bamboo: #B9DAA5;
+    --line:   3px solid var(--ink);
+    --r-lg:   24px;
+    --r-md:   16px;
+    --nav-h:  58px;
+    color-scheme: light;
   }
 
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
   body {
-    background: var(--paper);
-    font-family: 'Noto Sans TC', system-ui, sans-serif;
-    color: var(--ink);
+    background: var(--paper); color: var(--ink);
+    font-family: 'Huninn', 'PingFang TC', 'Noto Sans TC', system-ui, sans-serif;
+    font-weight: 400; font-synthesis: none;
+    font-size: 15px; line-height: 1.7;
+    padding-top: calc(var(--nav-h) + env(safe-area-inset-top));
     -webkit-font-smoothing: antialiased;
   }
+  h1, h2, h3, strong, b, th { font-weight: 400; }
+  a { color: var(--ink); text-underline-offset: 3px; }
+  button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+  :focus-visible { outline: 3px solid var(--ink); outline-offset: 2px; border-radius: 8px; }
 
-  /* NAV TABS */
-  .tab-nav {
-    position: sticky; top: 0; z-index: 100;
-    background: #1E3A5F;
-    display: flex; justify-content: center; overflow-x: auto; overflow-y: hidden;
-    scrollbar-width: none;
-    border-bottom: 3px solid #0A2040;
+  /* 頂端固定選單 */
+  .topnav {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    padding-top: env(safe-area-inset-top);
+    background: var(--paper); border-bottom: var(--line);
   }
-  .tab-btn {
-    flex-shrink: 0;
-    padding: 14px 20px;
-    font-family: inherit; font-size: 13px; font-weight: 700;
-    color: rgba(255,255,255,.55);
-    background: none; border: none; cursor: pointer;
-    border-bottom: 3px solid transparent;
-    transition: color .15s, border-color .15s; white-space: nowrap;
+  .topnav ul {
+    list-style: none; display: flex; gap: 2px;
+    max-width: 720px; height: var(--nav-h); margin: 0 auto; padding: 8px;
   }
-  .tab-btn:hover { color: rgba(255,255,255,.85); }
-  .tab-btn.active { color: #FFD060; border-bottom-color: #FFD060; }
-  .tab-btn .sub { font-size: 11px; font-weight: 400; opacity: .7; display: block; margin-top: 1px; }
-
-  /* PAGES */
-  .day-page { display: none; }
-  .day-page.active { display: block; }
-  .page-inner { max-width: 780px; margin: 0 auto; padding: 0 0 56px; }
-
-  /* HEADER */
-  .header {
-    color: #FFFFFF; padding: 36px 40px 30px;
-    position: relative; overflow: hidden;
-  }
-  .header::after {
-    content: ''; position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(255,255,255,.08) 0%, transparent 55%);
-    pointer-events: none;
-  }
-  .header-meta { display: flex; align-items: center; gap: 18px; margin-bottom: 14px; }
-  .day-badge {
-    width: 54px; height: 54px; border-radius: 50%;
-    background: rgba(255,255,255,.18);
-    border: 2px solid rgba(255,255,255,.35);
+  .topnav li { flex: 1; }
+  .topnav a {
     display: flex; align-items: center; justify-content: center;
-    font-size: 19px; font-weight: 700; flex-shrink: 0;
+    height: 100%; border: 3px solid transparent; border-radius: 999px;
+    font-size: 15px; text-decoration: none;
   }
-  .header-date { font-size: 13px; opacity: .7; }
-  .header h1 { font-size: 22px; font-weight: 700; line-height: 1.4; margin-bottom: 10px; }
-  .header-route { font-size: 12.5px; opacity: .6; line-height: 1.7; }
-  .header-route span { opacity: .5; margin: 0 3px; }
+  .topnav a.on { background: var(--yellow); border-color: var(--ink); }
 
-  /* DEADLINE BANNER */
-  .deadline-banner {
-    margin: 20px 28px 0;
-    background: #FFFAEE; border: 1px solid #F0D070;
-    border-radius: 10px; padding: 14px 18px;
-  }
-  .deadline-banner h3 {
-    font-size: 11px; font-weight: 700; color: #7A5800;
-    letter-spacing: .6px; margin-bottom: 9px;
-  }
-  .dl-row {
-    display: flex; gap: 8px; align-items: flex-start;
-    font-size: 12.5px; color: var(--ink2);
-    margin-bottom: 5px; line-height: 1.55;
-  }
-  .dl-row:last-child { margin-bottom: 0; }
-  .dl-dot { color: #C87800; flex-shrink: 0; }
+  /* 共用 */
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+  section.block { padding-top: 36px; scroll-margin-top: calc(var(--nav-h) + env(safe-area-inset-top)); }
+  .sec-title { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; font-size: 22px; line-height: 1.3; }
+  .sec-title svg { width: 40px; height: 40px; flex-shrink: 0; }
+  .card { background: var(--paper); border: var(--line); border-radius: var(--r-lg); }
+  svg .o, .ill * { stroke: var(--ink); stroke-width: 3; stroke-linejoin: round; stroke-linecap: round; }
 
-  /* TIMELINE */
-  .timeline { padding: 0 28px; position: relative; }
-  .timeline::before {
-    content: ''; position: absolute;
-    left: calc(28px + 80px + 7px);
-    top: 0; bottom: 0; width: 2px;
-    background: #CCC8C0;
+  /* 首頁 */
+  .hero { padding-top: 16px; }
+  .hero-art { overflow: hidden; border: var(--line); border-radius: var(--r-lg); background: var(--water); }
+  .hero-art svg { display: block; width: 100%; height: auto; }
+  .hero h1 { margin-top: 18px; font-size: 30px; line-height: 1.3; }
+  .hero-sub { margin-top: 4px; color: var(--ink2); }
+  .count {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 6px 10px;
+    margin-top: 16px; padding: 14px 18px; background: var(--yellow);
+    border: var(--line); border-radius: var(--r-lg);
   }
+  .count-big { font-size: 44px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+  .count-rest { flex-basis: 100%; font-size: 13.5px; }
 
-  /* ENTRY */
-  .entry {
-    display: grid;
-    grid-template-columns: 80px 18px 1fr;
-    gap: 0 14px; padding-top: 16px;
-  }
-  .time-col { text-align: right; padding-top: 14px; }
-  .time-start { font-size: 14px; font-weight: 700; color: var(--ink); line-height: 1; }
-  .time-arrow { font-size: 10px; color: var(--ink3); margin: 3px 0; display: block; }
-  .time-end   { font-size: 12px; color: var(--ink2); line-height: 1; }
-  .dot-col { display: flex; flex-direction: column; align-items: center; padding-top: 18px; }
-  .dot {
-    width: 12px; height: 12px; border-radius: 50%;
-    border: 2.5px solid var(--card); flex-shrink: 0;
-    box-shadow: 0 0 0 1.5px currentColor;
-    position: relative; z-index: 1;
-  }
+  /* 航班 */
+  .flights { display: grid; gap: 14px; }
+  .ticket { overflow: hidden; }
+  .ticket-head { display: flex; justify-content: space-between; align-items: center; padding: 8px 18px; border-bottom: var(--line); }
+  .ticket.go .ticket-head { background: var(--water); }
+  .ticket.back .ticket-head { background: var(--coral); }
+  .ticket-body { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 8px; padding: 16px 18px; }
+  .ticket-body svg { width: 46px; height: 46px; }
+  .port-time { font-size: 28px; line-height: 1.2; font-variant-numeric: tabular-nums; }
+  .port-name { font-size: 13.5px; color: var(--ink2); }
+  .port.right { text-align: right; }
 
-  /* CARD */
-  .card {
-    background: var(--card); border-radius: 12px;
-    border: 1px solid var(--rule); overflow: hidden; margin-bottom: 10px;
+  /* 每日行程 */
+  .daybar {
+    position: sticky; top: calc(var(--nav-h) + env(safe-area-inset-top)); z-index: 20;
+    margin: 0 -16px; padding: 10px 16px; background: var(--paper);
+    display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none;
   }
-  .card-inner { padding: 14px 18px 16px; }
+  .daybar::-webkit-scrollbar { display: none; }
+  .daybtn {
+    flex: 0 0 auto; min-width: 76px; min-height: 58px; padding: 6px 10px;
+    background: var(--paper); border: var(--line); border-radius: var(--r-md);
+    line-height: 1.25; text-align: center;
+  }
+  .daybtn b { display: block; font-size: 16px; }
+  .daybtn small { font-size: 12px; }
+  .daybtn[aria-selected="true"] { background: var(--coral); }
+  .daybtn.pop { animation: pop .42s cubic-bezier(.3, 1.6, .5, 1); }
+
+  .day-panel.bounce .day-head { animation: bounce-in .55s cubic-bezier(.3, 1.5, .5, 1) both; }
+  .day-panel.bounce .tl > li { animation: bounce-in .5s cubic-bezier(.3, 1.5, .5, 1) both; }
+  .day-panel.bounce .tl > li:nth-child(2) { animation-delay: .05s; }
+  .day-panel.bounce .tl > li:nth-child(3) { animation-delay: .1s; }
+  .day-panel.bounce .tl > li:nth-child(4) { animation-delay: .15s; }
+
+  .day-head { display: grid; grid-template-columns: 1fr 84px; gap: 10px; align-items: center; margin-top: 6px; padding: 14px 16px; background: var(--water); }
+  .day-head.c1 { background: var(--water); }
+  .day-head.c2 { background: var(--bamboo); }
+  .day-head.c3 { background: var(--yellow); }
+  .day-head.c4 { background: var(--coral); }
+  .day-date { font-size: 13.5px; }
+  .day-title { font-size: 19px; line-height: 1.4; margin: 2px 0 6px; }
+  .day-route { font-size: 13px; line-height: 1.6; }
+  .day-head svg { width: 84px; height: 84px; }
+
+  .notice { margin-top: 12px; padding: 12px 16px; background: var(--yellow); border: var(--line); border-radius: var(--r-md); }
+  .notice h3 { font-size: 15px; margin-bottom: 4px; }
+  .notice ul { list-style: none; }
+  .notice li { position: relative; padding-left: 16px; font-size: 13.5px; line-height: 1.65; margin-top: 4px; }
+  .notice li::before { content: ''; position: absolute; left: 2px; top: .55em; width: 7px; height: 7px; border-radius: 50%; background: var(--ink); }
+  .notice strong { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+
+  .tl { position: relative; list-style: none; margin-top: 18px; }
+  .tl::before { content: ''; position: absolute; left: 59px; top: 8px; bottom: 8px; border-left: 3px dashed var(--ink); opacity: .45; }
+  .tl > li { position: relative; display: grid; grid-template-columns: 48px 1fr; gap: 24px; padding-bottom: 14px; }
+  .tl-time { padding-top: 12px; text-align: right; font-size: 14px; line-height: 1.25; font-variant-numeric: tabular-nums; }
+  .tl-time small { display: block; font-size: 12px; color: var(--ink2); margin-top: 3px; }
+  .tl-dot { position: absolute; left: 52px; top: 16px; width: 17px; height: 17px; border: var(--line); border-radius: 50%; background: var(--paper); }
+  .tl-dot.k-move { background: var(--water); }
+  .tl-dot.k-food { background: var(--yellow); }
+  .tl-dot.k-sight { background: var(--bamboo); }
+  .tl-dot.k-shop, .tl-dot.k-usj, .tl-dot.k-book { background: var(--coral); }
+  .ev { position: relative; min-width: 0; padding: 12px 14px 14px; border-radius: 20px; }
+  .ev.must { box-shadow: 4px 4px 0 var(--coral); }
+  .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 6px; }
   .tag {
-    display: inline-block; font-size: 11px; font-weight: 700;
-    padding: 2px 9px; border-radius: 20px;
-    margin-bottom: 7px; letter-spacing: .3px;
+    display: inline-block; padding: 1px 10px; border: 2px solid var(--ink); border-radius: 999px;
+    background: var(--paper); font-size: 12px; line-height: 1.6; white-space: nowrap;
   }
-  .card-title { font-size: 16px; font-weight: 700; line-height: 1.4; color: var(--ink); margin-bottom: 5px; }
-  .card-desc  { font-size: 13px; color: var(--ink2); line-height: 1.75; }
-  .card-desc p { margin-top: 5px; }
-  .card-desc p:first-child { margin-top: 0; }
-  .card-note {
-    margin-top: 10px;
-    background: var(--warn-bg); border: 1px solid var(--warn-bd);
-    border-radius: 8px; padding: 9px 13px;
-    font-size: 12px; color: var(--warn-fg); line-height: 1.65;
+  .tag.jr     { background: var(--bamboo); }
+  .tag.plane  { background: var(--water); }
+  .tag.metro  { background: var(--yellow); }
+  .tag.rail   { background: var(--coral); }
+  .tag.walk   { background: var(--paper); border-style: dotted; }
+  .tag.must   { background: var(--coral); }
+  .tag.t-tbd  { background: var(--yellow); border-style: dashed; }
+  .ev-title { font-size: 16.5px; line-height: 1.45; overflow-wrap: anywhere; }
+  .ev-desc { margin-top: 4px; font-size: 13.5px; line-height: 1.7; color: var(--ink); overflow-wrap: anywhere; }
+  .ev-desc p + p { margin-top: 6px; }
+  .ev-note { margin-top: 10px; padding: 8px 12px; border: 2px dashed var(--ink); border-radius: 12px; font-size: 13px; line-height: 1.65; overflow-wrap: anywhere; }
+  .ev-note::before { content: '注意'; display: inline-block; margin-right: 6px; padding: 0 8px; background: var(--yellow); border: 2px solid var(--ink); border-radius: 999px; font-size: 11.5px; line-height: 1.5; }
+  details.sched { margin-top: 10px; font-size: 13px; line-height: 1.7; overflow-wrap: anywhere; }
+  details.sched summary {
+    display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 2px 12px;
+    background: var(--water); border: 2px solid var(--ink); border-radius: 999px;
+    font-size: 12.5px; cursor: pointer; list-style: none;
   }
-  .card-note::before { content: '⚠  '; }
+  details.sched summary::-webkit-details-marker { display: none; }
+  details.sched summary::after { content: '＋'; }
+  details.sched[open] summary::after { content: '－'; }
+  details.sched .sched-body { margin-top: 8px; padding-left: 4px; }
+  .source-note { margin-top: 6px; padding: 12px 16px; border: 2px dashed var(--ink); border-radius: var(--r-md); font-size: 13px; line-height: 1.7; }
 
-  .card-sched {
-    margin-top: 10px;
-    background: var(--blue-lt); border: 1px solid #C4DBF2;
-    border-radius: 8px; padding: 9px 13px;
-    font-size: 12px; color: #17457A; line-height: 1.7;
+  /* 待辦 */
+  .todo-progress { padding: 12px 16px; margin-bottom: 12px; background: var(--bamboo); border: var(--line); border-radius: var(--r-md); }
+  .todo-bar { height: 16px; margin-top: 6px; background: var(--paper); border: var(--line); border-radius: 999px; overflow: hidden; }
+  .todo-bar i { display: block; height: 100%; width: 0; background: var(--coral); border-right: 3px solid var(--ink); transition: width .3s; }
+  .todo-group { padding: 12px 16px; margin-top: 12px; }
+  .todo-group h3 { font-size: 16px; margin-bottom: 4px; }
+  .todo-group ul { list-style: none; }
+  .todo-item label { display: flex; gap: 12px; align-items: flex-start; min-height: 44px; padding: 8px 0; cursor: pointer; font-size: 14.5px; line-height: 1.55; }
+  .todo-item input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .todo-box { flex: 0 0 28px; height: 28px; border: var(--line); border-radius: 10px; background: var(--paper); display: grid; place-items: center; }
+  .todo-box svg { width: 18px; height: 18px; opacity: 0; }
+  .todo-item input:checked + .todo-box { background: var(--bamboo); animation: pop .42s cubic-bezier(.3, 1.6, .5, 1); }
+  .todo-item input:checked + .todo-box svg { opacity: 1; }
+  .todo-item input:focus-visible + .todo-box { outline: 3px solid var(--ink); outline-offset: 2px; }
+  .todo-item input:checked ~ .todo-text { color: var(--ink2); text-decoration: line-through; }
+
+  /* 住宿 */
+  .stays { display: grid; gap: 14px; }
+  .stay { padding: 0 0 14px; overflow: hidden; }
+  .stay-head { padding: 8px 18px; border-bottom: var(--line); font-size: 17px; }
+  .stay.kyoto .stay-head { background: var(--bamboo); }
+  .stay.osaka .stay-head { background: var(--water); }
+  .stay dl { padding: 10px 18px 0; font-size: 14px; line-height: 1.6; }
+  .stay dt { margin-top: 8px; font-size: 12.5px; color: var(--ink2); }
+  .stay dt:first-child { margin-top: 0; }
+  .btn-map { display: inline-flex; align-items: center; min-height: 40px; margin: 12px 18px 0; padding: 4px 16px; background: var(--yellow); border: var(--line); border-radius: 999px; font-size: 14px; text-decoration: none; }
+
+  /* 費用 */
+  .cost-section + .cost-section { margin-top: 24px; }
+  .cost-section h2 { font-size: 18px; margin-bottom: 8px; }
+  .cost-section h3 { font-size: 15px; margin: 14px 0 8px; }
+  .cost-section h2 + h3 { margin-top: 0; }
+  .cost-table-wrap { overflow: hidden; background: var(--paper); border: var(--line); border-radius: 20px; }
+  .cost-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  .cost-table th { padding: 9px 12px; background: var(--bamboo); border-bottom: var(--line); font-size: 12.5px; line-height: 1.4; text-align: right; }
+  .cost-table td { padding: 9px 12px; border-top: 2px dashed var(--ink); text-align: right; vertical-align: top; font-variant-numeric: tabular-nums; }
+  .cost-table tbody tr:first-child td { border-top: 0; }
+  .cost-table th:first-child, .cost-table td:first-child { text-align: left; }
+  .cost-name { font-size: 15px; }
+  .cost-amt { font-size: 15.5px; }
+  .cost-sub { display: block; font-size: 12px; color: var(--ink2); }
+  .cost-person th:nth-child(2), .cost-h-twd + .cost-table-wrap th { background: var(--water); }
+  .cost-person th:nth-child(3), .cost-h-jpy + .cost-table-wrap th { background: var(--yellow); }
+  .cost-total td { background: var(--water); }
+  .cost-receive-grid { display: grid; gap: 10px; }
+  .cost-receive { padding: 12px 16px; background: var(--paper); border: var(--line); border-radius: 20px; }
+  .cost-receive:nth-child(1) { background: var(--water); }
+  .cost-receive:nth-child(2) { background: var(--yellow); }
+  .cost-receive-label { font-size: 13px; }
+  .cost-receive-amt { font-size: 24px; line-height: 1.3; font-variant-numeric: tabular-nums; }
+  .cost-receive-from { margin-top: 2px; font-size: 13px; line-height: 1.6; }
+  #cost .source-note { margin-top: 16px; }
+
+  .foot { padding: 34px 16px 40px; text-align: center; font-size: 13px; color: var(--ink2); }
+
+  /* 動畫 */
+  @keyframes bob   { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+  @keyframes drift { 0%, 100% { transform: translateX(-8px); } 50% { transform: translateX(10px); } }
+  @keyframes rock  { 0%, 100% { transform: translateX(-12px); } 50% { transform: translateX(14px); } }
+  @keyframes sway  { 0%, 100% { transform: rotate(-2.5deg); } 50% { transform: rotate(2.5deg); } }
+  @keyframes spin  { to { transform: rotate(360deg); } }
+  @keyframes twinkle { 0%, 100% { transform: scale(.88); } 50% { transform: scale(1.06); } }
+  @keyframes pop   { 0% { transform: scale(1); } 45% { transform: scale(1.14); } 100% { transform: scale(1); } }
+  @keyframes bounce-in {
+    0% { opacity: 0; transform: translateY(16px) scale(.97); }
+    60% { opacity: 1; transform: translateY(-5px) scale(1.01); }
+    100% { opacity: 1; transform: none; }
   }
-  .card-sched b { font-weight: 700; }
-  .card-sched b::before { content: '📝 '; }
-  .card-sched a { color: var(--blue); font-weight: 700; }
-  .source-note {
-    margin: 16px 28px 0; padding: 10px 14px;
-    background: var(--slate-lt); border-radius: 8px;
-    font-size: 12px; color: var(--ink2); line-height: 1.65;
+  .a-bob, .a-drift, .a-rock, .a-sway, .a-spin, .a-twinkle { transform-box: fill-box; transform-origin: center; }
+  .a-bob     { animation: bob 3.6s ease-in-out infinite; }
+  .a-drift   { animation: drift 9s ease-in-out infinite; }
+  .a-drift.slow { animation-duration: 13s; }
+  .a-rock    { animation: rock 7s ease-in-out infinite; }
+  .a-sway    { animation: sway 4.5s ease-in-out infinite; transform-origin: 50% 100%; }
+  .a-spin    { animation: spin 26s linear infinite; }
+  .a-twinkle { animation: twinkle 2.4s ease-in-out infinite; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation: none !important; transition: none !important; }
   }
 
-  /* TYPE COLOURS */
-  .t-plane  { color:var(--blue);   background:var(--blue-lt);   }
-  .t-train  { color:var(--blue);   background:var(--blue-lt);   }
-  .t-hoka   { color:var(--amber);  background:var(--amber-lt);  }
-  .t-shop   { color:var(--purple); background:var(--purple-lt); }
-  .t-food   { color:var(--green);  background:var(--green-lt);  }
-  .t-rest   { color:var(--slate);  background:var(--slate-lt);  }
-  .t-return { color:var(--teal);   background:var(--teal-lt);   }
-  .t-book   { color:var(--red);    background:var(--red-lt);    }
-  .t-usj    { color:var(--orange); background:var(--orange-lt); }
-  .t-sight  { color:#1A6A3A;       background:#E6F7EC;          }
-  .t-tbd    { color:#7A5800; background:#FFF3C4; border:1px dashed #D9A400; margin-left:4px; }
-
-  .dot-plane  { color:var(--blue);   }
-  .dot-train  { color:var(--blue);   }
-  .dot-hoka   { color:var(--amber);  }
-  .dot-shop   { color:var(--purple); }
-  .dot-food   { color:var(--green);  }
-  .dot-rest   { color:var(--slate);  }
-  .dot-return { color:var(--teal);   }
-  .dot-book   { color:var(--red);    }
-  .dot-usj    { color:var(--orange); }
-  .dot-sight  { color:#1A6A3A;       }
-
-  .s-plane  { border-left:4px solid var(--blue);   }
-  .s-train  { border-left:4px solid var(--blue);   }
-  .s-hoka   { border-left:4px solid var(--amber);  }
-  .s-shop   { border-left:4px solid var(--purple); }
-  .s-food   { border-left:4px solid var(--green);  }
-  .s-rest   { border-left:4px solid var(--slate);  }
-  .s-return { border-left:4px solid var(--teal);   }
-  .s-book   { border-left:4px solid var(--red);    }
-  .s-usj    { border-left:4px solid var(--orange); }
-  .s-sight  { border-left:4px solid #1A6A3A;       }
-
-  /* HEADER COLOURS */
-  .hd1 { background: #1E3A5F; }
-  .hd2 { background: #7A1A1A; }
-  .hd3 { background: #1A4A28; }
-  .hd4 { background: #3A2A70; }
-  .hd5 { background: #7A3A00; }
-  .hd6 { background: #003A5F; }
-  .hd7 { background: #2A3A1A; }
-
-  /* FOOTER */
-  .footer { margin-top: 28px; text-align: center; font-size: 12px; color: var(--ink3); }
-  .footer strong { color: var(--ink2); }
-
-  /* RWD */
-  @media (max-width: 600px) {
-    .tab-nav { justify-content: flex-start; }
-    .tab-btn { padding: 11px 13px; font-size: 12px; }
-    .tab-btn .sub { font-size: 10px; }
-    .header { padding: 24px 20px 22px; }
-    .header-meta { gap: 12px; margin-bottom: 10px; }
-    .day-badge { width: 44px; height: 44px; font-size: 16px; }
-    .header-date { font-size: 12px; }
-    .header h1 { font-size: 17px; }
-    .header-route { font-size: 11.5px; }
-    .deadline-banner { margin: 16px 14px 0; padding: 12px 14px; }
-    .deadline-banner h3 { font-size: 10.5px; }
-    .dl-row { font-size: 12px; }
-    .timeline { padding: 0 14px; }
-    .timeline::before { left: calc(14px + 62px + 6px); }
-    .entry { grid-template-columns: 62px 14px 1fr; gap: 0 10px; padding-top: 12px; }
-    .time-col { padding-top: 12px; }
-    .time-start { font-size: 12px; }
-    .time-end   { font-size: 11px; }
-    .time-arrow { font-size: 9px; }
-    .dot { width: 10px; height: 10px; }
-    .dot-col { padding-top: 15px; }
-    .card { border-radius: 10px; margin-bottom: 8px; }
-    .card-inner { padding: 11px 13px 13px; }
-    .tag { font-size: 10px; padding: 2px 8px; margin-bottom: 5px; }
-    .card-title { font-size: 14px; margin-bottom: 4px; }
-    .card-desc  { font-size: 12px; line-height: 1.7; }
-    .card-note  { font-size: 11.5px; padding: 8px 11px; margin-top: 8px; }
-    .card-sched { font-size: 11.5px; padding: 8px 11px; margin-top: 8px; }
-    .source-note { margin: 14px 14px 0; font-size: 11.5px; }
-    .page-inner { padding-bottom: 40px; }
-    .footer { font-size: 11px; margin-top: 20px; }
-  }
-  @media (max-width: 380px) {
-    .tab-btn { padding: 10px 10px; font-size: 11px; }
-    .header h1 { font-size: 15px; }
-    .entry { grid-template-columns: 54px 12px 1fr; gap: 0 8px; }
-    .timeline::before { left: calc(14px + 54px + 6px); }
-    .time-start { font-size: 11px; }
-    .card-title { font-size: 13px; }
+  @media (min-width: 640px) {
+    .hero h1 { font-size: 36px; }
+    .flights, .stays, .cost-receive-grid { grid-template-columns: 1fr 1fr; }
+    .day-head { grid-template-columns: 1fr 100px; padding: 18px 22px; }
+    .day-head svg { width: 100px; height: 100px; }
+    .daybar { justify-content: space-between; }
+    .daybtn { flex: 1 1 0; min-width: 0; }
   }
 </style>
 </head>
 <body>
 
-<nav class="tab-nav">
-  <button class="tab-btn active" onclick="showDay(1,this)">D1<span class="sub">12/27 週日</span></button>
-  <button class="tab-btn" onclick="showDay(2,this)">D2<span class="sub">12/28 週一</span></button>
-  <button class="tab-btn" onclick="showDay(3,this)">D3<span class="sub">12/29 週二</span></button>
-  <button class="tab-btn" onclick="showDay(4,this)">D4<span class="sub">12/30 週三</span></button>
-  <button class="tab-btn" onclick="showDay(5,this)">D5<span class="sub">12/31 週四</span></button>
-  <button class="tab-btn" onclick="showDay(6,this)">D6<span class="sub">1/1 週五</span></button>
-  <button class="tab-btn" onclick="showDay(7,this)">D7<span class="sub">1/2 週六</span></button>
+<nav class="topnav" aria-label="主選單">
+  <ul>
+    <li><a href="#home" class="on">首頁</a></li>
+    <li><a href="#flight">航班</a></li>
+    <li><a href="#days">行程</a></li>
+    <li><a href="#todo">待辦</a></li>
+    <li><a href="#stay">住宿</a></li>
+    <li><a href="#cost">費用</a></li>
+  </ul>
 </nav>
 
+<main class="wrap">
 
-<!-- ═══════════ DAY 1 ═══════════ -->
-<div class="day-page active" id="day1"><div class="page-inner">
-  <div class="header hd1">
-    <div class="header-meta"><div class="day-badge">D1</div><div><div class="header-date">2026 年 12 月 27 日（週日）</div></div></div>
-    <h1>抵達日・Alpen Osaka・京都塔周邊</h1>
-    <div class="header-route">台北 <span>→</span> 關西機場 <span>→</span> 大阪梅田（買鞋）<span>→</span> 京都駅（京都塔周邊）</div>
-  </div>
-  <div class="deadline-banner">
-    <h3>住宿資訊</h3>
-    <div class="dl-row"><span class="dl-dot">●</span><span><strong>京都（D1 入住 – D4 退房）</strong>：〒601-8004 京都府京都市南区東九条東山王町5 美山荘<br>京都駅（八條東口）步行約 6 min；烏丸線九条駅步行約 5 min</span></div>
-    <div class="dl-row"><span class="dl-dot">●</span><span><strong>大阪（D4 入住 – D7 退房）</strong>：〒554-0012 大阪府大阪市此花区西九条1-6-13（1-6-13 Nishikujō, Konohana-ku）<br>JR 西九條駅步行約 3 min</span></div>
-  </div>
-  <div class="source-note">交通班次依 Yahoo!乗換案内 查詢（2026/10/24 查詢，JR 為 2026/11 時刻表），每段附「Yahoo 查證」連結。12/28～12/31 各段已另以土休日ダイヤ比對，僅 D2、D3 早上 JR 各差 2～3 分鐘（已列於班次備註）。年末年始正式ダイヤ通常 12 月中旬公布，出發前一週請再確認一次。步行時間為估計值。</div>
-  <div class="timeline">
-    <div class="entry">
-      <div class="time-col"><div class="time-start">08:05</div><span class="time-arrow">↓</span><div class="time-end">11:35</div></div>
-      <div class="dot-col"><div class="dot dot-plane"></div></div>
-      <div class="card s-plane"><div class="card-inner">
-        <span class="tag t-plane">飛機</span>
-        <div class="card-title">台北 → 關西機場</div>
-        <div class="card-desc">直飛班機，飛行約 3h 30m。11:35 落地後辦理入境 + 提領行李（約 45 min）</div>
-        <div class="card-sched"><b>班次備註</b><br>航班時間已與使用者確認：08:05 起飛 → 11:35 抵達</div>
-      </div></div>
+  <section id="home" class="block hero">
+    <div class="hero-art">
+      <svg viewBox="0 0 360 250" role="img" aria-label="京都的五重塔、鳥居與京都塔，前方有電車經過，天上有太陽、雲朵和飛機">
+        <rect width="360" height="250" fill="#A8D3E6"/>
+        <g class="a-spin">
+          <g class="o" fill="none">
+            <path d="M46 8v9M46 75v9M4 46h9M79 46h9M16 16l6 6M70 70l6 6M76 16l-6 6M22 70l-6 6"/>
+          </g>
+        </g>
+        <circle class="o" cx="46" cy="46" r="23" fill="#F6D27A"/>
+        <g class="a-drift slow"><path class="o" d="M120 62a13 13 0 0 1 15-18 18 18 0 0 1 33 3 12 12 0 0 1 4 15z" fill="#FFFCF6"/></g>
+        <g class="a-drift"><path class="o" d="M232 92a10 10 0 0 1 12-14 14 14 0 0 1 26 2 10 10 0 0 1 3 12z" fill="#FFFCF6"/></g>
+        <g class="a-bob">
+          <path class="o" d="M262 44l50-18q13-4 15 3 1 6-10 10l-45 20z" fill="#FFFCF6"/>
+          <path class="o" d="M288 34l-12-17h9l19 12z" fill="#F2A497"/>
+          <path class="o" d="M292 48l-5 15h9l13-21z" fill="#F2A497"/>
+        </g>
+        <path class="o" d="M-4 176L62 112l52 56 72-74 88 76 52-44 40 40v90H-4z" fill="#B9DAA5"/>
+        <path class="o" d="M-4 196q92-22 184-6t184-8v74H-4z" fill="#FFFCF6"/>
+        <path class="o" d="M95 80V66" fill="none"/>
+        <circle class="o" cx="95" cy="63" r="4" fill="#F6D27A"/>
+        <rect class="o" x="89" y="90" width="12" height="12" fill="#FFFCF6"/>
+        <rect class="o" x="83" y="112" width="24" height="12" fill="#FFFCF6"/>
+        <rect class="o" x="77" y="134" width="36" height="12" fill="#FFFCF6"/>
+        <rect class="o" x="71" y="156" width="48" height="12" fill="#FFFCF6"/>
+        <rect class="o" x="65" y="178" width="60" height="14" fill="#FFFCF6"/>
+        <path class="o" d="M75 90q8-2 12-10h16q4 8 12 10z" fill="#F2A497"/>
+        <path class="o" d="M69 112q8-2 12-10h28q4 8 12 10z" fill="#F2A497"/>
+        <path class="o" d="M63 134q8-2 12-10h40q4 8 12 10z" fill="#F2A497"/>
+        <path class="o" d="M57 156q8-2 12-10h52q4 8 12 10z" fill="#F2A497"/>
+        <path class="o" d="M51 178q8-2 12-10h64q4 8 12 10z" fill="#F2A497"/>
+        <path class="o" d="M185 134v58M227 134v58" fill="none"/>
+        <rect class="o" x="178" y="146" width="56" height="8" fill="#F2A497"/>
+        <path class="o" d="M168 122q38 9 76 0l-3 12q-35 7-70 0z" fill="#F2A497"/>
+        <path class="o" d="M292 190l5-74h8l5 74z" fill="#FFFCF6"/>
+        <ellipse class="o" cx="301" cy="112" rx="17" ry="8" fill="#F2A497"/>
+        <path class="o" d="M301 104V74" fill="none"/>
+        <path class="o" d="M-4 236h368" fill="none"/>
+        <g class="a-rock">
+          <path class="o" d="M106 230v-20q0-8 8-8h92q26 2 38 26v2z" fill="#F6D27A"/>
+          <rect class="o" x="120" y="209" width="20" height="11" rx="3" fill="#A8D3E6"/>
+          <rect class="o" x="150" y="209" width="20" height="11" rx="3" fill="#A8D3E6"/>
+          <path class="o" d="M204 209h12q9 3 13 11h-25z" fill="#A8D3E6"/>
+          <circle class="o" cx="128" cy="232" r="5" fill="#FFFCF6"/>
+          <circle class="o" cx="212" cy="232" r="5" fill="#FFFCF6"/>
+        </g>
+      </svg>
     </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">12:44</div><span class="time-arrow">↓</span><div class="time-end">13:31</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">關西機場 → 大阪駅（JR 特急 HARUKA 24 號・直通）</div>
-        <div class="card-desc">實際班次 12:44 発（關西機場始發）→ 13:31 着・47 分鐘・免轉乘<br>¥1,800／人（HARUKA 外國旅客優惠單程票「大阪・新大阪」版，原價 ¥2,380）<br>11:35 落地 + 入境約 45 min ≈ 12:20 出關，約 24 min 緩衝</div>
-        <div class="card-note">優惠票需出發前於 Klook / KKday / JR 西日本官網購買，日本當地售票機只賣原價。中途出站即失效，請買「大阪」版而非「京都」版。優惠票可搭自由席；年末旺季 5 人帶大行李，建議事先加訂指定席</div>
-        <div class="card-sched"><b>班次備註</b><br>備案①：入境延誤 → HARUKA 26 號 13:14 発 → 14:01 着大阪（購鞋時間相對縮短）<br>備案②：最省錢 → JR 關空快速 12:25 発 → 13:43 着（¥1,180）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E9%96%A2%E8%A5%BF%E7%A9%BA%E6%B8%AF&to=%E5%A4%A7%E9%98%AA&y=2026&m=12&d=27&hh=12&m1=2&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=1&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
+    <h1>2026–2027 京阪跨年行程</h1>
+    <p class="hero-sub">2026/12/27 – 2027/1/2・共 7 天・小羽、紫雨、Alvin、Jine、ㄍㄅ</p>
+    <div class="count" aria-live="off">
+      <span id="countLabel">距離出發還有</span>
+      <span class="count-big" id="countDays"></span>
+      <span id="countUnit">天</span>
+      <span class="count-rest" id="countRest"></span>
     </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">13:38</div><span class="time-arrow">↓</span><div class="time-end">15:38</div></div>
-      <div class="dot-col"><div class="dot dot-hoka"></div></div>
-      <div class="card s-hoka"><div class="card-inner">
-        <span class="tag t-hoka">HOKA</span>
-        <div class="card-title">Alpen Osaka 買鞋（HOKA 全程在此解決，2 小時）</div>
-        <div class="card-desc">大阪駅步行約 7 min 抵達。茶屋町 YANMAR FLYING-Y BUILDING B2F～4F・購鞋約 2 小時</div>
-        <div class="card-note">15:38 離店步行回大阪駅（約 7 min），搭 16:00 JR 新快速前往京都（15:45 班次無緩衝，不建議趕）。大行李需隨身，可詢問店家是否能暫放櫃檯</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">16:00</div><span class="time-arrow">↓</span><div class="time-end">16:29</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">大阪 → 京都駅（JR 新快速）</div>
-        <div class="card-desc">¥580・實際班次 16:00 発 → 16:29 着・29 分鐘</div>
-        <div class="card-sched"><b>班次備註</b><br>前 1 班：15:45 発（16:14 着，離店後無緩衝）<br>慢車：15:53 発 快速（16:35 着）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E5%A4%A7%E9%98%AA&to=%E4%BA%AC%E9%83%BD&y=2026&m=12&d=27&hh=15&m1=4&m2=3&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">16:29</div><span class="time-arrow">↓</span><div class="time-end">16:45</div></div>
-      <div class="dot-col"><div class="dot dot-rest"></div></div>
-      <div class="card s-rest"><div class="card-inner">
-        <span class="tag t-rest">寄放行李</span>
-        <div class="card-title">京都駅置物櫃寄放行李</div>
-        <div class="card-desc">置物櫃可使用至 23:00</div>
-        <div class="card-note">年末傍晚置物櫃易滿，找不到可改用京都駅手荷物預かり所；或步行 6 min 回美山荘寄放（來回約多 20 min）</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">16:45</div><span class="time-arrow">↓</span><div class="time-end">17:30</div></div>
-      <div class="dot-col"><div class="dot dot-sight"></div></div>
-      <div class="card s-sight"><div class="card-inner">
-        <span class="tag t-sight">景點</span>
-        <div class="card-title">京都塔展望室</div>
-        <div class="card-desc">京都駅正對面步行即達。日落約 16:50，夕陽 + 夜景一次看</div>
-        <div class="card-note">門票約 ¥900，票價與營業時間請出發前確認</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">17:30</div><span class="time-arrow">↓</span><div class="time-end">18:15</div></div>
-      <div class="dot-col"><div class="dot dot-shop"></div></div>
-      <div class="card s-shop"><div class="card-inner">
-        <span class="tag t-shop">購物</span>
-        <div class="card-title">京都塔 SANDO</div>
-        <div class="card-desc">B1 美食街・1F 伴手禮</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">18:15</div><span class="time-arrow">↓</span><div class="time-end">18:50</div></div>
-      <div class="dot-col"><div class="dot dot-sight"></div></div>
-      <div class="card s-sight"><div class="card-inner">
-        <span class="tag t-sight">散策</span>
-        <div class="card-title">京都駅大階段・空中徑路</div>
-        <div class="card-desc">免費，京都駅建築夜景</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">19:00</div><span class="time-arrow">↓</span><div class="time-end">20:30</div></div>
-      <div class="dot-col"><div class="dot dot-food"></div></div>
-      <div class="card s-food"><div class="card-inner">
-        <span class="tag t-food">晚餐</span><span class="tag t-tbd">待確認</span>
-        <div class="card-title">待確認</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">20:30</div><span class="time-arrow">↓</span><div class="time-end">20:45</div></div>
-      <div class="dot-col"><div class="dot dot-return"></div></div>
-      <div class="card s-return"><div class="card-inner">
-        <span class="tag t-return">返程</span>
-        <div class="card-title">京都駅取行李 → 步行回飯店</div>
-        <div class="card-desc">置物櫃取行李後，八條東口步行約 6 min 至飯店（南区東九条東山王町5 美山荘），免搭地鐵</div>
-      </div></div>
-    </div>
-  </div>
-  <div class="footer"><strong>2026–2027 京阪跨年行程</strong>　D1 / 7</div>
-</div></div>
+  </section>
 
-<!-- ═══════════ DAY 2 ═══════════ -->
-<div class="day-page" id="day2"><div class="page-inner">
-  <div class="header hd2">
-    <div class="header-meta"><div class="day-badge">D2</div><div><div class="header-date">2026 年 12 月 28 日（週一）</div></div></div>
-    <h1>客美多早餐・宇治商圈散策・下鴨神社・Porta 逛街</h1>
-    <div class="header-route">飯店 <span>→</span> 京都駅（客美多早餐）<span>→</span> JR 宇治（平等院・宇治商圈・宇治上神社）<span>→</span> 京阪宇治 <span>→</span> 出町柳（下鴨神社）<span>→</span> 京都駅</div>
-  </div>
-  <div class="timeline">
-    <div class="entry">
-      <div class="time-col"><div class="time-start">07:50</div><span class="time-arrow">↓</span><div class="time-end">07:56</div></div>
-      <div class="dot-col"><div class="dot dot-rest"></div></div>
-      <div class="card s-rest"><div class="card-inner">
-        <span class="tag t-rest">出發</span>
-        <div class="card-title">飯店步行至京都駅</div>
-        <div class="card-desc">步行約 6 min（八條東口）</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">08:00</div><span class="time-arrow">↓</span><div class="time-end">09:00</div></div>
-      <div class="dot-col"><div class="dot dot-food"></div></div>
-      <div class="card s-food"><div class="card-inner">
-        <span class="tag t-food">早餐</span>
-        <div class="card-title">客美多咖啡 Morning Set（京都駅構內）</div>
-        <div class="card-desc">1 小時。飲料 + 免費吐司組合</div>
-        <div class="card-note">Morning Set 11:00 截止，08:00 入座完全充裕</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">09:10</div><span class="time-arrow">↓</span><div class="time-end">09:34</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">京都駅 → JR 宇治（JR 奈良線）</div>
-        <div class="card-desc">¥240・實際班次 09:10 発（京都始發）→ 09:34 着・24 min</div>
-        <div class="card-sched"><b>班次備註</b><br>後 2 班：09:22 発（09:46 着）、09:34 発 みやこ路快速（09:51 着）<br>若當天改行土休日ダイヤ：09:15 発 → 09:37 着（其餘行程不受影響）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E4%BA%AC%E9%83%BD&to=%E5%AE%87%E6%B2%BB%28JR%29&y=2026&m=12&d=28&hh=09&m1=0&m2=5&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">09:34</div><span class="time-arrow">↓</span><div class="time-end">13:45</div></div>
-      <div class="dot-col"><div class="dot dot-sight"></div></div>
-      <div class="card s-sight"><div class="card-inner">
-        <span class="tag t-sight">景點</span>
-        <div class="card-title">宇治商圈完整散策（含午餐，約 4 小時）</div>
-        <div class="card-desc">
-          <p>① 09:45 - 10:40　平等院（世界遺產）　JR 宇治駅步行約 10 min・約 55 min・¥700（庭園 + 鳳翔館；鳳凰堂內部 ¥300 選配）</p>
-          <p>② 10:40 - 11:00　平等院表參道茶屋街　抹茶芭菲・生茶ゼリー</p>
-          <p>③ 11:00 - 11:50　宇治橋通り商店街　抹茶伴手禮・老舖茶屋</p>
-          <p>④ 11:50 - 12:50　午餐 <span class="tag t-tbd">待確認</span></p>
-          <p>⑤ 12:50 - 13:15　宇治橋 & 宇治川沿い散策　朝霧橋・塔の島</p>
-          <p>⑥ 13:15 - 13:35　宇治上神社（世界遺產）　日本最古の神社建築 → 步行約 10 min 至京阪宇治駅</p>
+  <section id="flight" class="block">
+    <h2 class="sec-title">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle class="o" cx="24" cy="24" r="20" fill="#A8D3E6"/><path class="o" d="M11 28l21-10q6-2 7 1 0 3-4 5L17 33z" fill="#FFFCF6"/><path class="o" d="M23 23l-6-9h5l9 6z" fill="#F2A497"/></svg>
+      航班
+    </h2>
+    <div class="flights">
+      <article class="card ticket go">
+        <div class="ticket-head"><span>去程</span><span>2026/12/27（週日）</span></div>
+        <div class="ticket-body">
+          <div class="port"><div class="port-time">08:05</div><div class="port-name">台北</div></div>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><g class="a-bob"><path class="o" d="M6 28l27-11q8-3 9 1 0 4-6 7L13 35z" fill="#A8D3E6"/><path class="o" d="M21 22l-8-12h6l12 8z" fill="#F2A497"/></g></svg>
+          <div class="port right"><div class="port-time">11:35</div><div class="port-name">關西機場</div></div>
         </div>
-        <div class="card-note">早上人潮較少，平等院 08:30、宇治上神社 09:00 開門。鳳凰堂內部每梯 50 人先到先得（¥300），上午較好排</div>      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">13:53</div><span class="time-arrow">↓</span><div class="time-end">14:30</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">京阪宇治 → 出町柳（京阪宇治線 + 京阪本線）</div>
-        <div class="card-desc">京阪宇治線 13:53 発 → 14:09 中書島 → 京阪急行 14:13 発 → 14:30 着出町柳・¥460<br>出町柳駅步行 12 min 至下鴨神社</div>
-        <div class="card-sched"><b>班次備註</b>（皆於中書島轉京阪本線）<br>前 1 班：13:41 発（14:18 着，宇治上神社後緩衝不足）<br>後 1 班：14:05 発（14:42 着）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E5%AE%87%E6%B2%BB%28%E4%BA%AC%E9%98%AA%E7%B7%9A%29&to=%E5%87%BA%E7%94%BA%E6%9F%B3&y=2026&m=12&d=28&hh=13&m1=3&m2=5&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">14:45</div><span class="time-arrow">↓</span><div class="time-end">15:40</div></div>
-      <div class="dot-col"><div class="dot dot-sight"></div></div>
-      <div class="card s-sight"><div class="card-inner">
-        <span class="tag t-sight">景點</span>
-        <div class="card-title">下鴨神社 & 糺之森（世界遺產）</div>
-        <div class="card-desc">約 55 min</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">15:58</div><span class="time-arrow">↓</span><div class="time-end">16:25</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">出町柳 → 京都駅（京阪 + JR）</div>
-        <div class="card-desc">步行 12 min 至出町柳駅 → 京阪特急 15:58 発 → 16:00 三条 → 京阪準急 16:03 発 → 16:10 東福寺 → JR みやこ路快速 16:22 発 → 16:25 着京都・¥450</div>
-        <div class="card-sched"><b>班次備註</b><br>替代：同班京阪至三条 → 東西線 → 烏丸御池轉烏丸線 → 16:22 着京都（¥500）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E5%87%BA%E7%94%BA%E6%9F%B3&to=%E4%BA%AC%E9%83%BD&y=2026&m=12&d=28&hh=15&m1=5&m2=5&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">16:25</div><span class="time-arrow">↓</span><div class="time-end">19:30</div></div>
-      <div class="dot-col"><div class="dot dot-shop"></div></div>
-      <div class="card s-shop"><div class="card-inner">
-        <span class="tag t-shop">購物</span>
-        <div class="card-title">Porta 地下街 & Avanti（約 3 小時）</div>
-        <div class="card-desc">有體力再逛。日系男女裝 Pre-Sale，冬裝 5 折起</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">19:30</div><span class="time-arrow">↓</span><div class="time-end">21:30</div></div>
-      <div class="dot-col"><div class="dot dot-food"></div></div>
-      <div class="card s-food"><div class="card-inner">
-        <span class="tag t-food">晚餐</span><span class="tag t-tbd">待確認</span>
-        <div class="card-title">待確認</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">21:30</div><span class="time-arrow">↓</span><div class="time-end">21:36</div></div>
-      <div class="dot-col"><div class="dot dot-return"></div></div>
-      <div class="card s-return"><div class="card-inner">
-        <span class="tag t-return">返程</span>
-        <div class="card-title">步行回飯店</div>
-        <div class="card-desc">京都駅八條東口步行約 6 min 至飯店（南区東九条東山王町5 美山荘）</div>
-      </div></div>
-    </div>
-  </div>
-  <div class="footer"><strong>2026–2027 京阪跨年行程</strong>　D2 / 7</div>
-</div></div>
-
-<!-- ═══════════ DAY 3 ═══════════ -->
-<div class="day-page" id="day3"><div class="page-inner">
-  <div class="header hd3">
-    <div class="header-meta"><div class="day-badge">D3</div><div><div class="header-date">2026 年 12 月 29 日（週二）</div></div></div>
-    <h1>嵐山・廣川鰻魚飯・御金神社・四條河原町商圈・Sushi Roman</h1>
-    <div class="header-route">飯店 <span>→</span> 嵯峨嵐山 <span>→</span> 嵐電 + 東西線 <span>→</span> 烏丸御池（御金神社）<span>→</span> 四條河原町商圈 <span>→</span> Sushi Roman 晚餐 20:00</div>
-  </div>
-  <div class="deadline-banner">
-    <h3>本天預約提醒</h3>
-    <div class="dl-row"><span class="dl-dot">●</span><span>廣川鰻魚飯完全預約制，<strong>11/28 深夜 23:00 搶位</strong>。5 人拆 3+2 兩筆，各付保證金 ¥3,000/人（不可退），2 人需同時上線搶同一時段</span></div>
-    <div class="dl-row"><span class="dl-dot">●</span><span>Sushi Roman 年末旺季<strong>建議提前確認預約</strong></span></div>
-    <div class="dl-row"><span class="dl-dot">●</span><span>D3 起帰省ラッシュ開始，人潮明顯增加，建議越早出發越好</span></div>
-  </div>
-  <div class="timeline">
-    <div class="entry">
-      <div class="time-col"><div class="time-start">08:15</div><span class="time-arrow">↓</span><div class="time-end">08:46</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">飯店 → 京都駅 → 嵯峨嵐山（JR 嵯峨野線）</div>
-        <div class="card-desc">步行約 6 min 至京都駅（約 08:21）・¥240・實際班次 08:27 発（京都始發）→ 08:46 着・19 min</div>
-        <div class="card-sched"><b>班次備註</b>（JR 嵯峨野線 京都 → 嵯峨嵐山，平日）<br>後 2 班：08:40 発（08:57 着）、08:53 発（09:10 着）<br>若當天改行土休日ダイヤ：08:26 発 → 08:44 着（其餘行程不受影響）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E4%BA%AC%E9%83%BD&to=%E5%B5%AF%E5%B3%A8%E5%B5%90%E5%B1%B1&y=2026&m=12&d=29&hh=08&m1=2&m2=5&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">09:00</div><span class="time-arrow">↓</span><div class="time-end">11:45</div></div>
-      <div class="dot-col"><div class="dot dot-sight"></div></div>
-      <div class="card s-sight"><div class="card-inner">
-        <span class="tag t-sight">景點</span>
-        <div class="card-title">嵐山散策（約 165 min）</div>
-        <div class="card-desc">竹林小徑 → 天龍寺（世界遺產）→ 渡月橋</div>
-        <div class="card-note">D3 帰省ラッシュ開始，人潮多，越早出發越好</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">11:45</div><span class="time-arrow">↓</span><div class="time-end">13:15</div></div>
-      <div class="dot-col"><div class="dot dot-book"></div></div>
-      <div class="card s-book"><div class="card-inner">
-        <span class="tag t-book">完全預約制</span>
-        <div class="card-title">午餐 — 廣川鰻魚飯（米其林一星）</div>
-        <div class="card-desc">炭火鰻魚飯套餐約 ¥5,300 起</div>
-        <div class="card-note">11/28 深夜 23:00 搶位。5 人拆 3+2 兩筆，各付保證金 ¥3,000/人（不可退），2 人需同時上線搶同一時段</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">13:15</div><span class="time-arrow">↓</span><div class="time-end">14:08</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">嵐山 → 嵐電天神川（嵐電）→ 烏丸御池（地鐵東西線）</div>
-        <div class="card-desc">步行約 5 min 至嵐電「嵐山」站 → 嵐電 13:33 発 → 13:46 着嵐電天神川 → 步行至太秦天神川駅 → 東西線 14:00 発 → 14:08 着烏丸御池・¥510</div>
-        <div class="card-sched"><b>班次備註</b><br>前 1 班：嵐電 13:23 発（用餐結束後太趕，不建議）<br>替代：13:35 市巴士 85 號 → 太秦天神川轉東西線 → 14:15 着（巴士易誤點）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E5%B5%90%E5%B1%B1%28%E4%BA%AC%E7%A6%8F%E7%B7%9A%29&to=%E7%83%8F%E4%B8%B8%E5%BE%A1%E6%B1%A0&y=2026&m=12&d=29&hh=13&m1=3&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">14:13</div><span class="time-arrow">↓</span><div class="time-end">14:50</div></div>
-      <div class="dot-col"><div class="dot dot-sight"></div></div>
-      <div class="card s-sight"><div class="card-inner">
-        <span class="tag t-sight">景點</span>
-        <div class="card-title">御金神社「洗錢參拜」</div>
-        <div class="card-desc">烏丸御池駅步行 5 min，約 40 min</div>
-        <div class="card-note">年末人潮多，排隊太久可壓縮後段寺町通時間</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">14:58</div><span class="time-arrow">↓</span><div class="time-end">15:00</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">烏丸御池 → 四條（地鐵烏丸線）</div>
-        <div class="card-desc">¥220・實際班次 14:58 発 → 15:00 着・四條站步行 3 min 至錦市場入口</div>
-        <div class="card-sched"><b>班次備註</b><br>前 1 班：14:51 発（14:52 着）｜後 1 班：15:06 発（15:07 着）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E7%83%8F%E4%B8%B8%E5%BE%A1%E6%B1%A0&to=%E5%9B%9B%E6%9D%A1%28%E4%BA%AC%E9%83%BD%E5%B8%82%E5%96%B6%29&y=2026&m=12&d=29&hh=14&m1=4&m2=5&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">15:05</div><span class="time-arrow">↓</span><div class="time-end">20:00</div></div>
-      <div class="dot-col"><div class="dot dot-shop"></div></div>
-      <div class="card s-shop"><div class="card-inner">
-        <span class="tag t-shop">商圈</span>
-        <div class="card-title">四條河原町商圈（約 4 小時 55 min）</div>
-        <div class="card-desc">
-          <p>① 錦市場小吃　約 60 min　三木雞卵（玉子燒）・魚力（海鰻天婦羅）・こんなもんじゃ（豆乳甜甜圈）</p>
-          <p>② 京都寶可夢中心　約 60 min　高島屋 T8 4F，生肖限定款・跨年限定商品</p>
-          <p>③ 河原町 / 高島屋 / OPA 百貨　約 80 min　服飾潮流，憑護照領 Hello Kitty 5% Coupon</p>
-          <p>④ 寺町通　約 60 min　京都在地雜貨・文具小店</p>
-          <p>⑤ 新京極通　約 25 min　伴手禮・紀念品（結束後步行約 10 min 至 Sushi Roman）</p>
+      </article>
+      <article class="card ticket back">
+        <div class="ticket-head"><span>回程</span><span>2027/1/2（週六）</span></div>
+        <div class="ticket-body">
+          <div class="port"><div class="port-time">19:00</div><div class="port-name">關西機場</div></div>
+          <svg viewBox="0 0 48 48" aria-hidden="true"><g class="a-bob"><path class="o" d="M6 28l27-11q8-3 9 1 0 4-6 7L13 35z" fill="#F2A497"/><path class="o" d="M21 22l-8-12h6l12 8z" fill="#A8D3E6"/></g></svg>
+          <div class="port right"><div class="port-time">返台</div><div class="port-name">台北</div></div>
         </div>
-        <div class="card-note">錦市場禁止邊走邊吃，備現金（部分店家不收刷卡）。店家約 17:00 開始關門，排第一站</div>
-      </div></div>
+      </article>
     </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">20:00</div><span class="time-arrow">↓</span><div class="time-end">21:30</div></div>
-      <div class="dot-col"><div class="dot dot-food"></div></div>
-      <div class="card s-food"><div class="card-inner">
-        <span class="tag t-food">晚餐</span>
-        <div class="card-title">Sushi Roman（爐端燒居酒屋 + 壽司）</div>
-        <div class="card-desc">中京区貝屋町 562-2・評分 4.4・20:00 入座</div>
-        <div class="card-note">座位費 ¥300・每人須點一杯飲料。年末旺季建議提前確認預約，並確認週二營業時間與最後點餐時間</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">21:30</div><span class="time-arrow">↓</span><div class="time-end">21:55</div></div>
-      <div class="dot-col"><div class="dot dot-return"></div></div>
-      <div class="card s-return"><div class="card-inner">
-        <span class="tag t-return">返程</span>
-        <div class="card-title">地鐵四條 → 京都駅 → 步行回飯店</div>
-        <div class="card-desc">步行 5～10 min 至地鐵四條站 → 烏丸線 21:45 発 → 21:49 着京都駅（¥220）→ 步行約 6 min 至飯店（南区東九条東山王町5 美山荘）</div>
-        <div class="card-sched"><b>班次備註</b><br>後 1 班：21:56 発（22:00 着）<br>太累可改搭計程車：5 人需 2 台<br><a href="https://transit.yahoo.co.jp/search/result?from=%E5%9B%9B%E6%9D%A1%28%E4%BA%AC%E9%83%BD%E5%B8%82%E5%96%B6%29&to=%E4%BA%AC%E9%83%BD&y=2026&m=12&d=29&hh=21&m1=4&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
-    </div>
-  </div>
-  <div class="footer"><strong>2026–2027 京阪跨年行程</strong>　D3 / 7</div>
-</div></div>
+  </section>
 
-<!-- ═══════════ DAY 4 ═══════════ -->
-<div class="day-page" id="day4"><div class="page-inner">
-  <div class="header hd4">
-    <div class="header-meta"><div class="day-badge">D4</div><div><div class="header-date">2026 年 12 月 30 日（週三）— 退房日</div></div></div>
-    <h1>退房・提早移動大阪・敘敘苑午餐・難波 + 心齋橋血拼</h1>
-    <div class="header-route">退房 <span>→</span> 京都駅 <span>→</span> 大阪駅 <span>→</span> 西九條（寄放行李）<span>→</span> 難波 / 心齋橋 <span>→</span> 西九條 Check-in</div>
-  </div>
-  <div class="deadline-banner">
-    <h3>本天注意</h3>
-    <div class="dl-row"><span class="dl-dot">●</span><span>D4 帰省ラッシュピーク，帶行李搭車請<strong>分散上車</strong>，避開巴士</span></div>
-    <div class="dl-row"><span class="dl-dot">●</span><span>12/31 難波的大型商場（なんばマルイ、NAMBA Parks、なんばシティ）去年休業，<strong>難波 + 心齋橋購物排在 12/30</strong></span></div>
-    <div class="dl-row"><span class="dl-dot">●</span><span>敘敘苑 なんば髙島屋店<strong>預約日期為 12/30</strong>（原 12/31 請改期）</span></div>
-    <div class="dl-row"><span class="dl-dot">●</span><span>新免稅制度（2026/11 起）：購物直接結帳，<strong>退稅統一在關西機場辦理</strong></span></div>
-  </div>
-  <div class="timeline">
-    <div class="entry">
-      <div class="time-col"><div class="time-start">08:45</div><span class="time-arrow">↓</span><div class="time-end">08:51</div></div>
-      <div class="dot-col"><div class="dot dot-rest"></div></div>
-      <div class="card s-rest"><div class="card-inner">
-        <span class="tag t-rest">退房</span>
-        <div class="card-title">退房 → 帶行李步行至京都駅</div>
-        <div class="card-desc">美山荘退房，步行約 6 min 至京都駅</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">09:00</div><span class="time-arrow">↓</span><div class="time-end">09:28</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">京都駅 → 大阪駅（JR 新快速）</div>
-        <div class="card-desc">¥580・實際班次 09:00 発 → 09:28 着・28 min</div>
-        <div class="card-sched"><b>班次備註</b><br>後 1 班：09:14 発 新快速（09:43 着）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E4%BA%AC%E9%83%BD&to=%E5%A4%A7%E9%98%AA&y=2026&m=12&d=30&hh=08&m1=5&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">09:34</div><span class="time-arrow">↓</span><div class="time-end">09:40</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">大阪駅 → 西九條（JR 環狀線）→ 飯店寄放行李</div>
-        <div class="card-desc">¥180・實際班次 09:34 発 → 09:40 着・步行約 3 min 至飯店（大阪市此花区西九条1-6-13），櫃檯寄放行李</div>
-        <div class="card-sched"><b>班次備註</b><br>前 1 班：09:30 発（09:35 着，轉乘僅 2 min）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E5%A4%A7%E9%98%AA&to=%E8%A5%BF%E4%B9%9D%E6%9D%A1&y=2026&m=12&d=30&hh=09&m1=3&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">10:01</div><span class="time-arrow">↓</span><div class="time-end">10:11</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">西九條 → 大阪難波（阪神なんば線 區間準急）</div>
-        <div class="card-desc">約 09:55 離開飯店，步行約 3 min 至西九條駅 → ¥220・實際班次 10:01 発 → 10:11 着・約 10 min</div>
-        <div class="card-sched"><b>班次備註</b><br>前 1 班：09:52 発（10:01 着，寄放行李後較趕）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E8%A5%BF%E4%B9%9D%E6%9D%A1&to=%E5%A4%A7%E9%98%AA%E9%9B%A3%E6%B3%A2&y=2026&m=12&d=30&hh=09&m1=5&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">10:11</div><span class="time-arrow">↓</span><div class="time-end">11:00</div></div>
-      <div class="dot-col"><div class="dot dot-shop"></div></div>
-      <div class="card s-shop"><div class="card-inner">
-        <span class="tag t-shop">購物</span>
-        <div class="card-title">難波商圈逛街（約 49 min）</div>
-        <div class="card-desc">高島屋・大丸等 10:00 已開門，先行掃貨暖身</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">11:00</div><span class="time-arrow">↓</span><div class="time-end">12:30</div></div>
-      <div class="dot-col"><div class="dot dot-food"></div></div>
-      <div class="card s-food"><div class="card-inner">
-        <span class="tag t-food">午餐</span>
-        <div class="card-title">敘敘苑 なんば髙島屋店（焼肉）</div>
-        <div class="card-desc">高島屋大阪店 なんばダイニングメゾン 9F・南海なんば駅直結・電話 06-6536-8389<br>11:00 開店即入座</div>
-        <div class="card-note">預約日期為 12/30（原 12/31 請改期）。年末旺季建議提前電話預約，5 人用餐建議訂包廂席</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">12:30</div><span class="time-arrow">↓</span><div class="time-end">18:00</div></div>
-      <div class="dot-col"><div class="dot dot-shop"></div></div>
-      <div class="card s-shop"><div class="card-inner">
-        <span class="tag t-shop">購物</span>
-        <div class="card-title">難波 + 心齋橋商圈血拼（約 5.5 小時）</div>
-        <div class="card-desc">日系服飾、潮流鞋靴全力衝刺。12/30 百貨正常營業（高島屋 3F～7F 去年 12/30 營業到 19:00、地下 1F 到 20:00）</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">18:00</div><span class="time-arrow">↓</span><div class="time-end">19:30</div></div>
-      <div class="dot-col"><div class="dot dot-food"></div></div>
-      <div class="card s-food"><div class="card-inner">
-        <span class="tag t-food">晚餐</span><span class="tag t-tbd">待確認</span>
-        <div class="card-title">待確認</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">19:36</div><span class="time-arrow">↓</span><div class="time-end">19:44</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">大阪難波 → 西九條 Check-in（阪神なんば線 快速急行）</div>
-        <div class="card-desc">¥220・實際班次 19:36 発 → 19:44 着・8 min。步行約 3 min 至飯店，約 19:47 Check-in</div>
-        <div class="card-sched"><b>班次備註</b><br>後 1 班：19:42 発（19:50 着）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E5%A4%A7%E9%98%AA%E9%9B%A3%E6%B3%A2&to=%E8%A5%BF%E4%B9%9D%E6%9D%A1&y=2026&m=12&d=30&hh=19&m1=3&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
-    </div>
-  </div>
-  <div class="footer"><strong>2026–2027 京阪跨年行程</strong>　D4 / 7</div>
-</div></div>
+  <section id="days" class="block">
+    <h2 class="sec-title">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path class="o" d="M8 42V24l16-16 16 16v18z" fill="#F2A497"/><path class="o" d="M18 42V30h12v12z" fill="#FFFCF6"/><path class="o" d="M3 26L24 5l21 21" fill="none"/></svg>
+      每日行程
+    </h2>
+    <div class="daybar" role="tablist" aria-label="切換日期" id="dayBar"></div>
+    <div class="day-panel" id="dayPanel" role="tabpanel" tabindex="-1"></div>
+    <p class="source-note">交通班次依 Yahoo!乗換案内 查詢（2026/10/24 查詢，JR 為 2026/11 時刻表），每段附「Yahoo 查證」連結。12/28～12/31 各段已另以土休日ダイヤ比對，僅 D2、D3 早上 JR 各差 2～3 分鐘（已列於班次備註）。年末年始正式ダイヤ通常 12 月中旬公布，出發前一週請再確認一次。步行時間為估計值。</p>
+  </section>
 
-<!-- ═══════════ DAY 5 ═══════════ -->
-<div class="day-page" id="day5"><div class="page-inner">
-  <div class="header hd5">
-    <div class="header-meta"><div class="day-badge">D5</div><div><div class="header-date">2026 年 12 月 31 日（週四）大晦日</div></div></div>
-    <h1>梅田購物・USJ 跨年通宵</h1>
-    <div class="header-route">西九條 <span>→</span> 大阪梅田 <span>→</span> 西九條 <span>→</span> USJ（通宵）</div>
-  </div>
-  <div class="deadline-banner">
-    <h3>本天注意</h3>
-    <div class="dl-row"><span class="dl-dot">●</span><span>大晦日百貨去年約 <strong>18:00 提早關門</strong>（2026 年正式公告尚未發布）。新免稅制度（2026/11 起）：購物直接結帳，<strong>退稅統一在關西機場辦理</strong></span></div>
-    <div class="dl-row"><span class="dl-dot">●</span><span>USJ 快速通關 <strong>9/28 深夜 23:00 開搶</strong>，一般門票 <strong>10/1 起開賣</strong>。非實名制，1 人可代購 5 張</span></div>
-    <div class="dl-row"><span class="dl-dot">●</span><span>12/31 19:00 起入園需持<strong>「パーティ・パス」</strong>（一般票只能待到 17:00，17:00 - 19:00 園區關閉）</span></div>
-  </div>
-  <div class="timeline">
-    <div class="entry">
-      <div class="time-col"><div class="time-start">10:15</div><span class="time-arrow">↓</span><div class="time-end">10:20</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">西九條 → 大阪駅（JR 環狀線）</div>
-        <div class="card-desc">約 10:12 離開飯店，步行約 3 min 至西九條駅 → ¥180・實際班次 10:15 発 → 10:20 着・5 min</div>
-        <div class="card-sched"><b>班次備註</b><br>前 1 班：10:11 発（10:16 着）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E8%A5%BF%E4%B9%9D%E6%9D%A1&to=%E5%A4%A7%E9%98%AA&y=2026&m=12&d=31&hh=10&m1=1&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
+  <section id="todo" class="block">
+    <h2 class="sec-title">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path class="o" d="M7 16L24 7l17 9v25H7z" fill="#F6D27A"/><path class="o" d="M16 26l6 6 11-12" fill="none"/></svg>
+      待辦清單
+    </h2>
+    <div class="todo-progress">
+      <span id="todoCount"></span>
+      <div class="todo-bar"><i id="todoFill"></i></div>
     </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">10:30</div><span class="time-arrow">↓</span><div class="time-end">12:00</div></div>
-      <div class="dot-col"><div class="dot dot-shop"></div></div>
-      <div class="card s-shop"><div class="card-inner">
-        <span class="tag t-shop">購物</span>
-        <div class="card-title">梅田商圈購物</div>
-        <div class="card-desc">LUCUA / Grand Front 等，12/30 起 Winter Sale。大晦日營業時間（去年）：阪急うめだ、阪神梅田、大丸梅田 10:00～18:00；LUCUA 10:30～18:00；Grand Front 11:00～18:00</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">12:00</div><span class="time-arrow">↓</span><div class="time-end">13:30</div></div>
-      <div class="dot-col"><div class="dot dot-food"></div></div>
-      <div class="card s-food"><div class="card-inner">
-        <span class="tag t-food">午餐</span><span class="tag t-tbd">待確認</span>
-        <div class="card-title">待確認</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">13:30</div><span class="time-arrow">↓</span><div class="time-end">16:20</div></div>
-      <div class="dot-col"><div class="dot dot-shop"></div></div>
-      <div class="card s-shop"><div class="card-inner">
-        <span class="tag t-shop">購物</span>
-        <div class="card-title">梅田商圈購物（續，約 2 小時 50 min）</div>
-        <div class="card-desc">日系服飾、潮流鞋靴。16:20 準時離開</div>
-        <div class="card-note">新免稅制度（2026/11 起）：購物直接結帳，退稅統一在關西機場辦理</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">16:30</div><span class="time-arrow">↓</span><div class="time-end">16:35</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">大阪駅 → 西九條（JR 環狀線）</div>
-        <div class="card-desc">¥180・實際班次 16:30 発 → 16:35 着・5 min</div>
-        <div class="card-sched"><b>班次備註</b><br>後 1 班：16:34 発（16:40 着）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E5%A4%A7%E9%98%AA&to=%E8%A5%BF%E4%B9%9D%E6%9D%A1&y=2026&m=12&d=31&hh=16&m1=3&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">16:38</div><span class="time-arrow">↓</span><div class="time-end">19:20</div></div>
-      <div class="dot-col"><div class="dot dot-rest"></div></div>
-      <div class="card s-rest"><div class="card-inner">
-        <span class="tag t-rest">休息</span>
-        <div class="card-title">飯店補眠 & 換防寒衣物（約 2 小時 40 min）</div>
-        <div class="card-desc">西九條駅步行約 3 min 回飯店，放下戰利品、補眠，準備通宵 USJ</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">19:27</div><span class="time-arrow">↓</span><div class="time-end">19:32</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">西九條 → ユニバーサルシティ（JR ゆめ咲線）</div>
-        <div class="card-desc">19:20 離開飯店，步行約 3 min 至西九條駅 → ¥180・實際班次 19:27 発（西九條始發）→ 19:32 着・5 min</div>
-        <div class="card-sched"><b>班次備註</b><br>後 2 班：19:36 発（19:41 着）、19:42 発（19:47 着）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E8%A5%BF%E4%B9%9D%E6%9D%A1&to=%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E3%82%B7%E3%83%86%E3%82%A3&y=2026&m=12&d=31&hh=19&m1=2&m2=5&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">19:32</div><span class="time-arrow">↓</span><div class="time-end">21:00</div></div>
-      <div class="dot-col"><div class="dot dot-food"></div></div>
-      <div class="card s-food"><div class="card-inner">
-        <span class="tag t-food">晚餐</span>
-        <div class="card-title">Universal Citywalk 晚餐</div>
-        <div class="card-desc">章魚燒博物館 / Hard Rock Cafe，高熱量補充抗寒</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">21:00</div><span class="time-arrow">↓</span><div class="time-end">翌日</div></div>
-      <div class="dot-col"><div class="dot dot-usj"></div></div>
-      <div class="card s-usj"><div class="card-inner">
-        <span class="tag t-usj">USJ 通宵</span>
-        <div class="card-title">環球影城跨年通宵</div>
-        <div class="card-desc">超級任天堂世界・哈利波特魔法世界・咚奇剛國度</div>
-        <div class="card-sched"><b>入場提醒</b><br>12/31 19:00 起入場需持「パーティ・パス」（12/31 一般票只能待到 17:00，17:00 - 19:00 園區關閉；依 2026-09 報導，票價與販售日請至 USJ 官網確認）</div>
-        <div class="card-note">9/28 深夜 23:00 搶快速通關。10/1 起一般門票開賣。非實名制，1 人可代購 5 張</div>
-      </div></div>
-    </div>
-  </div>
-  <div class="footer"><strong>2026–2027 京阪跨年行程</strong>　D5 / 7</div>
-</div></div>
+    <div id="todoList"></div>
+  </section>
 
-<!-- ═══════════ DAY 6 ═══════════ -->
-<div class="day-page" id="day6"><div class="page-inner">
-  <div class="header hd6">
-    <div class="header-meta"><div class="day-badge">D6</div><div><div class="header-date">2027 年 1 月 1 日（週五）元日・國定假日</div></div></div>
-    <h1>USJ 元旦全日暢玩・深夜補體力</h1>
-    <div class="header-route">通宵接白天，19:00 離園返回西九條</div>
-  </div>
-  <div class="deadline-banner">
-    <h3>本天注意</h3>
-    <div class="dl-row"><span class="dl-dot">●</span><span>元日為國定假日，多數個體店不開，晚餐請選連鎖餐廳（吉野家 / すき家 / 連鎖拉麵）</span></div>
-  </div>
-  <div class="timeline">
-    <div class="entry">
-      <div class="time-col"><div class="time-start">00:00</div><span class="time-arrow">↓</span><div class="time-end">19:00</div></div>
-      <div class="dot-col"><div class="dot dot-usj"></div></div>
-      <div class="card s-usj"><div class="card-inner">
-        <span class="tag t-usj">USJ 全日</span>
-        <div class="card-title">環球影城元旦全日暢玩</div>
-        <div class="card-desc">超級任天堂世界・哈利波特魔法世界・咚奇剛國度。19:00 離園</div>
-      </div></div>
+  <section id="stay" class="block">
+    <h2 class="sec-title">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path class="o" d="M4 22q20-2 20-16 0 14 20 16z" fill="#B9DAA5"/><rect class="o" x="10" y="22" width="28" height="20" fill="#FFFCF6"/><rect class="o" x="20" y="29" width="8" height="13" fill="#F2A497"/></svg>
+      住宿資訊
+    </h2>
+    <div class="stays">
+      <article class="card stay kyoto">
+        <h3 class="stay-head">京都・美山荘</h3>
+        <dl>
+          <dt>入住期間</dt><dd>D1 入住 – D4 退房（12/27 – 12/30）</dd>
+          <dt>地址</dt><dd>〒601-8004 京都府京都市南区東九条東山王町5 美山荘</dd>
+          <dt>交通</dt><dd>京都駅（八條東口）步行約 6 min；烏丸線九条駅步行約 5 min</dd>
+        </dl>
+        <a class="btn-map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E4%BA%AC%E9%83%BD%E5%BA%9C%E4%BA%AC%E9%83%BD%E5%B8%82%E5%8D%97%E5%8C%BA%E6%9D%B1%E4%B9%9D%E6%9D%A1%E6%9D%B1%E5%B1%B1%E7%8E%8B%E7%94%BA5">開啟地圖</a>
+      </article>
+      <article class="card stay osaka">
+        <h3 class="stay-head">大阪・西九條</h3>
+        <dl>
+          <dt>入住期間</dt><dd>D4 入住 – D7 退房（12/30 – 1/2）</dd>
+          <dt>地址</dt><dd>〒554-0012 大阪府大阪市此花区西九条1-6-13（1-6-13 Nishikujō, Konohana-ku）</dd>
+          <dt>交通</dt><dd>JR 西九條駅步行約 3 min</dd>
+        </dl>
+        <a class="btn-map" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=%E5%A4%A7%E9%98%AA%E5%BA%9C%E5%A4%A7%E9%98%AA%E5%B8%82%E6%AD%A4%E8%8A%B1%E5%8C%BA%E8%A5%BF%E4%B9%9D%E6%9D%A11-6-13">開啟地圖</a>
+      </article>
     </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">19:18</div><span class="time-arrow">↓</span><div class="time-end">19:24</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">ユニバーサルシティ → 西九條（JR ゆめ咲線）</div>
-        <div class="card-desc">¥180・實際班次 19:18 発（往西九條）→ 19:24 着・6 min（19:00 離園 → 步行至車站，預留 18 min 緩衝）</div>
-        <div class="card-sched"><b>班次備註</b><br>前 1 班：19:08 発（19:14 着，離園後僅 8 min，較趕）<br>後 1 班：19:23 発（19:29 着）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E3%82%B7%E3%83%86%E3%82%A3&to=%E8%A5%BF%E4%B9%9D%E6%9D%A1&y=2027&m=01&d=01&hh=19&m1=0&m2=5&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">19:27</div><span class="time-arrow">↓</span><div class="time-end">20:00</div></div>
-      <div class="dot-col"><div class="dot dot-rest"></div></div>
-      <div class="card s-rest"><div class="card-inner">
-        <span class="tag t-rest">休息</span>
-        <div class="card-title">飯店洗澡 & 稍作休息</div>
-        <div class="card-desc">19:24 抵達西九條駅，步行約 3 min 回飯店（19:27）。約 33 min</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">20:00</div><span class="time-arrow">↓</span><div class="time-end">21:30</div></div>
-      <div class="dot-col"><div class="dot dot-food"></div></div>
-      <div class="card s-food"><div class="card-inner">
-        <span class="tag t-food">晚餐</span>
-        <div class="card-title">西九條連鎖補體力</div>
-        <div class="card-desc">吉野家 / すき家 / 連鎖拉麵</div>
-        <div class="card-note">元日多數個體店不開，建議連鎖餐廳</div>
-      </div></div>
-    </div>
-  </div>
-  <div class="footer"><strong>2026–2027 京阪跨年行程</strong>　D6 / 7</div>
-</div></div>
+  </section>
 
-<!-- ═══════════ DAY 7 ═══════════ -->
-<div class="day-page" id="day7"><div class="page-inner">
-  <div class="header hd7">
-    <div class="header-meta"><div class="day-badge">D7</div><div><div class="header-date">2027 年 1 月 2 日（週六）</div></div></div>
-    <h1>りんくう Outlet・關西機場退稅・搭機返台</h1>
-    <div class="header-route">西九條退房 <span>→</span> りんくうタウン <span>→</span> 關西機場 <span>→</span> 台北</div>
-  </div>
-  <div class="deadline-banner">
-    <h3>本天注意</h3>
-    <div class="dl-row"><span class="dl-dot">●</span><span>1/2 為 Outlet <strong>初売りピーク日</strong>，人潮極多，越早到越好。1/2 期間約 09:00 開門</span></div>
-    <div class="dl-row"><span class="dl-dot">●</span><span><strong>新免稅制度</strong>：退稅在關西機場稅關辦理，請預留 30～45 min</span></div>
-    <div class="dl-row"><span class="dl-dot">●</span><span>行李建議<strong>前一晚宅配送至關西機場</strong>，全天輕裝移動</span></div>
-    <div class="dl-row"><span class="dl-dot">●</span><span>1/2 為土曜日，適用<strong>土休日ダイヤ</strong>（以下班次已依此查詢）</span></div>
-  </div>
-  <div class="timeline">
-    <div class="entry">
-      <div class="time-col"><div class="time-start">08:00</div><span class="time-arrow">↓</span><div class="time-end">08:03</div></div>
-      <div class="dot-col"><div class="dot dot-rest"></div></div>
-      <div class="card s-rest"><div class="card-inner">
-        <span class="tag t-rest">退房</span>
-        <div class="card-title">西九條退房 → 西九條駅</div>
-        <div class="card-desc">飯店 08:00 退房出發，步行約 3 min 至西九條駅</div>
-      </div></div>
+  <section id="cost" class="block">
+    <h2 class="sec-title">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><circle class="o" cx="24" cy="24" r="20" fill="#F6D27A"/><path class="o" d="M16 13l8 11 8-11M24 24v12M17 26h14M17 32h14" fill="none"/></svg>
+      行前費用計算
+    </h2>
+    <section class="cost-section">
+    <h2>每人負擔</h2>
+    <h3>付款</h3>
+    <div class="cost-table-wrap">
+      <table class="cost-table cost-person">
+        <thead>
+          <tr><th>成員</th><th>付給小羽<br>（台幣）</th><th>付給 Jine<br>（日幣）</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="cost-name">小羽</td>
+            <td><span class="cost-sub">自行負擔 NT$31,125</span></td>
+            <td><span class="cost-amt">¥18,900</span></td>
+          </tr>
+          <tr>
+            <td class="cost-name">紫雨</td>
+            <td><span class="cost-amt">NT$31,126</span></td>
+            <td><span class="cost-amt">¥18,900</span></td>
+          </tr>
+          <tr>
+            <td class="cost-name">Alvin</td>
+            <td><span class="cost-amt">NT$15,468</span></td>
+            <td><span class="cost-amt">¥18,900</span></td>
+          </tr>
+          <tr>
+            <td class="cost-name">Jine</td>
+            <td><span class="cost-amt">NT$15,468</span></td>
+            <td><span class="cost-sub">自行負擔 ¥18,900</span></td>
+          </tr>
+          <tr>
+            <td class="cost-name">ㄍㄅ</td>
+            <td><span class="cost-amt">NT$31,126</span></td>
+            <td><span class="cost-amt">¥18,900</span></td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">08:10</div><span class="time-arrow">↓</span><div class="time-end">09:10</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">西九條 → りんくうタウン（JR 關空快速・直通）</div>
-        <div class="card-desc">¥1,000・實際班次 08:10 発 → 09:10 着・60 min・免轉乘（不需先到大阪駅）・りんくうタウン駅步行 6 min 至 Outlet（約 09:16）</div>
-        <div class="card-sched"><b>班次備註</b><br>替代①：08:22 発 阪神なんば線 → 難波轉南海特急サザン → 岸和田轉空港急行 → 09:20 着（¥1,040，轉乘 2 次）<br>替代②：08:29 発 JR 關空快速 → 新今宮轉南海 → 09:20 着（¥980，轉乘 2 次）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E8%A5%BF%E4%B9%9D%E6%9D%A1&to=%E3%82%8A%E3%82%93%E3%81%8F%E3%81%86%E3%82%BF%E3%82%A6%E3%83%B3&y=2027&m=01&d=02&hh=08&m1=1&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
+    <h3>收款</h3>
+    <div class="cost-receive-grid">
+      <div class="cost-receive">
+        <div class="cost-receive-label">小羽收款（台幣）</div>
+        <div class="cost-receive-amt">NT$93,188</div>
+        <div class="cost-receive-from">紫雨、ㄍㄅ 各 NT$31,126<br>Alvin、Jine 各 NT$15,468</div>
+      </div>
+      <div class="cost-receive">
+        <div class="cost-receive-label">Jine 收款（日幣）</div>
+        <div class="cost-receive-amt">¥75,600</div>
+        <div class="cost-receive-from">小羽、紫雨、Alvin、ㄍㄅ 各 ¥18,900</div>
+      </div>
     </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">09:16</div><span class="time-arrow">↓</span><div class="time-end">12:00</div></div>
-      <div class="dot-col"><div class="dot dot-shop"></div></div>
-      <div class="card s-shop"><div class="card-inner">
-        <span class="tag t-shop">購物</span>
-        <div class="card-title">りんくう Outlet 先行掃貨（約 2 小時 45 min）</div>
-        <div class="card-desc">關西最大 Outlet，約 210 間品牌，新春初売り折扣</div>
-        <div class="card-note">1/2 初売りピーク日，人潮極多，越早到越好。1/2 期間約 09:00 開門</div>
-      </div></div>
+  </section>
+    <section class="cost-section">
+    <h2>費用明細</h2>
+    <h3 class="cost-h-twd">台幣（小羽收款）</h3>
+    <div class="cost-table-wrap">
+      <table class="cost-table">
+        <thead>
+          <tr><th>項目</th><th>小羽、紫雨、ㄍㄅ<br>每人</th><th>Alvin、Jine<br>每人</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>機票<span class="cost-sub">NT$46,974・3 人分擔・小羽先付</span></td>
+            <td>NT$15,658</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>京都住宿<span class="cost-sub">NT$36,868・5 人分擔・小羽先付</span></td>
+            <td>NT$7,373.6</td>
+            <td>NT$7,373.6</td>
+          </tr>
+          <tr>
+            <td>大阪住宿<span class="cost-sub">NT$19,801・5 人分擔・小羽先付</span></td>
+            <td>NT$3,960.2</td>
+            <td>NT$3,960.2</td>
+          </tr>
+          <tr>
+            <td>環球跨年門票<span class="cost-sub">NT$20,670・5 人分擔・小羽先付</span></td>
+            <td>NT$4,134</td>
+            <td>NT$4,134</td>
+          </tr>
+          <tr class="cost-total">
+            <td>台幣小計</td>
+            <td>NT$31,125.8</td>
+            <td>NT$15,467.8</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">12:00</div><span class="time-arrow">↓</span><div class="time-end">13:30</div></div>
-      <div class="dot-col"><div class="dot dot-food"></div></div>
-      <div class="card s-food"><div class="card-inner">
-        <span class="tag t-food">午餐</span><span class="tag t-tbd">待確認</span>
-        <div class="card-title">待確認</div>
-      </div></div>
+    <h3 class="cost-h-jpy">日幣（Jine 收款）</h3>
+    <div class="cost-table-wrap">
+      <table class="cost-table">
+        <thead>
+          <tr><th>項目</th><th>每人</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>環球快速通關<span class="cost-sub">¥94,500・5 人分擔・Jine 先付</span></td>
+            <td>¥18,900</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">13:30</div><span class="time-arrow">↓</span><div class="time-end">14:25</div></div>
-      <div class="dot-col"><div class="dot dot-shop"></div></div>
-      <div class="card s-shop"><div class="card-inner">
-        <span class="tag t-shop">購物</span>
-        <div class="card-title">Outlet 最後衝刺</div>
-        <div class="card-desc">清空購物清單，14:25 準時離開，步行 6 min 至りんくうタウン駅</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">14:32</div><span class="time-arrow">↓</span><div class="time-end">14:45</div></div>
-      <div class="dot-col"><div class="dot dot-train"></div></div>
-      <div class="card s-train"><div class="card-inner">
-        <span class="tag t-train">電車</span>
-        <div class="card-title">りんくうタウン → 關西機場（南海空港線 空港急行）</div>
-        <div class="card-desc">¥370・實際班次 14:32 発 → 14:45 抵達航廈（含站內步行）</div>
-        <div class="card-sched"><b>班次備註</b><br>後 2 班：14:41 発 JR 關空快速（14:53 着，¥370）、14:46 発 南海空港急行（14:59 着）<br><a href="https://transit.yahoo.co.jp/search/result?from=%E3%82%8A%E3%82%93%E3%81%8F%E3%81%86%E3%82%BF%E3%82%A6%E3%83%B3&to=%E9%96%A2%E8%A5%BF%E7%A9%BA%E6%B8%AF&y=2027&m=01&d=02&hh=14&m1=3&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1" target="_blank" rel="noopener">Yahoo 查證</a></div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">14:45</div><span class="time-arrow">↓</span><div class="time-end">19:00</div></div>
-      <div class="dot-col"><div class="dot dot-rest"></div></div>
-      <div class="card s-rest"><div class="card-inner">
-        <span class="tag t-rest">候機</span>
-        <div class="card-title">關西機場候機（約 4 小時 15 min）</div>
-        <div class="card-desc">辦登機 + 行李託運 + 機場稅關辦退稅 + 免稅店逛街</div>
-        <div class="card-note">新免稅制度：退稅在機場稅關辦理，請預留 30～45 min</div>
-      </div></div>
-    </div>
-    <div class="entry">
-      <div class="time-col"><div class="time-start">19:00</div><span class="time-arrow">↓</span></div>
-      <div class="dot-col"><div class="dot dot-plane"></div></div>
-      <div class="card s-plane"><div class="card-inner">
-        <span class="tag t-plane">返台</span>
-        <div class="card-title">搭機返台 — 圓滿結束京阪跨年之旅 🎉</div>
-        <div class="card-desc">2026 年 12 月 27 日 出發 → 2027 年 1 月 2 日 返台，共 7 天</div>
-        <div class="card-sched"><b>班次備註</b><br>航班時間已與使用者確認：19:00 起飛</div>
-      </div></div>
-    </div>
-  </div>
-  <div class="footer"><strong>2026–2027 京阪跨年行程</strong>　D7 / 7</div>
-</div></div>
+  </section>
+    <p class="source-note">台幣付款金額四捨五入到元，差額由小羽吸收，因此小羽負擔 NT$31,125。台幣付給小羽、日幣付給 Jine，兩種幣別分開收款。</p>
+  </section>
+
+</main>
+
+<footer class="foot">2026–2027 京阪跨年行程</footer>
 
 <script>
-function showDay(n, btn) {
-  document.querySelectorAll('.day-page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('day' + n).classList.add('active');
-  btn.classList.add('active');
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+const DAYS = [{"n":1,"iso":"2026-12-27","tab":"12/27 週日","date":"2026 年 12 月 27 日（週日）","title":"抵達日・Alpen Osaka・京都塔周邊","route":"台北 → 關西機場 → 大阪梅田（買鞋）→ 京都駅（京都塔周邊）","banner":null,"entries":[{"start":"08:05","end":"11:35","type":"plane","tags":[{"cls":"plane","text":"飛機"}],"title":"台北 → 關西機場","desc":"直飛班機，飛行約 3h 30m。11:35 落地後辦理入境 + 提領行李（約 45 min）","note":"","sched":"<b>班次備註</b><br>航班時間已與使用者確認：08:05 起飛 → 11:35 抵達"},{"start":"12:44","end":"13:31","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"關西機場 → 大阪駅（JR 特急 HARUKA 24 號・直通）","desc":"實際班次 12:44 発（關西機場始發）→ 13:31 着・47 分鐘・免轉乘<br>¥1,800／人（HARUKA 外國旅客優惠單程票「大阪・新大阪」版，原價 ¥2,380）<br>11:35 落地 + 入境約 45 min ≈ 12:20 出關，約 24 min 緩衝","note":"優惠票需出發前於 Klook / KKday / JR 西日本官網購買，日本當地售票機只賣原價。中途出站即失效，請買「大阪」版而非「京都」版。優惠票可搭自由席；年末旺季 5 人帶大行李，建議事先加訂指定席","sched":"<b>班次備註</b><br>備案①：入境延誤 → HARUKA 26 號 13:14 発 → 14:01 着大阪（購鞋時間相對縮短）<br>備案②：最省錢 → JR 關空快速 12:25 発 → 13:43 着（¥1,180）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E9%96%A2%E8%A5%BF%E7%A9%BA%E6%B8%AF&to=%E5%A4%A7%E9%98%AA&y=2026&m=12&d=27&hh=12&m1=2&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=1&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"},{"start":"13:38","end":"15:38","type":"hoka","tags":[{"cls":"hoka","text":"HOKA"}],"title":"Alpen Osaka 買鞋（HOKA 全程在此解決，2 小時）","desc":"大阪駅步行約 7 min 抵達。茶屋町 YANMAR FLYING-Y BUILDING B2F～4F・購鞋約 2 小時","note":"15:38 離店步行回大阪駅（約 7 min），搭 16:00 JR 新快速前往京都（15:45 班次無緩衝，不建議趕）。大行李需隨身，可詢問店家是否能暫放櫃檯","sched":""},{"start":"16:00","end":"16:29","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"大阪 → 京都駅（JR 新快速）","desc":"¥580・實際班次 16:00 発 → 16:29 着・29 分鐘","note":"","sched":"<b>班次備註</b><br>前 1 班：15:45 発（16:14 着，離店後無緩衝）<br>慢車：15:53 発 快速（16:35 着）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E5%A4%A7%E9%98%AA&to=%E4%BA%AC%E9%83%BD&y=2026&m=12&d=27&hh=15&m1=4&m2=3&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"},{"start":"16:29","end":"16:45","type":"rest","tags":[{"cls":"rest","text":"寄放行李"}],"title":"京都駅置物櫃寄放行李","desc":"置物櫃可使用至 23:00","note":"年末傍晚置物櫃易滿，找不到可改用京都駅手荷物預かり所；或步行 6 min 回美山荘寄放（來回約多 20 min）","sched":""},{"start":"16:45","end":"17:30","type":"sight","tags":[{"cls":"sight","text":"景點"}],"title":"京都塔展望室","desc":"京都駅正對面步行即達。日落約 16:50，夕陽 + 夜景一次看","note":"門票約 ¥900，票價與營業時間請出發前確認","sched":""},{"start":"17:30","end":"18:15","type":"shop","tags":[{"cls":"shop","text":"購物"}],"title":"京都塔 SANDO","desc":"B1 美食街・1F 伴手禮","note":"","sched":""},{"start":"18:15","end":"18:50","type":"sight","tags":[{"cls":"sight","text":"散策"}],"title":"京都駅大階段・空中徑路","desc":"免費，京都駅建築夜景","note":"","sched":""},{"start":"19:00","end":"20:30","type":"food","tags":[{"cls":"food","text":"晚餐"},{"cls":"tbd","text":"待確認"}],"title":"待確認","desc":"","note":"","sched":""},{"start":"20:30","end":"20:45","type":"return","tags":[{"cls":"return","text":"返程"}],"title":"京都駅取行李 → 步行回飯店","desc":"置物櫃取行李後，八條東口步行約 6 min 至飯店（南区東九条東山王町5 美山荘），免搭地鐵","note":"","sched":""}]},{"n":2,"iso":"2026-12-28","tab":"12/28 週一","date":"2026 年 12 月 28 日（週一）","title":"客美多早餐・宇治商圈散策・下鴨神社・Porta 逛街","route":"飯店 → 京都駅（客美多早餐）→ JR 宇治（平等院・宇治商圈・宇治上神社）→ 京阪宇治 → 出町柳（下鴨神社）→ 京都駅","banner":null,"entries":[{"start":"07:50","end":"07:56","type":"rest","tags":[{"cls":"rest","text":"出發"}],"title":"飯店步行至京都駅","desc":"步行約 6 min（八條東口）","note":"","sched":""},{"start":"08:00","end":"09:00","type":"food","tags":[{"cls":"food","text":"早餐"}],"title":"客美多咖啡 Morning Set（京都駅構內）","desc":"1 小時。飲料 + 免費吐司組合","note":"Morning Set 11:00 截止，08:00 入座完全充裕","sched":""},{"start":"09:10","end":"09:34","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"京都駅 → JR 宇治（JR 奈良線）","desc":"¥240・實際班次 09:10 発（京都始發）→ 09:34 着・24 min","note":"","sched":"<b>班次備註</b><br>後 2 班：09:22 発（09:46 着）、09:34 発 みやこ路快速（09:51 着）<br>若當天改行土休日ダイヤ：09:15 発 → 09:37 着（其餘行程不受影響）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E4%BA%AC%E9%83%BD&to=%E5%AE%87%E6%B2%BB%28JR%29&y=2026&m=12&d=28&hh=09&m1=0&m2=5&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"},{"start":"09:34","end":"13:45","type":"sight","tags":[{"cls":"sight","text":"景點"}],"title":"宇治商圈完整散策（含午餐，約 4 小時）","desc":"<p>① 09:45 - 10:40　平等院（世界遺產）　JR 宇治駅步行約 10 min・約 55 min・¥700（庭園 + 鳳翔館；鳳凰堂內部 ¥300 選配）</p>\n          <p>② 10:40 - 11:00　平等院表參道茶屋街　抹茶芭菲・生茶ゼリー</p>\n          <p>③ 11:00 - 11:50　宇治橋通り商店街　抹茶伴手禮・老舖茶屋</p>\n          <p>④ 11:50 - 12:50　午餐 <span class=\"tag t-tbd\">待確認</span></p>\n          <p>⑤ 12:50 - 13:15　宇治橋 & 宇治川沿い散策　朝霧橋・塔の島</p>\n          <p>⑥ 13:15 - 13:35　宇治上神社（世界遺產）　日本最古の神社建築 → 步行約 10 min 至京阪宇治駅</p>","note":"早上人潮較少，平等院 08:30、宇治上神社 09:00 開門。鳳凰堂內部每梯 50 人先到先得（¥300），上午較好排","sched":""},{"start":"13:53","end":"14:30","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"京阪宇治 → 出町柳（京阪宇治線 + 京阪本線）","desc":"京阪宇治線 13:53 発 → 14:09 中書島 → 京阪急行 14:13 発 → 14:30 着出町柳・¥460<br>出町柳駅步行 12 min 至下鴨神社","note":"","sched":"<b>班次備註</b>（皆於中書島轉京阪本線）<br>前 1 班：13:41 発（14:18 着，宇治上神社後緩衝不足）<br>後 1 班：14:05 発（14:42 着）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E5%AE%87%E6%B2%BB%28%E4%BA%AC%E9%98%AA%E7%B7%9A%29&to=%E5%87%BA%E7%94%BA%E6%9F%B3&y=2026&m=12&d=28&hh=13&m1=3&m2=5&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"},{"start":"14:45","end":"15:40","type":"sight","tags":[{"cls":"sight","text":"景點"}],"title":"下鴨神社 & 糺之森（世界遺產）","desc":"約 55 min","note":"","sched":""},{"start":"15:58","end":"16:25","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"出町柳 → 京都駅（京阪 + JR）","desc":"步行 12 min 至出町柳駅 → 京阪特急 15:58 発 → 16:00 三条 → 京阪準急 16:03 発 → 16:10 東福寺 → JR みやこ路快速 16:22 発 → 16:25 着京都・¥450","note":"","sched":"<b>班次備註</b><br>替代：同班京阪至三条 → 東西線 → 烏丸御池轉烏丸線 → 16:22 着京都（¥500）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E5%87%BA%E7%94%BA%E6%9F%B3&to=%E4%BA%AC%E9%83%BD&y=2026&m=12&d=28&hh=15&m1=5&m2=5&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"},{"start":"16:25","end":"19:30","type":"shop","tags":[{"cls":"shop","text":"購物"}],"title":"Porta 地下街 & Avanti（約 3 小時）","desc":"有體力再逛。日系男女裝 Pre-Sale，冬裝 5 折起","note":"","sched":""},{"start":"19:30","end":"21:30","type":"food","tags":[{"cls":"food","text":"晚餐"},{"cls":"tbd","text":"待確認"}],"title":"待確認","desc":"","note":"","sched":""},{"start":"21:30","end":"21:36","type":"return","tags":[{"cls":"return","text":"返程"}],"title":"步行回飯店","desc":"京都駅八條東口步行約 6 min 至飯店（南区東九条東山王町5 美山荘）","note":"","sched":""}]},{"n":3,"iso":"2026-12-29","tab":"12/29 週二","date":"2026 年 12 月 29 日（週二）","title":"嵐山・廣川鰻魚飯・御金神社・四條河原町商圈・Sushi Roman","route":"飯店 → 嵯峨嵐山 → 嵐電 + 東西線 → 烏丸御池（御金神社）→ 四條河原町商圈 → Sushi Roman 晚餐 20:00","banner":{"title":"本天預約提醒","rows":["廣川鰻魚飯完全預約制，<strong>台灣時間 11/28 23:00（日本時間 11/29 00:00）搶位</strong>。5 人拆 3+2 兩筆，各付保證金 ¥3,000/人（不可退），2 人需同時上線搶同一時段","Sushi Roman 年末旺季<strong>建議提前確認預約</strong>","D3 起帰省ラッシュ開始，人潮明顯增加，建議越早出發越好"]},"entries":[{"start":"08:15","end":"08:46","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"飯店 → 京都駅 → 嵯峨嵐山（JR 嵯峨野線）","desc":"步行約 6 min 至京都駅（約 08:21）・¥240・實際班次 08:27 発（京都始發）→ 08:46 着・19 min","note":"","sched":"<b>班次備註</b>（JR 嵯峨野線 京都 → 嵯峨嵐山，平日）<br>後 2 班：08:40 発（08:57 着）、08:53 発（09:10 着）<br>若當天改行土休日ダイヤ：08:26 発 → 08:44 着（其餘行程不受影響）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E4%BA%AC%E9%83%BD&to=%E5%B5%AF%E5%B3%A8%E5%B5%90%E5%B1%B1&y=2026&m=12&d=29&hh=08&m1=2&m2=5&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"},{"start":"09:00","end":"11:45","type":"sight","tags":[{"cls":"sight","text":"景點"}],"title":"嵐山散策（約 165 min）","desc":"竹林小徑 → 天龍寺（世界遺產）→ 渡月橋","note":"D3 帰省ラッシュ開始，人潮多，越早出發越好","sched":""},{"start":"11:45","end":"13:15","type":"book","tags":[{"cls":"book","text":"完全預約制"}],"title":"午餐 — 廣川鰻魚飯（米其林一星）","desc":"炭火鰻魚飯套餐約 ¥5,300 起","note":"台灣時間 11/28 23:00（日本時間 11/29 00:00）搶位。5 人拆 3+2 兩筆，各付保證金 ¥3,000/人（不可退），2 人需同時上線搶同一時段","sched":""},{"start":"13:15","end":"14:08","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"嵐山 → 嵐電天神川（嵐電）→ 烏丸御池（地鐵東西線）","desc":"步行約 5 min 至嵐電「嵐山」站 → 嵐電 13:33 発 → 13:46 着嵐電天神川 → 步行至太秦天神川駅 → 東西線 14:00 発 → 14:08 着烏丸御池・¥510","note":"","sched":"<b>班次備註</b><br>前 1 班：嵐電 13:23 発（用餐結束後太趕，不建議）<br>替代：13:35 市巴士 85 號 → 太秦天神川轉東西線 → 14:15 着（巴士易誤點）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E5%B5%90%E5%B1%B1%28%E4%BA%AC%E7%A6%8F%E7%B7%9A%29&to=%E7%83%8F%E4%B8%B8%E5%BE%A1%E6%B1%A0&y=2026&m=12&d=29&hh=13&m1=3&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"},{"start":"14:13","end":"14:50","type":"sight","tags":[{"cls":"sight","text":"景點"}],"title":"御金神社「洗錢參拜」","desc":"烏丸御池駅步行 5 min，約 40 min","note":"年末人潮多，排隊太久可壓縮後段寺町通時間","sched":""},{"start":"14:58","end":"15:00","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"烏丸御池 → 四條（地鐵烏丸線）","desc":"¥220・實際班次 14:58 発 → 15:00 着・四條站步行 3 min 至錦市場入口","note":"","sched":"<b>班次備註</b><br>前 1 班：14:51 発（14:52 着）｜後 1 班：15:06 発（15:07 着）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E7%83%8F%E4%B8%B8%E5%BE%A1%E6%B1%A0&to=%E5%9B%9B%E6%9D%A1%28%E4%BA%AC%E9%83%BD%E5%B8%82%E5%96%B6%29&y=2026&m=12&d=29&hh=14&m1=4&m2=5&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"},{"start":"15:05","end":"20:00","type":"shop","tags":[{"cls":"shop","text":"商圈"}],"title":"四條河原町商圈（約 4 小時 55 min）","desc":"<p>① 錦市場小吃　約 60 min　三木雞卵（玉子燒）・魚力（海鰻天婦羅）・こんなもんじゃ（豆乳甜甜圈）</p>\n          <p>② 京都寶可夢中心　約 60 min　高島屋 T8 4F，生肖限定款・跨年限定商品</p>\n          <p>③ 河原町 / 高島屋 / OPA 百貨　約 80 min　服飾潮流，憑護照領 Hello Kitty 5% Coupon</p>\n          <p>④ 寺町通　約 60 min　京都在地雜貨・文具小店</p>\n          <p>⑤ 新京極通　約 25 min　伴手禮・紀念品（結束後步行約 10 min 至 Sushi Roman）</p>","note":"錦市場禁止邊走邊吃，備現金（部分店家不收刷卡）。店家約 17:00 開始關門，排第一站","sched":""},{"start":"20:00","end":"21:30","type":"food","tags":[{"cls":"food","text":"晚餐"}],"title":"Sushi Roman（爐端燒居酒屋 + 壽司）","desc":"中京区貝屋町 562-2・評分 4.4・20:00 入座","note":"座位費 ¥300・每人須點一杯飲料。年末旺季建議提前確認預約，並確認週二營業時間與最後點餐時間","sched":""},{"start":"21:30","end":"21:55","type":"return","tags":[{"cls":"return","text":"返程"}],"title":"地鐵四條 → 京都駅 → 步行回飯店","desc":"步行 5～10 min 至地鐵四條站 → 烏丸線 21:45 発 → 21:49 着京都駅（¥220）→ 步行約 6 min 至飯店（南区東九条東山王町5 美山荘）","note":"","sched":"<b>班次備註</b><br>後 1 班：21:56 発（22:00 着）<br>太累可改搭計程車：5 人需 2 台<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E5%9B%9B%E6%9D%A1%28%E4%BA%AC%E9%83%BD%E5%B8%82%E5%96%B6%29&to=%E4%BA%AC%E9%83%BD&y=2026&m=12&d=29&hh=21&m1=4&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"}]},{"n":4,"iso":"2026-12-30","tab":"12/30 週三","date":"2026 年 12 月 30 日（週三）— 退房日","title":"退房・提早移動大阪・敘敘苑午餐・難波 + 心齋橋血拼","route":"退房 → 京都駅 → 大阪駅 → 西九條（寄放行李）→ 難波 / 心齋橋 → 西九條 Check-in","banner":{"title":"本天注意","rows":["D4 帰省ラッシュピーク，帶行李搭車請<strong>分散上車</strong>，避開巴士","12/31 難波的大型商場（なんばマルイ、NAMBA Parks、なんばシティ）去年休業，<strong>難波 + 心齋橋購物排在 12/30</strong>","敘敘苑 なんば髙島屋店<strong>預約日期為 12/30</strong>（原 12/31 請改期）","新免稅制度（2026/11 起）：結帳時出示護照、<strong>先付含稅價</strong>並問清楚退款方式；離境時在關西機場<strong>託運行李前完成海關確認</strong>，退款由店家或退稅業者安排"]},"entries":[{"start":"08:45","end":"08:51","type":"rest","tags":[{"cls":"rest","text":"退房"}],"title":"退房 → 帶行李步行至京都駅","desc":"美山荘退房，步行約 6 min 至京都駅","note":"","sched":""},{"start":"09:00","end":"09:28","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"京都駅 → 大阪駅（JR 新快速）","desc":"¥580・實際班次 09:00 発 → 09:28 着・28 min","note":"","sched":"<b>班次備註</b><br>後 1 班：09:14 発 新快速（09:43 着）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E4%BA%AC%E9%83%BD&to=%E5%A4%A7%E9%98%AA&y=2026&m=12&d=30&hh=08&m1=5&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"},{"start":"09:34","end":"09:40","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"大阪駅 → 西九條（JR 環狀線）→ 飯店寄放行李","desc":"¥180・實際班次 09:34 発 → 09:40 着・步行約 3 min 至飯店（大阪市此花区西九条1-6-13），櫃檯寄放行李","note":"","sched":"<b>班次備註</b><br>前 1 班：09:30 発（09:35 着，轉乘僅 2 min）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E5%A4%A7%E9%98%AA&to=%E8%A5%BF%E4%B9%9D%E6%9D%A1&y=2026&m=12&d=30&hh=09&m1=3&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"},{"start":"10:01","end":"10:11","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"西九條 → 大阪難波（阪神なんば線 區間準急）","desc":"約 09:55 離開飯店，步行約 3 min 至西九條駅 → ¥220・實際班次 10:01 発 → 10:11 着・約 10 min","note":"","sched":"<b>班次備註</b><br>前 1 班：09:52 発（10:01 着，寄放行李後較趕）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E8%A5%BF%E4%B9%9D%E6%9D%A1&to=%E5%A4%A7%E9%98%AA%E9%9B%A3%E6%B3%A2&y=2026&m=12&d=30&hh=09&m1=5&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"},{"start":"10:11","end":"11:00","type":"shop","tags":[{"cls":"shop","text":"購物"}],"title":"難波商圈逛街（約 49 min）","desc":"高島屋・大丸等 10:00 已開門，先行掃貨暖身","note":"","sched":""},{"start":"11:00","end":"12:30","type":"food","tags":[{"cls":"food","text":"午餐"}],"title":"敘敘苑 なんば髙島屋店（焼肉）","desc":"高島屋大阪店 なんばダイニングメゾン 9F・南海なんば駅直結・電話 06-6536-8389<br>11:00 開店即入座","note":"預約日期為 12/30（原 12/31 請改期）。年末旺季建議提前電話預約，5 人用餐建議訂包廂席","sched":""},{"start":"12:30","end":"18:00","type":"shop","tags":[{"cls":"shop","text":"購物"}],"title":"難波 + 心齋橋商圈血拼（約 5.5 小時）","desc":"日系服飾、潮流鞋靴全力衝刺。12/30 百貨正常營業（高島屋 3F～7F 去年 12/30 營業到 19:00、地下 1F 到 20:00）","note":"","sched":""},{"start":"18:00","end":"19:30","type":"food","tags":[{"cls":"food","text":"晚餐"},{"cls":"tbd","text":"待確認"}],"title":"待確認","desc":"","note":"","sched":""},{"start":"19:36","end":"19:44","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"大阪難波 → 西九條 Check-in（阪神なんば線 快速急行）","desc":"¥220・實際班次 19:36 発 → 19:44 着・8 min。步行約 3 min 至飯店，約 19:47 Check-in","note":"","sched":"<b>班次備註</b><br>後 1 班：19:42 発（19:50 着）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E5%A4%A7%E9%98%AA%E9%9B%A3%E6%B3%A2&to=%E8%A5%BF%E4%B9%9D%E6%9D%A1&y=2026&m=12&d=30&hh=19&m1=3&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"}]},{"n":5,"iso":"2026-12-31","tab":"12/31 週四","date":"2026 年 12 月 31 日（週四）大晦日","title":"梅田購物・USJ 跨年通宵","route":"西九條 → 大阪梅田 → 西九條 → USJ（通宵）","banner":{"title":"本天注意","rows":["大晦日百貨去年約 <strong>18:00 提早關門</strong>（2026 年正式公告尚未發布）。新免稅制度（2026/11 起）：結帳時出示護照、<strong>先付含稅價</strong>並問清楚退款方式；離境時在關西機場<strong>託運行李前完成海關確認</strong>，退款由店家或退稅業者安排","USJ 門票與快速通關<strong>皆已購買完成</strong>","門票為<strong>跨年門票「パーティ・パス」</strong>：12/31 19:00 入場，可遊玩至 1/1 21:00（一般票只能待到 17:00，17:00 - 19:00 園區關閉）"]},"entries":[{"start":"10:15","end":"10:20","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"西九條 → 大阪駅（JR 環狀線）","desc":"約 10:07 離開飯店，步行約 3 min 至西九條駅（約 10:10，預留 5 min 緩衝）→ ¥180・實際班次 10:15 発 → 10:20 着・5 min","note":"","sched":"<b>班次備註</b><br>前 1 班：10:11 発（10:16 着）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E8%A5%BF%E4%B9%9D%E6%9D%A1&to=%E5%A4%A7%E9%98%AA&y=2026&m=12&d=31&hh=10&m1=1&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"},{"start":"10:30","end":"12:00","type":"shop","tags":[{"cls":"shop","text":"購物"}],"title":"梅田商圈購物","desc":"LUCUA / Grand Front 等，12/30 起 Winter Sale。大晦日營業時間（去年）：阪急うめだ、阪神梅田、大丸梅田 10:00～18:00；LUCUA 10:30～18:00；Grand Front 11:00～18:00","note":"","sched":""},{"start":"12:00","end":"13:30","type":"food","tags":[{"cls":"food","text":"午餐"},{"cls":"tbd","text":"待確認"}],"title":"待確認","desc":"","note":"","sched":""},{"start":"13:30","end":"16:20","type":"shop","tags":[{"cls":"shop","text":"購物"}],"title":"梅田商圈購物（續，約 2 小時 50 min）","desc":"日系服飾、潮流鞋靴。16:20 準時離開","note":"新免稅制度（2026/11 起）：結帳時出示護照、先付含稅價並問清楚退款方式；離境時在關西機場託運行李前完成海關確認，退款由店家或退稅業者安排","sched":""},{"start":"16:30","end":"16:35","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"大阪駅 → 西九條（JR 環狀線）","desc":"¥180・實際班次 16:30 発 → 16:35 着・5 min","note":"","sched":"<b>班次備註</b><br>後 1 班：16:34 発（16:40 着）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E5%A4%A7%E9%98%AA&to=%E8%A5%BF%E4%B9%9D%E6%9D%A1&y=2026&m=12&d=31&hh=16&m1=3&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"},{"start":"16:38","end":"19:20","type":"rest","tags":[{"cls":"rest","text":"休息"}],"title":"飯店補眠 & 換防寒衣物（約 2 小時 40 min）","desc":"西九條駅步行約 3 min 回飯店，放下戰利品、補眠，準備通宵 USJ","note":"","sched":""},{"start":"19:27","end":"19:32","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"西九條 → ユニバーサルシティ（JR ゆめ咲線）","desc":"19:20 離開飯店，步行約 3 min 至西九條駅 → ¥180・實際班次 19:27 発（西九條始發）→ 19:32 着・5 min","note":"","sched":"<b>班次備註</b><br>後 2 班：19:36 発（19:41 着）、19:42 発（19:47 着）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E8%A5%BF%E4%B9%9D%E6%9D%A1&to=%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E3%82%B7%E3%83%86%E3%82%A3&y=2026&m=12&d=31&hh=19&m1=2&m2=5&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"},{"start":"19:32","end":"21:00","type":"food","tags":[{"cls":"food","text":"晚餐"}],"title":"Universal Citywalk 晚餐","desc":"章魚燒博物館 / Hard Rock Cafe，高熱量補充抗寒","note":"","sched":""},{"start":"21:00","end":"翌日","type":"usj","tags":[{"cls":"usj","text":"USJ 通宵"}],"title":"環球影城跨年通宵","desc":"超級任天堂世界・哈利波特魔法世界・咚奇剛國度","note":"","sched":"<b>入場提醒</b><br>門票與快速通關皆已購買完成<br>跨年門票「パーティ・パス」：12/31 19:00 入場，可遊玩至 1/1 21:00（12/31 一般票只能待到 17:00，17:00 - 19:00 園區關閉）"}]},{"n":6,"iso":"2027-01-01","tab":"1/1 週五","date":"2027 年 1 月 1 日（週五）元日・國定假日","title":"USJ 元旦全日暢玩・深夜補體力","route":"通宵接白天，19:00 離園返回西九條","banner":{"title":"本天注意","rows":["元日為國定假日，多數個體店不開，晚餐請選連鎖餐廳（吉野家 / すき家 / 連鎖拉麵）"]},"entries":[{"start":"00:00","end":"19:00","type":"usj","tags":[{"cls":"usj","text":"USJ 全日"}],"title":"環球影城元旦全日暢玩","desc":"超級任天堂世界・哈利波特魔法世界・咚奇剛國度。19:00 離園（跨年門票可遊玩至 21:00）","note":"","sched":""},{"start":"19:18","end":"19:24","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"ユニバーサルシティ → 西九條（JR ゆめ咲線）","desc":"¥180・實際班次 19:18 発（往西九條）→ 19:24 着・6 min（19:00 離園 → 步行至車站，預留 18 min 緩衝）","note":"","sched":"<b>班次備註</b><br>前 1 班：19:08 発（19:14 着，離園後僅 8 min，較趕）<br>後 1 班：19:23 発（19:29 着）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E3%83%A6%E3%83%8B%E3%83%90%E3%83%BC%E3%82%B5%E3%83%AB%E3%82%B7%E3%83%86%E3%82%A3&to=%E8%A5%BF%E4%B9%9D%E6%9D%A1&y=2027&m=01&d=01&hh=19&m1=0&m2=5&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"},{"start":"19:27","end":"20:00","type":"rest","tags":[{"cls":"rest","text":"休息"}],"title":"飯店洗澡 & 稍作休息","desc":"19:24 抵達西九條駅，步行約 3 min 回飯店（19:27）。約 33 min","note":"","sched":""},{"start":"20:00","end":"21:30","type":"food","tags":[{"cls":"food","text":"晚餐"}],"title":"西九條連鎖補體力","desc":"吉野家 / すき家 / 連鎖拉麵","note":"元日多數個體店不開，建議連鎖餐廳","sched":""}]},{"n":7,"iso":"2027-01-02","tab":"1/2 週六","date":"2027 年 1 月 2 日（週六）","title":"りんくう Outlet・關西機場海關確認・搭機返台","route":"西九條退房 → りんくうタウン → 關西機場 → 台北","banner":{"title":"本天注意","rows":["1/2 為 Outlet <strong>初売りピーク日</strong>，人潮極多，越早到越好。1/2 期間約 09:00 開門","<strong>新免稅制度</strong>：在關西機場<strong>託運行李前</strong>先完成海關確認，已託運的免稅品無法取回辦理。免稅品請放在方便取出的位置，並預留充裕時間","大行李<strong>帶去 Outlet 寄物</strong>，離開前領回。寄物位置、費用與大型行李是否可寄放，請出發前向 Outlet 確認（072-458-4600，僅日文）","1/2 為土曜日，適用<strong>土休日ダイヤ</strong>（以下班次已依此查詢）"]},"entries":[{"start":"08:00","end":"08:03","type":"rest","tags":[{"cls":"rest","text":"退房"}],"title":"西九條退房 → 西九條駅","desc":"飯店 08:00 退房，帶大行李出發，步行約 3 min 至西九條駅","note":"","sched":""},{"start":"08:10","end":"09:10","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"西九條 → りんくうタウン（JR 關空快速・直通）","desc":"¥1,000・實際班次 08:10 発 → 09:10 着・60 min・免轉乘（不需先到大阪駅）・りんくうタウン駅步行 6 min 至 Outlet（約 09:16）","note":"","sched":"<b>班次備註</b><br>替代①：08:22 発 阪神なんば線 → 難波轉南海特急サザン → 岸和田轉空港急行 → 09:20 着（¥1,040，轉乘 2 次）<br>替代②：08:29 発 JR 關空快速 → 新今宮轉南海 → 09:20 着（¥980，轉乘 2 次）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E8%A5%BF%E4%B9%9D%E6%9D%A1&to=%E3%82%8A%E3%82%93%E3%81%8F%E3%81%86%E3%82%BF%E3%82%A6%E3%83%B3&y=2027&m=01&d=02&hh=08&m1=1&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"},{"start":"09:16","end":"12:00","type":"shop","tags":[{"cls":"shop","text":"購物"}],"title":"りんくう Outlet 先行掃貨（約 2 小時 45 min）","desc":"抵達後先寄放大行李。關西最大 Outlet，約 210 間品牌，新春初売り折扣","note":"1/2 初売りピーク日，人潮極多，越早到越好。1/2 期間約 09:00 開門","sched":""},{"start":"12:00","end":"13:30","type":"food","tags":[{"cls":"food","text":"午餐"},{"cls":"tbd","text":"待確認"}],"title":"待確認","desc":"","note":"","sched":""},{"start":"13:30","end":"14:20","type":"shop","tags":[{"cls":"shop","text":"購物"}],"title":"Outlet 最後衝刺","desc":"清空購物清單，14:20 前領回寄物行李並準時離開，步行 6 min 至りんくうタウン駅（約 14:26，預留 6 min 緩衝）","note":"","sched":""},{"start":"14:32","end":"14:45","type":"train","tags":[{"cls":"train","text":"電車"}],"title":"りんくうタウン → 關西機場（南海空港線 空港急行）","desc":"¥370・實際班次 14:32 発 → 14:45 抵達航廈（含站內步行）","note":"","sched":"<b>班次備註</b><br>後 2 班：14:41 発 JR 關空快速（14:53 着，¥370）、14:46 発 南海空港急行（14:59 着）<br><a href=\"https://transit.yahoo.co.jp/search/result?from=%E3%82%8A%E3%82%93%E3%81%8F%E3%81%86%E3%82%BF%E3%82%A6%E3%83%B3&to=%E9%96%A2%E8%A5%BF%E7%A9%BA%E6%B8%AF&y=2027&m=01&d=02&hh=14&m1=3&m2=0&type=1&ticket=ic&expkind=1&ws=3&s=0&al=1&shin=0&ex=0&hb=1&lb=1&sr=1\" target=\"_blank\" rel=\"noopener\">Yahoo 查證</a>"},{"start":"14:45","end":"19:00","type":"rest","tags":[{"cls":"rest","text":"候機"}],"title":"關西機場候機（約 4 小時 15 min）","desc":"免稅品海關確認 → 辦登機 + 行李託運 → 免稅店逛街","note":"託運前先以免稅手續專用設備完成海關確認（符合條件者也可事先設定 Visit Japan Web 線上辦理），系統要求檢查時須帶商品至指定區域。同一筆交易只要有一件無法出示，整筆都無法確認與退款；免稅消耗品不可在日本境內使用。退款由店家或退稅業者安排，不一定能在機場領現金","sched":""},{"start":"19:00","end":"","type":"plane","tags":[{"cls":"plane","text":"返台"}],"title":"搭機返台 — 圓滿結束京阪跨年之旅 🎉","desc":"2026 年 12 月 27 日 出發 → 2027 年 1 月 2 日 返台，共 7 天","note":"","sched":"<b>班次備註</b><br>航班時間已與使用者確認：19:00 起飛"}]}];
+
+/* 交通方式彩色小標籤：jr 綠、plane 水色、metro 黃、rail（私鐵）粉、walk 虛線 */
+const TRANSPORT = {
+  '1-08:05': [['飛機', 'plane']],
+  '1-12:44': [['JR 特急 HARUKA', 'jr']],
+  '1-16:00': [['JR 新快速', 'jr']],
+  '1-20:30': [['步行', 'walk']],
+  '2-07:50': [['步行', 'walk']],
+  '2-09:10': [['JR 奈良線', 'jr']],
+  '2-13:53': [['京阪', 'rail']],
+  '2-15:58': [['京阪', 'rail'], ['JR', 'jr']],
+  '2-21:30': [['步行', 'walk']],
+  '3-08:15': [['步行', 'walk'], ['JR 嵯峨野線', 'jr']],
+  '3-13:15': [['嵐電', 'rail'], ['地鐵東西線', 'metro']],
+  '3-14:58': [['地鐵烏丸線', 'metro']],
+  '3-21:30': [['地鐵烏丸線', 'metro'], ['步行', 'walk']],
+  '4-08:45': [['步行', 'walk']],
+  '4-09:00': [['JR 新快速', 'jr']],
+  '4-09:34': [['JR 環狀線', 'jr']],
+  '4-10:01': [['阪神なんば線', 'rail']],
+  '4-19:36': [['阪神なんば線', 'rail']],
+  '5-10:15': [['JR 環狀線', 'jr']],
+  '5-16:30': [['JR 環狀線', 'jr']],
+  '5-19:27': [['JR ゆめ咲線', 'jr']],
+  '6-19:18': [['JR ゆめ咲線', 'jr']],
+  '7-08:00': [['步行', 'walk']],
+  '7-08:10': [['JR 關空快速', 'jr']],
+  '7-14:32': [['南海', 'rail']],
+  '7-19:00': [['飛機', 'plane']]
+};
+
+/* 必去：需預約或有門票的項目，以及世界遺產 */
+const MUST = ['2-09:34', '2-14:45', '3-09:00', '3-11:45', '3-20:00', '4-11:00', '5-21:00', '6-00:00'];
+
+const DOT = { plane: 'move', train: 'move', return: 'move', food: 'food', sight: 'sight', shop: 'shop', usj: 'usj', book: 'book', hoka: 'shop', rest: 'rest' };
+
+const ART = {
+  1: '<svg class="ill" viewBox="0 0 96 96" aria-hidden="true"><g class="a-drift"><path d="M14 78a10 10 0 0 1 12-14 13 13 0 0 1 25 2 9 9 0 0 1 4 12z" fill="#FFFCF6"/></g><g class="a-bob"><path d="M12 46l54-21q14-4 16 3 1 7-10 12L25 62z" fill="#FFFCF6"/><path d="M40 35L27 15h10l22 13z" fill="#F2A497"/><path d="M46 50l-5 18h10l14-25z" fill="#F2A497"/></g></svg>',
+  2: '<svg class="ill" viewBox="0 0 96 96" aria-hidden="true"><g class="a-bob"><path d="M36 32q-7-8 0-15M54 32q-7-8 0-15" fill="none"/></g><path d="M14 44h68q-2 34-34 36-32-2-34-36z" fill="#F2A497"/><ellipse cx="48" cy="44" rx="34" ry="9" fill="#FFFCF6"/><ellipse cx="48" cy="45" rx="25" ry="5" fill="#B9DAA5"/><path d="M36 80h24v6H36z" fill="#FFFCF6"/></svg>',
+  3: '<svg class="ill" viewBox="0 0 96 96" aria-hidden="true"><g class="a-sway"><rect x="22" y="8" width="11" height="82" rx="4" fill="#FFFCF6"/><path d="M22 34h11M22 62h11" fill="none"/><path d="M33 26q14-8 22 0-12 8-22 0z" fill="#FFFCF6"/></g><g class="a-sway" style="animation-delay:-1.6s"><rect x="56" y="4" width="11" height="86" rx="4" fill="#FFFCF6"/><path d="M56 30h11M56 58h11" fill="none"/><path d="M67 44q14-8 22 0-12 8-22 0z" fill="#FFFCF6"/><path d="M56 18q-12-7-20 1 10 7 20-1z" fill="#FFFCF6"/></g></svg>',
+  4: '<svg class="ill" viewBox="0 0 96 96" aria-hidden="true"><g class="a-bob"><path d="M12 38h46l5 46H7z" fill="#FFFCF6"/><path d="M24 48V28q0-10 11-10t11 10v20" fill="none"/></g><g class="a-bob" style="animation-delay:-1.4s"><path d="M52 52h32l3 34H49z" fill="#F6D27A"/><path d="M60 60V44q0-7 8-7t8 7v16" fill="none"/></g></svg>',
+  5: '<svg class="ill" viewBox="0 0 96 96" aria-hidden="true"><g class="a-twinkle"><path d="M38 12v12M38 52v12M12 38h12M52 38h12M20 20l8 8M48 48l8 8M56 20l-8 8M28 48l-8 8" fill="none"/><circle cx="38" cy="38" r="7" fill="#F6D27A"/></g><g class="a-twinkle" style="animation-delay:-1.2s"><path d="M72 54v8M72 80v8M56 71h8M80 71h8M61 60l5 5M78 77l5 5M83 60l-5 5M66 77l-5 5" fill="none"/><circle cx="72" cy="71" r="5" fill="#FFFCF6"/></g></svg>',
+  6: '<svg class="ill" viewBox="0 0 96 96" aria-hidden="true"><g class="a-bob"><path d="M48 12v10M18 26l7 8M78 26l-7 8M6 54h10M80 54h10" fill="none"/><path d="M24 62a24 24 0 0 1 48 0z" fill="#F6D27A"/></g><path d="M4 66q22-12 44-4t44-4v28H4z" fill="#FFFCF6"/></svg>',
+  7: '<svg class="ill" viewBox="0 0 96 96" aria-hidden="true"><g class="a-bob"><rect x="16" y="34" width="46" height="46" rx="8" fill="#F6D27A"/><path d="M30 34V22q0-4 4-4h10q4 0 4 4v12M30 46v22M48 46v22" fill="none"/><path d="M26 80v6M52 80v6" fill="none"/></g><g class="a-drift"><path d="M60 22l20-8q7-2 8 1 0 4-5 6L65 32z" fill="#FFFCF6"/></g></svg>'
+};
+
+const TODOS = [
+  { group: '預約與票券', items: [
+    { id: 'usj', text: 'USJ 跨年門票與快速通關已購買完成', done: true },
+    { id: 'hirokawa', text: '廣川鰻魚飯：台灣時間 11/28 23:00（日本時間 11/29 00:00）搶位，5 人拆 3+2 兩筆，2 人同時上線' },
+    { id: 'jojoen', text: '敘敘苑 なんば髙島屋店：確認預約日期為 12/30（原 12/31 請改期），5 人建議訂包廂席' },
+    { id: 'roman', text: 'Sushi Roman：確認 12/29 20:00 預約、週二營業時間與最後點餐時間' },
+    { id: 'haruka', text: '購買 HARUKA 優惠票（「大阪・新大阪」版），建議加訂指定席' }
+  ]},
+  { group: '行前確認', items: [
+    { id: 'meals', text: '決定 6 處待確認餐廳：D1 晚餐、D2 午餐與晚餐、D4 晚餐、D5 午餐、D7 午餐' },
+    { id: 'outlet', text: '向りんくう Outlet 確認寄物位置、費用與大型行李是否可寄放（072-458-4600，僅日文）' },
+    { id: 'tower', text: '確認京都塔展望室票價與營業時間' },
+    { id: 'timetable', text: '出發前一週再確認一次年末年始交通班次' }
+  ]},
+  { group: '費用', items: [
+    { id: 'pay', text: '完成行前費用付款：台幣付給小羽、日幣付給 Jine' }
+  ]}
+];
+
+const reduced = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const $ = id => document.getElementById(id);
+
+/* 出發倒數 */
+const DEPART = new Date('2026-12-27T08:05:00+08:00');
+const FINISH = new Date('2027-01-02T19:00:00+09:00');
+function tickCount() {
+  const now = new Date();
+  const diff = DEPART - now;
+  if (diff > 0) {
+    const days = Math.floor(diff / 864e5);
+    const hours = Math.floor(diff % 864e5 / 36e5);
+    const mins = Math.floor(diff % 36e5 / 6e4);
+    $('countLabel').textContent = '距離出發還有';
+    $('countDays').textContent = days;
+    $('countUnit').textContent = '天';
+    $('countRest').textContent = `又 ${hours} 小時 ${mins} 分・12/27 08:05 台北起飛`;
+  } else {
+    $('countDays').textContent = '';
+    $('countUnit').textContent = '';
+    $('countRest').textContent = '';
+    $('countLabel').textContent = now < FINISH ? '旅程進行中，玩得開心！' : '京阪跨年之旅圓滿結束';
+  }
 }
+
+/* 每日行程 */
+function schedHtml(raw) {
+  const m = raw.match(/^<b>(.*?)<\/b>([\s\S]*)$/);
+  const label = m ? m[1] : '備註';
+  const body = (m ? m[2] : raw).replace(/^<br>/, '');
+  const open = label === '班次備註' ? '' : ' open';
+  return `<details class="sched"${open}><summary>${label}</summary><div class="sched-body">${body}</div></details>`;
+}
+
+function entryHtml(day, e) {
+  const key = `${day.n}-${e.start}`;
+  const isMust = MUST.includes(key);
+  const transport = TRANSPORT[key] || [];
+  const tags = e.tags
+    .filter(t => !(transport.length && (t.text === '電車' || t.text === '飛機')))
+    .map(t => `<span class="tag ${t.cls === 'tbd' ? 't-tbd' : ''}">${t.text}</span>`);
+  const tTags = transport.map(([text, cls]) => `<span class="tag ${cls}">${text}</span>`);
+  const must = isMust ? '<span class="tag must">必去</span>' : '';
+  return `<li>
+    <div class="tl-time">${e.start}${e.end ? `<small>${e.end}</small>` : ''}</div>
+    <span class="tl-dot k-${DOT[e.type] || 'rest'}"></span>
+    <article class="card ev${isMust ? ' must' : ''}">
+      <div class="tags">${must}${tTags.join('')}${tags.join('')}</div>
+      <h4 class="ev-title">${e.title}</h4>
+      ${e.desc ? `<div class="ev-desc">${e.desc}</div>` : ''}
+      ${e.note ? `<div class="ev-note">${e.note}</div>` : ''}
+      ${e.sched ? schedHtml(e.sched) : ''}
+    </article>
+  </li>`;
+}
+
+function dayHtml(day) {
+  const colour = ['c1', 'c2', 'c3', 'c4'][(day.n - 1) % 4];
+  const notice = day.banner ? `<div class="notice"><h3>${day.banner.title}</h3><ul>${day.banner.rows.map(r => `<li>${r}</li>`).join('')}</ul></div>` : '';
+  return `<div class="card day-head ${colour}">
+      <div>
+        <div class="day-date">${day.date}</div>
+        <h3 class="day-title">${day.title}</h3>
+        <div class="day-route">${day.route}</div>
+      </div>
+      ${ART[day.n]}
+    </div>
+    ${notice}
+    <ol class="tl">${day.entries.map(e => entryHtml(day, e)).join('')}</ol>`;
+}
+
+function showDay(n, opts = {}) {
+  const panel = $('dayPanel');
+  const bar = $('dayBar');
+  panel.innerHTML = dayHtml(DAYS[n - 1]);
+  panel.setAttribute('aria-labelledby', `dayTab${n}`);
+  [...bar.children].forEach((b, i) => {
+    const on = i === n - 1;
+    b.setAttribute('aria-selected', on);
+    b.tabIndex = on ? 0 : -1;
+    b.classList.remove('pop');
+  });
+  const btn = bar.children[n - 1];
+  if (opts.animate) {
+    panel.classList.remove('bounce');
+    void panel.offsetWidth;
+    panel.classList.add('bounce');
+    btn.classList.add('pop');
+    const behavior = reduced() ? 'auto' : 'smooth';
+    bar.scrollTo({ left: btn.offsetLeft - (bar.clientWidth - btn.offsetWidth) / 2, behavior });
+    const barBottom = bar.getBoundingClientRect().bottom;
+    const top = panel.getBoundingClientRect().top;
+    if (top < barBottom) window.scrollBy({ top: top - barBottom - 4, behavior });
+  }
+}
+
+function initDays() {
+  const bar = $('dayBar');
+  bar.innerHTML = DAYS.map(d => `<button class="daybtn" role="tab" id="dayTab${d.n}" aria-controls="dayPanel" type="button"><b>D${d.n}</b><small>${d.tab}</small></button>`).join('');
+  [...bar.children].forEach((b, i) => b.addEventListener('click', () => showDay(i + 1, { animate: true })));
+  bar.addEventListener('keydown', ev => {
+    const cur = [...bar.children].findIndex(b => b.getAttribute('aria-selected') === 'true');
+    let next = null;
+    if (ev.key === 'ArrowRight') next = (cur + 1) % DAYS.length;
+    if (ev.key === 'ArrowLeft') next = (cur - 1 + DAYS.length) % DAYS.length;
+    if (next === null) return;
+    ev.preventDefault();
+    showDay(next + 1, { animate: true });
+    bar.children[next].focus();
+  });
+  const jpToday = new Date(Date.now() + 9 * 36e5).toISOString().slice(0, 10);
+  const idx = DAYS.findIndex(d => d.iso === jpToday);
+  showDay(idx >= 0 ? idx + 1 : 1);
+}
+
+/* 待辦（打勾狀態存在這台裝置的瀏覽器） */
+const TODO_KEY = 'keihan-2026-todo';
+function loadTodo() {
+  try { return JSON.parse(localStorage.getItem(TODO_KEY)) || {}; } catch (err) { return {}; }
+}
+function saveTodo(state) {
+  try { localStorage.setItem(TODO_KEY, JSON.stringify(state)); } catch (err) { /* 無法儲存時仍可使用 */ }
+}
+function refreshTodo() {
+  const boxes = [...document.querySelectorAll('#todoList input')];
+  const done = boxes.filter(b => b.checked).length;
+  $('todoCount').textContent = `已完成 ${done} / ${boxes.length} 項`;
+  $('todoFill').style.width = `${done / boxes.length * 100}%`;
+}
+function initTodo() {
+  const state = loadTodo();
+  const check = '<svg viewBox="0 0 18 18" aria-hidden="true"><path d="M3 9.5l4 4 8-9" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+  $('todoList').innerHTML = TODOS.map(g => `<div class="card todo-group"><h3>${g.group}</h3><ul>${g.items.map(t => {
+    const on = t.id in state ? state[t.id] : !!t.done;
+    return `<li class="todo-item"><label><input type="checkbox" data-id="${t.id}"${on ? ' checked' : ''}><span class="todo-box">${check}</span><span class="todo-text">${t.text}</span></label></li>`;
+  }).join('')}</ul></div>`).join('');
+  $('todoList').addEventListener('change', ev => {
+    const s = loadTodo();
+    s[ev.target.dataset.id] = ev.target.checked;
+    saveTodo(s);
+    refreshTodo();
+  });
+  refreshTodo();
+}
+
+/* 選單定位 */
+function initSpy() {
+  const links = [...document.querySelectorAll('.topnav a')];
+  const sections = links.map(a => document.querySelector(a.getAttribute('href')));
+  const update = () => {
+    const y = 120;
+    let cur = 0;
+    sections.forEach((s, i) => { if (s.getBoundingClientRect().top <= y) cur = i; });
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) cur = sections.length - 1;
+    links.forEach((a, i) => {
+      a.classList.toggle('on', i === cur);
+      if (i === cur) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
+  };
+  window.addEventListener('scroll', update, { passive: true });
+  window.addEventListener('resize', update);
+  update();
+}
+
+initDays();
+initTodo();
+initSpy();
+tickCount();
+setInterval(tickCount, 30000);
 </script>
 </body>
 </html>
